@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C894D328-7811-4C79-97E0-E8586490289F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>K12.Service.Learning.Modules</RootNamespace>
+    <AssemblyName>K12.Service.Learning.Modules</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=4.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\Aspose.Cells.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Aspose.Words, Version=4.4.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\Aspose.Words.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Campus.DocumentValidator">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\Campus.DocumentValidator.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Campus.Import">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\Campus.Import.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Campus.Report">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\Campus.Report.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Campus.Windows">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\Campus.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="FISCA">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\FISCA.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Authentication">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\FISCA.Authentication.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Data">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\FISCA.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.DSAClient">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\FISCA.DSAClient.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.DSAUtil">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\FISCA.DSAUtil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.LogAgent">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\FISCA.LogAgent.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Permission">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\FISCA.Permission.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Presentation">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\FISCA.Presentation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.UDT">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\FISCA.UDT.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="IntelliSchool.DSA.ClientFramework">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\IntelliSchool.DSA.ClientFramework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="K12.Data">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\K12.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="K12.Presentation">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\K12.Presentation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SmartSchool.API.PlugIn">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\SmartSchool.API.PlugIn.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SmartSchool.Customization.PlugIn">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\SmartSchool.Customization.PlugIn.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SmartSchool.ErrorReporting">
+      <HintPath>..\..\..\..\..\TFS2010-Git\Library\SmartSchool.ErrorReporting.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BatchStudent\DetailFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BatchStudent\DetailFrom.Designer.cs">
+      <DependentUpon>DetailFrom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BatchStudent\IvObj.cs" />
+    <Compile Include="BatchStudent\StudentIvForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BatchStudent\StudentIvForm.Designer.cs">
+      <DependentUpon>StudentIvForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Batch\ChangeAllDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Batch\ChangeAllDataForm.Designer.cs">
+      <DependentUpon>ChangeAllDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Batch\ChangeDateTimeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Batch\ChangeDateTimeForm.Designer.cs">
+      <DependentUpon>ChangeDateTimeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Batch\ChangeIntForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Batch\ChangeIntForm.Designer.cs">
+      <DependentUpon>ChangeIntForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Batch\ChangeOrganizersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Batch\ChangeOrganizersForm.Designer.cs">
+      <DependentUpon>ChangeOrganizersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Batch\ChangeReasonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Batch\ChangeReasonForm.Designer.cs">
+      <DependentUpon>ChangeReasonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Batch\ChangeSchoolYearSemester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Batch\ChangeSchoolYearSemester.Designer.cs">
+      <DependentUpon>ChangeSchoolYearSemester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Batch\ChangeTextForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Batch\ChangeTextForm.Designer.cs">
+      <DependentUpon>ChangeTextForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Batch\ConfigByBatch.cs" />
+    <Compile Include="Batch\ServiceDataRow.cs" />
+    <Compile Include="ImportExport\CommentLogRobot.cs" />
+    <Compile Include="ImportExport\ExportSLRecord.cs" />
+    <Compile Include="ImportExport\ExportStudentV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportExport\ExportStudentV2.designer.cs">
+      <DependentUpon>ExportStudentV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\ImportServiceLearning.cs" />
+    <Compile Include="ImportExport\Validator\FieldValidatorFactory.cs" />
+    <Compile Include="ImportExport\Validator\ISDECIMAL.cs" />
+    <Compile Include="ImportExport\Validator\StudentNumberExistenceValidator.cs" />
+    <Compile Include="ImportExport\Validator\StudentNumberRepeatValidator.cs" />
+    <Compile Include="LearningEvents.cs" />
+    <Compile Include="modules\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modules\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\服務學習時數證明單\SLReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\服務學習時數證明單\SLReportForm.Designer.cs">
+      <DependentUpon>SLReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Batch\ServiceLearningBatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Batch\ServiceLearningBatch.Designer.cs">
+      <DependentUpon>ServiceLearningBatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StuAdminExtendControls\DigitalCodeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StuAdminExtendControls\DigitalCodeForm.Designer.cs">
+      <DependentUpon>DigitalCodeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudentExtendControls\Ribbon\MutiLearning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentExtendControls\Ribbon\MutiLearning.designer.cs">
+      <DependentUpon>MutiLearning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="tools\CompleteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tools\CompleteForm.designer.cs">
+      <DependentUpon>CompleteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="tools\DataGridViewExport.cs" />
+    <Compile Include="tools\DetailContentBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="tools\DetailContentBase.designer.cs">
+      <DependentUpon>DetailContentBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="tools\ListViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Permissions.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentExtendControls\LearningControl\LearningForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentExtendControls\LearningControl\LearningForm.designer.cs">
+      <DependentUpon>LearningForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudentExtendControls\LearningItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StudentExtendControls\LearningItem.designer.cs">
+      <DependentUpon>LearningItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="tools\SortClassIndex.cs" />
+    <Compile Include="tools\StudentSortObj.cs" />
+    <Compile Include="tools\tool.cs" />
+    <Compile Include="UDT\DigitalCodeRecord.cs" />
+    <Compile Include="UDT\SLRecord.cs" />
+    <Compile Include="UpdateHelper.cs" />
+    <Compile Include="WebPackage.cs" />
+    <Compile Include="時數轉換器.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flip_vertical_clock_64.png" />
+    <None Include="Resources\服務學習記錄_範本.doc" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BatchStudent\DetailFrom.resx">
+      <DependentUpon>DetailFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BatchStudent\StudentIvForm.resx">
+      <DependentUpon>StudentIvForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Batch\ChangeAllDataForm.resx">
+      <DependentUpon>ChangeAllDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Batch\ChangeDateTimeForm.resx">
+      <DependentUpon>ChangeDateTimeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Batch\ChangeIntForm.resx">
+      <DependentUpon>ChangeIntForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Batch\ChangeOrganizersForm.resx">
+      <DependentUpon>ChangeOrganizersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Batch\ChangeReasonForm.resx">
+      <DependentUpon>ChangeReasonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Batch\ChangeSchoolYearSemester.resx">
+      <DependentUpon>ChangeSchoolYearSemester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Batch\ChangeTextForm.resx">
+      <DependentUpon>ChangeTextForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportExport\ExportStudentV2.resx">
+      <DependentUpon>ExportStudentV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\服務學習時數證明單\SLReportForm.resx">
+      <DependentUpon>SLReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Batch\ServiceLearningBatch.resx">
+      <DependentUpon>ServiceLearningBatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StuAdminExtendControls\DigitalCodeForm.resx">
+      <DependentUpon>DigitalCodeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentExtendControls\LearningControl\LearningForm.resx">
+      <DependentUpon>LearningForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentExtendControls\LearningItem.resx">
+      <DependentUpon>LearningItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentExtendControls\Ribbon\MutiLearning.resx">
+      <DependentUpon>MutiLearning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tools\CompleteForm.resx">
+      <DependentUpon>CompleteForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImportServiceLearning.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_clock_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\offer_b_search_64.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
