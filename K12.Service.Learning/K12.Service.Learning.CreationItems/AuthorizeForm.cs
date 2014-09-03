@@ -92,12 +92,15 @@ namespace K12.Service.Learning.CreationItems
                     {
                         row = new DataGridViewRow();
                         row.CreateCells(dataGridViewX1);
-                        row.Cells[0].Value = "" + ds[item.RefStudentId].Class.GradeYear;
-                        row.Cells[1].Value = "" + ds[item.RefStudentId].Class.Name;
+                        if (ds[item.RefStudentId].Class != null)
+                        {
+                            row.Cells[0].Value = "" + ds[item.RefStudentId].Class.GradeYear;
+                            row.Cells[1].Value = "" + ds[item.RefStudentId].Class.Name;
+                        }
                         row.Cells[2].Value = "" + ds[item.RefStudentId].SeatNo;
                         row.Cells[3].Value = "" + ds[item.RefStudentId].Name;
                         row.Cells[4].Value = "" + ds[item.RefStudentId].StudentNumber;
-                        row.Cells[5].Value = item.CanParticipate?"True":"false";
+                        row.Cells[5].Value = item.CanParticipate ? "True" : "false";
                         row.Tag = item;
                         dataGridViewX1.Rows.Add(row);
                     }
@@ -120,8 +123,8 @@ namespace K12.Service.Learning.CreationItems
                 int i = 1 ;
                 foreach (DataGridViewRow row in dataGridViewX1.Rows)
                 {
-                    ((CreationItemsParticipateRecord)row.Tag).CanParticipate = row.Cells[5].Value == "True" ? true : false;
-                    log.Add("" + i + "：年級:" + row.Cells[0].Value + ",班級:" + row.Cells[1].Value + ",座號:" + row.Cells[2].Value + ",姓名:" + row.Cells[3].Value + ",學號:" + row.Cells[4].Value + ",核可:" + (row.Cells[5].Value== "True" ? "是" : "否"));
+                    ((CreationItemsParticipateRecord)row.Tag).CanParticipate = row.Cells[5].Value.ToString() == "True" ? true : false;
+                    log.Add("" + i + "：年級:" + row.Cells[0].Value + ",班級:" + row.Cells[1].Value + ",座號:" + row.Cells[2].Value + ",姓名:" + row.Cells[3].Value + ",學號:" + row.Cells[4].Value + ",核可:" + (row.Cells[5].Value.ToString()== "True" ? "是" : "否"));
                         i++;
                 }
                 lcipr.SaveAll();
@@ -149,7 +152,17 @@ namespace K12.Service.Learning.CreationItems
                 row.Cells[5].Value = false;
             }
         }
-
-        
+        private void dataGridViewX1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            int count = 0,total = 0;
+            foreach (DataGridViewRow row in dataGridViewX1.Rows)
+            {
+                if (row.Cells[5].Value.ToString() == "True" ? true : false)
+                    count++;
+            }
+            if (dataGridViewX1 != null)
+                total = dataGridViewX1.Rows.Count;
+            labelX2.Text = string.Format("核可/總數：{0}/{1}", count, total);
+        }
     }
 }

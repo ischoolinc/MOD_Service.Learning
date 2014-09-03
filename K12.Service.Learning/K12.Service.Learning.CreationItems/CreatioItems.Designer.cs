@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.列印點名單ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,20 +40,20 @@
             this.btnAuthorized = new DevComponents.DotNetBar.ButtonX();
             this.btnApproved = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.filterOrganizers = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.filterSemester = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.filterSchoolYear = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.lbEnd = new DevComponents.DotNetBar.LabelX();
             this.lbStart = new DevComponents.DotNetBar.LabelX();
-            this.filterOrganizers = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.ColRegistStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColRegistEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColOrganizers = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColOccurDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColCreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColIsAuthorized = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColApproved = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColIsAuthorized = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColApproved = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColExpertedHours = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
             this.ColReason = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColParticipateLimit = new DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn();
@@ -89,14 +89,14 @@
             this.ColParticipateLimit,
             this.ColRemark});
             this.dataGridViewX1.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(13, 79);
             this.dataGridViewX1.Name = "dataGridViewX1";
@@ -113,12 +113,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.列印點名單ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(135, 26);
             // 
             // 列印點名單ToolStripMenuItem
             // 
             this.列印點名單ToolStripMenuItem.Name = "列印點名單ToolStripMenuItem";
-            this.列印點名單ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.列印點名單ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.列印點名單ToolStripMenuItem.Text = "列印點名單";
             this.列印點名單ToolStripMenuItem.Click += new System.EventHandler(this.列印點名單ToolStripMenuItem_Click);
             // 
@@ -248,10 +248,26 @@
             this.groupPanel1.TabIndex = 11;
             this.groupPanel1.Text = "篩選條件";
             // 
+            // filterOrganizers
+            // 
+            this.filterOrganizers.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.filterOrganizers.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.filterOrganizers.DisplayMember = "Text";
+            this.filterOrganizers.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.filterOrganizers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.filterOrganizers.FormattingEnabled = true;
+            this.filterOrganizers.ItemHeight = 19;
+            this.filterOrganizers.Location = new System.Drawing.Point(360, 3);
+            this.filterOrganizers.Name = "filterOrganizers";
+            this.filterOrganizers.Size = new System.Drawing.Size(138, 25);
+            this.filterOrganizers.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.filterOrganizers.TabIndex = 42;
+            // 
             // filterSemester
             // 
             this.filterSemester.DisplayMember = "Text";
             this.filterSemester.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.filterSemester.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.filterSemester.FormattingEnabled = true;
             this.filterSemester.ItemHeight = 19;
             this.filterSemester.Location = new System.Drawing.Point(213, 3);
@@ -279,6 +295,7 @@
             // 
             this.filterSchoolYear.DisplayMember = "Text";
             this.filterSchoolYear.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.filterSchoolYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.filterSchoolYear.FormattingEnabled = true;
             this.filterSchoolYear.ItemHeight = 19;
             this.filterSchoolYear.Location = new System.Drawing.Point(56, 3);
@@ -314,20 +331,6 @@
             this.lbStart.Size = new System.Drawing.Size(47, 21);
             this.lbStart.TabIndex = 0;
             this.lbStart.Text = "學年度";
-            // 
-            // filterOrganizers
-            // 
-            this.filterOrganizers.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.filterOrganizers.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.filterOrganizers.DisplayMember = "Text";
-            this.filterOrganizers.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.filterOrganizers.FormattingEnabled = true;
-            this.filterOrganizers.ItemHeight = 19;
-            this.filterOrganizers.Location = new System.Drawing.Point(360, 3);
-            this.filterOrganizers.Name = "filterOrganizers";
-            this.filterOrganizers.Size = new System.Drawing.Size(138, 25);
-            this.filterOrganizers.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.filterOrganizers.TabIndex = 42;
             // 
             // ColRegistStartTime
             // 
@@ -377,23 +380,19 @@
             // 
             // ColIsAuthorized
             // 
-            this.ColIsAuthorized.DataPropertyName = "IsAuthorized";
+            this.ColIsAuthorized.DataPropertyName = "IsAuthorizedText";
             this.ColIsAuthorized.HeaderText = "完成核可作業";
             this.ColIsAuthorized.Name = "ColIsAuthorized";
             this.ColIsAuthorized.ReadOnly = true;
             this.ColIsAuthorized.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColIsAuthorized.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColIsAuthorized.TrueValue = "True";
             // 
             // ColApproved
             // 
-            this.ColApproved.DataPropertyName = "IsApproved";
+            this.ColApproved.DataPropertyName = "IsApprovedText";
             this.ColApproved.HeaderText = "完成登錄作業";
             this.ColApproved.Name = "ColApproved";
             this.ColApproved.ReadOnly = true;
             this.ColApproved.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColApproved.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColApproved.TrueValue = "True";
             // 
             // ColExpertedHours
             // 
@@ -490,8 +489,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColOccurDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColLocation;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColCreateBy;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColIsAuthorized;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColApproved;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColIsAuthorized;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColApproved;
         private DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn ColExpertedHours;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColReason;
         private DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn ColParticipateLimit;

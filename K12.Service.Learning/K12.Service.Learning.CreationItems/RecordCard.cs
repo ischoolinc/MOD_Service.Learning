@@ -37,7 +37,7 @@ namespace K12.Service.Learning.CreationItems
             if (ConfigurationInCadre.Template == null)
             {
                 Campus.Report.ReportConfiguration ConfigurationInCadre_1 = new Campus.Report.ReportConfiguration(ConfigName);
-                ConfigurationInCadre_1.Template = new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數記錄卡欄位總表, Campus.Report.TemplateType.Word);
+                ConfigurationInCadre_1.Template = new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數記錄卡範本, Campus.Report.TemplateType.Word);
                 Template = ConfigurationInCadre_1.Template.ToDocument();
             }
             else
@@ -107,7 +107,7 @@ namespace K12.Service.Learning.CreationItems
             {
                 DataRow row = table.NewRow();
                 row["學校名稱"] = School.ChineseName;
-                row["列印日期"] = DateTime.Now.ToString("yyyy/M/d");
+                row["列印日期"] = DateTime.Now.ToString("yyyy年M月d日");
                 if (dsr.ContainsKey(RefStudentID))
                 {
                     row["班級"] = dsr[RefStudentID].Class != null ? dsr[RefStudentID].Class.Name : "";
@@ -116,21 +116,21 @@ namespace K12.Service.Learning.CreationItems
                     row["學號"] = dsr[RefStudentID].StudentNumber;
                     row["性別"] = dsr[RefStudentID].Gender;
                 }
+                int y = 1 ;
                 if (dslr.ContainsKey(RefStudentID))
                 {
-                    int y = 1;
                     Dictionary<string, decimal> dhours = new Dictionary<string, decimal>();
                     foreach (SLRecord slr in dslr[RefStudentID])
                     {
                         row[string.Format("學年度_{0}", y)] = slr.SchoolYear;
                         row[string.Format("學期_{0}", y)] = slr.Semester;
                         row[string.Format("主辦單位_{0}", y)] = slr.Organizers;
-                        row[string.Format("服務日期_{0}", y)] = slr.OccurDate.ToString("yyyy/M/d");
+                        row[string.Format("服務日期_{0}", y)] = slr.OccurDate.AddYears(-1911).ToString("yyyy年M月d日");
                         row[string.Format("備註_{0}", y)] = slr.Remark;
 
                         row[string.Format("時數_{0}", y)] = slr.Hours;
                         row[string.Format("服務事由_{0}", y)] = slr.Reason;
-                        row[string.Format("登錄日期_{0}", y)] = slr.RegisterDate.ToString("yyyy/M/d");
+                        row[string.Format("登錄日期_{0}", y)] = slr.RegisterDate.AddYears(-1911).ToString("yyyy年M月d日");
                         string key = slr.SchoolYear + "#" + slr.Semester;
                         if (!dhours.ContainsKey(key))
                         {
@@ -139,6 +139,7 @@ namespace K12.Service.Learning.CreationItems
                         dhours[key] += slr.Hours;
                         y++;
                     }
+                    
                     row["服務學習記錄筆數"] = y - 1;
                     if (lshr.ContainsKey(RefStudentID))
                     {
@@ -174,6 +175,11 @@ namespace K12.Service.Learning.CreationItems
                         }
                     }
                 }
+                for (; y < 20; y++)
+                {
+                    row[string.Format("服務日期_{0}", y)] = "___年__月__日";
+                    row[string.Format("時數_{0}", y)] = "   ";
+                }
                 table.Rows.Add(row);
             }
             Document PageOne = (Document)Template.Clone(true);
@@ -199,12 +205,12 @@ namespace K12.Service.Learning.CreationItems
             //畫面內容(範本內容,預設樣式
             if (ConfigurationInCadre.Template != null)
             {
-                TemplateForm = new Campus.Report.TemplateSettingForm(ConfigurationInCadre.Template, new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數記錄卡欄位總表, Campus.Report.TemplateType.Word));
+                TemplateForm = new Campus.Report.TemplateSettingForm(ConfigurationInCadre.Template, new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數記錄卡範本, Campus.Report.TemplateType.Word));
             }
             else
             {
-                ConfigurationInCadre.Template = new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數記錄卡欄位總表, Campus.Report.TemplateType.Word);
-                TemplateForm = new Campus.Report.TemplateSettingForm(ConfigurationInCadre.Template, new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數記錄卡欄位總表, Campus.Report.TemplateType.Word));
+                ConfigurationInCadre.Template = new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數記錄卡範本, Campus.Report.TemplateType.Word);
+                TemplateForm = new Campus.Report.TemplateSettingForm(ConfigurationInCadre.Template, new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數記錄卡範本, Campus.Report.TemplateType.Word));
             }
 
             //預設名稱
@@ -223,7 +229,7 @@ namespace K12.Service.Learning.CreationItems
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Title = "另存新檔";
-            sfd.FileName = "班級點名表_合併欄位總表.doc";
+            sfd.FileName = "服務學習時數記錄卡_合併欄位總表.doc";
             sfd.Filter = "Word檔案 (*.doc)|*.doc|所有檔案 (*.*)|*.*";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
@@ -260,7 +266,7 @@ namespace K12.Service.Learning.CreationItems
                         SaveFileDialog SaveFileDialog1 = new SaveFileDialog();
 
                         SaveFileDialog1.Filter = "Word (*.doc)|*.doc|所有檔案 (*.*)|*.*";
-                        SaveFileDialog1.FileName = "班級點名單(週報表樣式)";
+                        SaveFileDialog1.FileName = "服務學習時數記錄卡";
 
                         if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
                         {

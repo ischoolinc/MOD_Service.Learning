@@ -292,7 +292,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\服務學習時數記錄卡欄位總表.doc" />
+    <None Include="Resources\服務學習時數記錄卡範本.doc" />
     <None Include="Resources\服務學習時數點名單欄位總表.doc" />
+    <None Include="Resources\服務學習時數點名單範本.doc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

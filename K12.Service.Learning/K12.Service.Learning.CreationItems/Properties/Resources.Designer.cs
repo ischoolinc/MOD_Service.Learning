@@ -73,9 +73,29 @@ namespace K12.Service.Learning.CreationItems.Properties {
         /// <summary>
         ///   查詢類型 System.Byte[] 的當地語系化資源。
         /// </summary>
+        internal static byte[] 服務學習時數記錄卡範本 {
+            get {
+                object obj = ResourceManager.GetObject("服務學習時數記錄卡範本", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Byte[] 的當地語系化資源。
+        /// </summary>
         internal static byte[] 服務學習時數點名單欄位總表 {
             get {
                 object obj = ResourceManager.GetObject("服務學習時數點名單欄位總表", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Byte[] 的當地語系化資源。
+        /// </summary>
+        internal static byte[] 服務學習時數點名單範本 {
+            get {
+                object obj = ResourceManager.GetObject("服務學習時數點名單範本", resourceCulture);
                 return ((byte[])(obj));
             }
         }

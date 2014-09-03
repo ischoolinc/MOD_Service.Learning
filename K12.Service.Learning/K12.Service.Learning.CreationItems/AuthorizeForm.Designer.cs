@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.btnExit = new DevComponents.DotNetBar.ButtonX();
-            this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.ColGradeYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColSeatNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +40,9 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.可ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.不可ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnExit = new DevComponents.DotNetBar.ButtonX();
+            this.btnSave = new DevComponents.DotNetBar.ButtonX();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -65,14 +66,14 @@
             this.ColSchoolNumber,
             this.ColCanParticipate});
             this.dataGridViewX1.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewX1.Name = "dataGridViewX1";
@@ -81,32 +82,7 @@
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(593, 475);
             this.dataGridViewX1.TabIndex = 4;
-            // 
-            // btnExit
-            // 
-            this.btnExit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnExit.BackColor = System.Drawing.Color.Transparent;
-            this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExit.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.btnExit.Location = new System.Drawing.Point(530, 496);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 25);
-            this.btnExit.TabIndex = 15;
-            this.btnExit.Text = "離開";
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSave.BackColor = System.Drawing.Color.Transparent;
-            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.btnSave.Location = new System.Drawing.Point(449, 496);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 25);
-            this.btnSave.TabIndex = 14;
-            this.btnSave.Text = "儲存";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.dataGridViewX1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellValueChanged);
             // 
             // ColGradeYear
             // 
@@ -154,27 +130,68 @@
             this.可ToolStripMenuItem,
             this.不可ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(99, 48);
             // 
             // 可ToolStripMenuItem
             // 
             this.可ToolStripMenuItem.Name = "可ToolStripMenuItem";
-            this.可ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.可ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.可ToolStripMenuItem.Text = "可";
             this.可ToolStripMenuItem.Click += new System.EventHandler(this.可ToolStripMenuItem_Click);
             // 
             // 不可ToolStripMenuItem
             // 
             this.不可ToolStripMenuItem.Name = "不可ToolStripMenuItem";
-            this.不可ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.不可ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.不可ToolStripMenuItem.Text = "不可";
             this.不可ToolStripMenuItem.Click += new System.EventHandler(this.不可ToolStripMenuItem_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnExit.BackColor = System.Drawing.Color.Transparent;
+            this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnExit.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
+            this.btnExit.Location = new System.Drawing.Point(530, 496);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 25);
+            this.btnExit.TabIndex = 15;
+            this.btnExit.Text = "離開";
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSave.BackColor = System.Drawing.Color.Transparent;
+            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSave.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
+            this.btnSave.Location = new System.Drawing.Point(449, 496);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 25);
+            this.btnSave.TabIndex = 14;
+            this.btnSave.Text = "儲存";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // labelX2
+            // 
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.Class = "";
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(12, 493);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(170, 23);
+            this.labelX2.TabIndex = 16;
+            this.labelX2.Text = "核可/總數：0/0";
             // 
             // AuthorizeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(617, 533);
+            this.Controls.Add(this.labelX2);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dataGridViewX1);
@@ -202,5 +219,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 可ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 不可ToolStripMenuItem;
+        private DevComponents.DotNetBar.LabelX labelX2;
     }
 }

@@ -126,17 +126,27 @@ namespace K12.Service.Learning.CreationItems
             {
                 List<CreationItemsRecord> newDataRowList = (List<CreationItemsRecord>)e.Result;
                 dataGridViewX1.AutoGenerateColumns = false;
-                dataGridViewX1.DataSource = new BindingList<CreationItemsRecord>(newDataRowList);
                 DataRowList = newDataRowList;
+                dataGridViewX1.DataSource = new BindingList<CreationItemsRecord>(newDataRowList);
             }
         }
         private void dataGridViewX1_SelectionChanged(object sender, EventArgs e)
         {
-            int tmp_count = dataGridViewX1.SelectedRows.Count ;
+            int tmp_count = dataGridViewX1.SelectedRows.Count;
             btnEdit.Enabled = tmp_count == 1;
-            btnAuthorized.Enabled = tmp_count == 1;
-            btnApproved.Enabled = tmp_count == 1;
+
             contextMenuStrip1.Enabled = tmp_count > 0;
+
+            if (tmp_count == 1 && null != DataRowList && DataRowList.Count >= 1 && DateTime.Now > DataRowList[dataGridViewX1.SelectedRows[0].Index].RegistEndTime)
+            {
+                btnAuthorized.Enabled = true;
+                btnApproved.Enabled = true;
+            }
+            else
+            {
+                btnAuthorized.Enabled = false;
+                btnApproved.Enabled = false;
+            }
         }
         /// <summary>
         /// 鎖定畫面
@@ -197,6 +207,8 @@ namespace K12.Service.Learning.CreationItems
                 it._cir.Save();
                 //if (it._cir.SchoolYear == int.Parse(filterSchoolYear.Text) && it._cir.Semester == int.Parse(filterSemester.Text) )
                 //    DataRowList.Add(it._cir);
+                if (!filterOrganizers.Items.Contains(it._cir.Organizers))
+                    filterOrganizers.Items.Add(it._cir.Organizers);
                 ApplicationLog.Log("服務學習線上開設", "新增項目", "新增一筆\n學年度:" + it._cir.SchoolYear + ",學期:" + it._cir.Semester + ",日期:" + it._cir.OccurDate + ",事由:" + it._cir.Reason + ",時數:" + it._cir.ExpectedHours + ",主辦單位:" + it._cir.Organizers + ",備註:" + it._cir.Remark);
                 RunSelect();
             }

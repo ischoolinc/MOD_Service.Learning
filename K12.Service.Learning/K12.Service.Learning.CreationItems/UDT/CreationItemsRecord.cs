@@ -85,6 +85,10 @@ namespace K12.Service.Learning.CreationItems
             get { return (bool)getter("IsAuthorized",TypeCode.Boolean); }
             set { setter("IsAuthorized", TypeCode.Boolean, value); }
         }
+        public string IsAuthorizedText
+        {
+            get { return (bool)getter("IsAuthorized", TypeCode.Boolean)?"是":""; }
+        }
         public string AuthorizedBy
         {
             get { return (string)getter("AuthorizedBy", TypeCode.String); }
@@ -99,6 +103,10 @@ namespace K12.Service.Learning.CreationItems
         {
             get { return (bool)getter("IsApproved", TypeCode.Boolean); }
             set { setter("IsApproved", TypeCode.Boolean, value); }
+        }
+        public string IsApprovedText
+        {
+            get { return (bool)getter("IsApproved", TypeCode.Boolean)?"是":""; }
         }
         public string ApprovedBy
         {

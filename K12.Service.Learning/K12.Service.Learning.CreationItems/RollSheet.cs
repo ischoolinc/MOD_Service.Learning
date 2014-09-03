@@ -39,7 +39,7 @@ namespace K12.Service.Learning.CreationItems
             if (ConfigurationInCadre.Template == null)
             {
                 Campus.Report.ReportConfiguration ConfigurationInCadre_1 = new Campus.Report.ReportConfiguration(ConfigName);
-                ConfigurationInCadre_1.Template = new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數點名單欄位總表, Campus.Report.TemplateType.Word);
+                ConfigurationInCadre_1.Template = new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數點名單範本, Campus.Report.TemplateType.Word);
                 Template = ConfigurationInCadre_1.Template.ToDocument();
             }
             else
@@ -149,12 +149,12 @@ namespace K12.Service.Learning.CreationItems
             //畫面內容(範本內容,預設樣式
             if (ConfigurationInCadre.Template != null)
             {
-                TemplateForm = new Campus.Report.TemplateSettingForm(ConfigurationInCadre.Template, new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數點名單欄位總表, Campus.Report.TemplateType.Word));
+                TemplateForm = new Campus.Report.TemplateSettingForm(ConfigurationInCadre.Template, new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數點名單範本, Campus.Report.TemplateType.Word));
             }
             else
             {
-                ConfigurationInCadre.Template = new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數點名單欄位總表, Campus.Report.TemplateType.Word);
-                TemplateForm = new Campus.Report.TemplateSettingForm(ConfigurationInCadre.Template, new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數點名單欄位總表, Campus.Report.TemplateType.Word));
+                ConfigurationInCadre.Template = new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數點名單範本, Campus.Report.TemplateType.Word);
+                TemplateForm = new Campus.Report.TemplateSettingForm(ConfigurationInCadre.Template, new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數點名單範本, Campus.Report.TemplateType.Word));
             }
 
             //預設名稱
@@ -173,7 +173,7 @@ namespace K12.Service.Learning.CreationItems
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Title = "另存新檔";
-            sfd.FileName = "班級點名表_合併欄位總表.doc";
+            sfd.FileName = "服務學習時數點名單_合併欄位總表.doc";
             sfd.Filter = "Word檔案 (*.doc)|*.doc|所有檔案 (*.*)|*.*";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
@@ -210,7 +210,7 @@ namespace K12.Service.Learning.CreationItems
                         SaveFileDialog SaveFileDialog1 = new SaveFileDialog();
 
                         SaveFileDialog1.Filter = "Word (*.doc)|*.doc|所有檔案 (*.*)|*.*";
-                        SaveFileDialog1.FileName = "班級點名單(週報表樣式)";
+                        SaveFileDialog1.FileName = "服務學習時數點名單";
 
                         if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
                         {

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.ColCasll = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColseatNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +62,7 @@
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -91,14 +92,14 @@
             this.ColRegisterDate,
             this.ColRemark});
             this.dataGridViewX1.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewX1.Name = "dataGridViewX1";
@@ -112,8 +113,8 @@
             // ColCasll
             // 
             this.ColCasll.DataPropertyName = "ClassName";
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.LightCyan;
-            this.ColCasll.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
+            this.ColCasll.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColCasll.Frozen = true;
             this.ColCasll.HeaderText = "班級";
             this.ColCasll.Name = "ColCasll";
@@ -123,8 +124,8 @@
             // ColseatNo
             // 
             this.ColseatNo.DataPropertyName = "SeatNo";
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LightCyan;
-            this.ColseatNo.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightCyan;
+            this.ColseatNo.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColseatNo.Frozen = true;
             this.ColseatNo.HeaderText = "座號";
             this.ColseatNo.Name = "ColseatNo";
@@ -134,8 +135,8 @@
             // ColName
             // 
             this.ColName.DataPropertyName = "StudentName";
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.LightCyan;
-            this.ColName.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightCyan;
+            this.ColName.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColName.Frozen = true;
             this.ColName.HeaderText = "姓名";
             this.ColName.Name = "ColName";
@@ -145,8 +146,8 @@
             // ColStudentNumber
             // 
             this.ColStudentNumber.DataPropertyName = "StudentNumber";
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.LightCyan;
-            this.ColStudentNumber.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightCyan;
+            this.ColStudentNumber.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColStudentNumber.Frozen = true;
             this.ColStudentNumber.HeaderText = "學號";
             this.ColStudentNumber.Name = "ColStudentNumber";
@@ -229,71 +230,71 @@
             this.toolStripSeparator2,
             this.自畫面上移除ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 192);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 192);
             // 
             // 修改發生日期ToolStripMenuItem
             // 
             this.修改發生日期ToolStripMenuItem.Name = "修改發生日期ToolStripMenuItem";
-            this.修改發生日期ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.修改發生日期ToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.修改發生日期ToolStripMenuItem.Text = "批次修改發生日期";
             this.修改發生日期ToolStripMenuItem.Click += new System.EventHandler(this.批次修改發生日期ToolStripMenuItem_Click);
             // 
             // 修改事由ToolStripMenuItem
             // 
             this.修改事由ToolStripMenuItem.Name = "修改事由ToolStripMenuItem";
-            this.修改事由ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.修改事由ToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.修改事由ToolStripMenuItem.Text = "批次修改事由";
             this.修改事由ToolStripMenuItem.Click += new System.EventHandler(this.批次修改事由ToolStripMenuItem_Click);
             // 
             // 修改時數ToolStripMenuItem
             // 
             this.修改時數ToolStripMenuItem.Name = "修改時數ToolStripMenuItem";
-            this.修改時數ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.修改時數ToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.修改時數ToolStripMenuItem.Text = "批次修改時數";
             this.修改時數ToolStripMenuItem.Click += new System.EventHandler(this.批次修改時數ToolStripMenuItem_Click);
             // 
             // 修改學年度學期ToolStripMenuItem
             // 
             this.修改學年度學期ToolStripMenuItem.Name = "修改學年度學期ToolStripMenuItem";
-            this.修改學年度學期ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.修改學年度學期ToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.修改學年度學期ToolStripMenuItem.Text = "批次修改學年度學期";
             this.修改學年度學期ToolStripMenuItem.Click += new System.EventHandler(this.批次修改學年度學期ToolStripMenuItem_Click);
             // 
             // 修改ToolStripMenuItem
             // 
             this.修改ToolStripMenuItem.Name = "修改ToolStripMenuItem";
-            this.修改ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.修改ToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.修改ToolStripMenuItem.Text = "批次修改主辦單位";
             this.修改ToolStripMenuItem.Click += new System.EventHandler(this.批次修改主辦單位ToolStripMenuItem_Click);
             // 
             // 批次修改備註ToolStripMenuItem
             // 
             this.批次修改備註ToolStripMenuItem.Name = "批次修改備註ToolStripMenuItem";
-            this.批次修改備註ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.批次修改備註ToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.批次修改備註ToolStripMenuItem.Text = "批次修改備註";
             this.批次修改備註ToolStripMenuItem.Click += new System.EventHandler(this.批次修改備註ToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(181, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(179, 6);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(184, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(182, 22);
             this.toolStripMenuItem1.Text = "批次修改所有欄位";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.批次修改所有資料toolStripMenuItem1_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(181, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(179, 6);
             // 
             // 自畫面上移除ToolStripMenuItem
             // 
             this.自畫面上移除ToolStripMenuItem.Name = "自畫面上移除ToolStripMenuItem";
-            this.自畫面上移除ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.自畫面上移除ToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.自畫面上移除ToolStripMenuItem.Text = "刪除未參與學生";
             this.自畫面上移除ToolStripMenuItem.Click += new System.EventHandler(this.自畫面上移除ToolStripMenuItem_Click);
             // 
@@ -347,6 +348,17 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // labelX2
+            // 
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.Class = "";
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(0, 0);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.TabIndex = 0;
+            // 
             // ApprovedForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -399,5 +411,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColRemark;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private DevComponents.DotNetBar.LabelX labelX2;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.inpOrganizers = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.inpReason = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
@@ -52,6 +53,7 @@
             this.inpRegistStartTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.inpEpectedHours = new DevComponents.Editors.DoubleInput();
             this.inpParticipateLimit = new DevComponents.Editors.IntegerInput();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.inpSemester)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inpSchoolYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inpOccurDate)).BeginInit();
@@ -59,6 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.inpRegistStartTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inpEpectedHours)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inpParticipateLimit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // inpOrganizers
@@ -67,6 +70,7 @@
             this.inpOrganizers.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.inpOrganizers.DisplayMember = "Text";
             this.inpOrganizers.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.inpOrganizers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.inpOrganizers.FormattingEnabled = true;
             this.inpOrganizers.ItemHeight = 19;
             this.inpOrganizers.Location = new System.Drawing.Point(108, 46);
@@ -131,7 +135,6 @@
             this.inpSemester.MinValue = 1;
             this.inpSemester.Name = "inpSemester";
             this.inpSemester.ShowUpDown = true;
-            this.inpSemester.Size = new System.Drawing.Size(80, 25);
             this.inpSemester.TabIndex = 2;
             this.inpSemester.Value = 1;
             // 
@@ -465,7 +468,6 @@
             this.inpRegistEndTime.MonthCalendar.TodayButtonVisible = true;
             this.inpRegistEndTime.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.inpRegistEndTime.Name = "inpRegistEndTime";
-            this.inpRegistEndTime.Size = new System.Drawing.Size(200, 25);
             this.inpRegistEndTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.inpRegistEndTime.TabIndex = 5;
             // 
@@ -519,7 +521,6 @@
             this.inpRegistStartTime.MonthCalendar.TodayButtonVisible = true;
             this.inpRegistStartTime.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.inpRegistStartTime.Name = "inpRegistStartTime";
-            this.inpRegistStartTime.Size = new System.Drawing.Size(200, 25);
             this.inpRegistStartTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.inpRegistStartTime.TabIndex = 4;
             // 
@@ -533,11 +534,12 @@
             this.inpEpectedHours.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.inpEpectedHours.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.inpEpectedHours.DisplayFormat = "N1";
+            this.inpEpectedHours.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.inpEpectedHours.Increment = 0.5D;
             this.inpEpectedHours.Location = new System.Drawing.Point(107, 197);
+            this.inpEpectedHours.MinValue = 0D;
             this.inpEpectedHours.Name = "inpEpectedHours";
             this.inpEpectedHours.ShowUpDown = true;
-            this.inpEpectedHours.Size = new System.Drawing.Size(80, 25);
             this.inpEpectedHours.TabIndex = 8;
             // 
             // inpParticipateLimit
@@ -552,8 +554,11 @@
             this.inpParticipateLimit.Location = new System.Drawing.Point(107, 228);
             this.inpParticipateLimit.Name = "inpParticipateLimit";
             this.inpParticipateLimit.ShowUpDown = true;
-            this.inpParticipateLimit.Size = new System.Drawing.Size(80, 25);
             this.inpParticipateLimit.TabIndex = 9;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // Item
             // 
@@ -594,6 +599,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.inpRegistStartTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inpEpectedHours)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inpParticipateLimit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -625,5 +631,6 @@
         private DevComponents.Editors.DateTimeAdv.DateTimeInput inpRegistStartTime;
         private DevComponents.Editors.DoubleInput inpEpectedHours;
         private DevComponents.Editors.IntegerInput inpParticipateLimit;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

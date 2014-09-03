@@ -10,8 +10,8 @@ using FISCA.Presentation.Controls;
 using FISCA.UDT;
 using K12.Data;
 using FISCA.LogAgent;
-using K12.Service.Learning.Modules;
 using System.Xml.Linq;
+using K12.Service.Learning.Modules;
 
 namespace K12.Service.Learning.CreationItems
 {
@@ -21,7 +21,7 @@ namespace K12.Service.Learning.CreationItems
 
         public List<ServiceDataRow> DataRowList { get; set; }
         
-        bool DataIsChange = false;
+        bool DataIsChange;
         public CreationItemsRecord _cir;
         public ApprovedForm(CreationItemsRecord cir)
         {
