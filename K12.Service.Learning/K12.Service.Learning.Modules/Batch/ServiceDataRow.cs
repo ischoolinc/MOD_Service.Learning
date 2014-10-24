@@ -173,6 +173,24 @@ namespace K12.Service.Learning.Modules
         }
 
         /// <summary>
+        /// 校內校外
+        /// </summary>
+        public string InternalAndExternal
+        {
+            get
+            {
+                return _slr.InternalOrExternal;
+            }
+            set
+            {
+                IsChange = true;
+                _slr.InternalOrExternal = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs("InternalAndExternal"));
+            }
+        }
+
+        /// <summary>
         /// 學年度
         /// </summary>
         public int SchoolYear

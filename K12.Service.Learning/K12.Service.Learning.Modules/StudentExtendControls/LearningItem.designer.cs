@@ -29,18 +29,19 @@
         private void InitializeComponent()
         {
             this.listView = new K12.Service.Learning.Modules.ListViewEx();
-            this.btnDelete = new DevComponents.DotNetBar.ButtonX();
-            this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
-            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
-            this.btnView = new DevComponents.DotNetBar.ButtonX();
             this.colSchoolYear = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colSemeater = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colOccurDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colReason = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colHours = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colOrganizers = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colIAndOut = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colRegisterDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colRemark = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colOrganizers = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnDelete = new DevComponents.DotNetBar.ButtonX();
+            this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
+            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
+            this.btnView = new DevComponents.DotNetBar.ButtonX();
             this.SuspendLayout();
             // 
             // listView
@@ -57,6 +58,7 @@
             this.colReason,
             this.colHours,
             this.colOrganizers,
+            this.colIAndOut,
             this.colRegisterDate,
             this.colRemark});
             this.listView.FullRowSelect = true;
@@ -68,6 +70,49 @@
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
             this.listView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_MouseDoubleClick);
+            // 
+            // colSchoolYear
+            // 
+            this.colSchoolYear.Text = "學年度";
+            // 
+            // colSemeater
+            // 
+            this.colSemeater.Text = "學期";
+            this.colSemeater.Width = 45;
+            // 
+            // colOccurDate
+            // 
+            this.colOccurDate.Text = "發生日期";
+            this.colOccurDate.Width = 110;
+            // 
+            // colReason
+            // 
+            this.colReason.Text = "事由";
+            this.colReason.Width = 120;
+            // 
+            // colHours
+            // 
+            this.colHours.Text = "時數";
+            this.colHours.Width = 45;
+            // 
+            // colOrganizers
+            // 
+            this.colOrganizers.Text = "主辦單位";
+            this.colOrganizers.Width = 80;
+            // 
+            // colIAndOut
+            // 
+            this.colIAndOut.Text = "校內校外";
+            this.colIAndOut.Width = 80;
+            // 
+            // colRegisterDate
+            // 
+            this.colRegisterDate.Text = "登錄日期";
+            this.colRegisterDate.Width = 110;
+            // 
+            // colRemark
+            // 
+            this.colRemark.Text = "備註";
             // 
             // btnDelete
             // 
@@ -113,44 +158,6 @@
             this.btnView.Text = "檢視";
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
-            // colSchoolYear
-            // 
-            this.colSchoolYear.Text = "學年度";
-            // 
-            // colSemeater
-            // 
-            this.colSemeater.Text = "學期";
-            this.colSemeater.Width = 45;
-            // 
-            // colOccurDate
-            // 
-            this.colOccurDate.Text = "發生日期";
-            this.colOccurDate.Width = 110;
-            // 
-            // colReason
-            // 
-            this.colReason.Text = "事由";
-            this.colReason.Width = 120;
-            // 
-            // colHours
-            // 
-            this.colHours.Text = "時數";
-            this.colHours.Width = 45;
-            // 
-            // colRegisterDate
-            // 
-            this.colRegisterDate.Text = "登錄日期";
-            this.colRegisterDate.Width = 110;
-            // 
-            // colRemark
-            // 
-            this.colRemark.Text = "備註";
-            // 
-            // colOrganizers
-            // 
-            this.colOrganizers.Text = "主辦單位";
-            this.colOrganizers.Width = 80;
-            // 
             // LearningItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -181,6 +188,7 @@
         private System.Windows.Forms.ColumnHeader colRegisterDate;
         private System.Windows.Forms.ColumnHeader colRemark;
         private System.Windows.Forms.ColumnHeader colOrganizers;
+        private System.Windows.Forms.ColumnHeader colIAndOut;
 
     }
 }

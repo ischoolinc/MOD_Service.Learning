@@ -19,27 +19,17 @@ namespace K12.Service.Learning.Modules
     {
 
         /// <summary>
-        /// 取得Record or Insert
-        /// </summary>
-        AccessHelper _accesshelper = new AccessHelper();
-
-        /// <summary>
         /// 取得學生學號:學生系統編號比對資料
         /// </summary>
         FISCA.Data.QueryHelper _queryHelper = new FISCA.Data.QueryHelper();
 
-        //設定檔
         private ImportOption mOption;
-
-        //Log內容
-        private StringBuilder mstrLog = new StringBuilder();
 
         AccessHelper _accessHelper = new AccessHelper();
 
-        Dictionary<string, string> StudentNumberByID { get; set; }
+        Dictionary<string, studTB> StudentDic_ByNum { get; set; }
 
-        //學生Record,與學號對應
-        private Dictionary<string, SLRecord> ByStudentNumber = new Dictionary<string, SLRecord>();
+        Dictionary<string, studTB> StudentDic_ByID { get; set; }
 
         /// <summary>
         /// 準備動作
@@ -48,7 +38,7 @@ namespace K12.Service.Learning.Modules
         {
             mOption = Option;
             //取得學生學號對比系統編號
-            StudentNumberByID = GetStudent();
+            GetStudent();
         }
 
         /// <summary>
@@ -75,7 +65,22 @@ namespace K12.Service.Learning.Modules
 
             if (InsertList.Count > 0)
             {
-                ApplicationLog.Log("匯入服務學習記錄(新增)", "匯入", "已匯入新增服務學習時數\n共" + InsertList.Count + "筆");
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("匯入新增服務學習時數");
+                foreach (SLRecord each in InsertList)
+                {
+                    if (StudentDic_ByID.ContainsKey(each.RefStudentID))
+                    {
+                        studTB tb = StudentDic_ByID[each.RefStudentID];
+
+                        sb.AppendLine(string.Format("班級「{0}」座號「{1}」學號「{2}」學生「{3}」", tb.class_name, tb.seat_no, tb.Student_Number, tb.name));
+                        sb.AppendLine(string.Format("學年度「{0}」學期「{1}」日期「{2}」時數「{3}」", each.SchoolYear.ToString(), each.Semester.ToString(), each.OccurDate.ToShortDateString(), each.Hours));
+                        sb.AppendLine(string.Format("事由「{0}」主辦單位「{1}」校內校外「{2}」備註「{3}」", each.Reason, each.Organizers, each.InternalOrExternal, each.Remark));
+                        sb.AppendLine("");
+                    }
+                }
+
+                ApplicationLog.Log("匯入服務學習)", "新增", sb.ToString());
             }
 
             return "";
@@ -86,27 +91,30 @@ namespace K12.Service.Learning.Modules
         /// </summary>
         /// <param name="Rows"></param>
         /// <returns></returns>
-        private Dictionary<string, string> GetStudent()
+        private void GetStudent()
         {
-            Dictionary<string, string> dic = new Dictionary<string, string>();
+            StudentDic_ByID = new Dictionary<string, studTB>();
+            StudentDic_ByNum = new Dictionary<string, studTB>();
             //取得比對序
 
-            DataTable dt = _queryHelper.Select("select id,student_number from student");
+            DataTable dt = _queryHelper.Select("select student.id,student.student_number,student.seat_no,student.name,class.class_name from student left join class on class.id=student.ref_class_id");
             foreach (DataRow row in dt.Rows)
             {
-                string StudentID = "" + row[0];
-                string Student_Number = "" + row[1];
+                studTB s = new studTB(row);
 
-                if (string.IsNullOrEmpty(Student_Number))
+                if (string.IsNullOrEmpty(s.Student_Number))
                     continue;
 
-                if (!dic.ContainsKey(Student_Number))
+                if (!StudentDic_ByNum.ContainsKey(s.Student_Number))
                 {
-                    dic.Add(Student_Number, StudentID);
+                    StudentDic_ByNum.Add(s.Student_Number, s);
+                }
+
+                if (!StudentDic_ByID.ContainsKey(s.ref_student_id))
+                {
+                    StudentDic_ByID.Add(s.ref_student_id, s);
                 }
             }
-
-            return dic;
         }
 
         //取得所有服務學習時數資料
@@ -126,28 +134,33 @@ namespace K12.Service.Learning.Modules
                 //if (!StudentNumberByID.ContainsKey(Student_Number))
                 //    continue;
 
-                SLRecord slr = new SLRecord();
-                slr.RefStudentID = StudentNumberByID[Student_Number];
-                slr.SchoolYear = int.Parse(each.GetValue("學年度"));
-                slr.Semester = int.Parse(each.GetValue("學期"));
-                slr.OccurDate = DateTime.Parse((each.GetValue("發生日期")));
-                slr.Reason = "" + each.GetValue("事由");
-                slr.Hours = decimal.Parse(each.GetValue("時數"));
-                slr.Organizers = "" + each.GetValue("主辦單位");
-
-                string register = each.GetValue("登錄日期");
-                if (!string.IsNullOrEmpty(register))
+                if (StudentDic_ByNum.ContainsKey(Student_Number))
                 {
-                    slr.RegisterDate = DateTime.Parse(each.GetValue("登錄日期"));
-                }
-                else
-                {
-                    slr.RegisterDate = DateTime.Today;
-                }
+                    SLRecord slr = new SLRecord();
 
-                slr.Remark = "" + each.GetValue("備註");
+                    slr.RefStudentID = StudentDic_ByNum[Student_Number].ref_student_id;
+                    slr.SchoolYear = int.Parse(each.GetValue("學年度"));
+                    slr.Semester = int.Parse(each.GetValue("學期"));
+                    slr.OccurDate = DateTime.Parse((each.GetValue("發生日期")));
+                    slr.Reason = "" + each.GetValue("事由");
+                    slr.Hours = decimal.Parse(each.GetValue("時數"));
+                    slr.Organizers = "" + each.GetValue("主辦單位");
 
-                list.Add(slr);
+                    string register = each.GetValue("登錄日期");
+                    if (!string.IsNullOrEmpty(register))
+                    {
+                        slr.RegisterDate = DateTime.Parse(each.GetValue("登錄日期"));
+                    }
+                    else
+                    {
+                        slr.RegisterDate = DateTime.Today;
+                    }
+
+                    slr.Remark = "" + each.GetValue("備註");
+                    slr.InternalOrExternal = "" + each.GetValue("校內校外"); //new
+
+                    list.Add(slr);
+                }
 
             }
             return list;

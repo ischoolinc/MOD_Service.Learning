@@ -23,7 +23,7 @@ namespace K12.Service.Learning.Modules
 
         public override void InitializeExport(SmartSchool.API.PlugIn.Export.ExportWizard wizard)
         {
-            wizard.ExportableFields.AddRange("學年度", "學期", "發生日期", "事由", "時數", "主辦單位", "登錄日期", "備註");
+            wizard.ExportableFields.AddRange("服務學習時數系統編號", "學年度", "學期", "發生日期", "事由", "時數", "主辦單位", "校內校外", "登錄日期", "備註");
 
             wizard.ExportPackage += (sender, e) =>
             {
@@ -53,12 +53,14 @@ namespace K12.Service.Learning.Modules
                         {
                             switch (field)
                             {
+                                case "服務學習時數系統編號": row.Add(field, "" + allrecords[i].UID); break;
                                 case "學年度": row.Add(field, "" + allrecords[i].SchoolYear); break;
                                 case "學期": row.Add(field, "" + allrecords[i].Semester); break;
                                 case "發生日期": row.Add(field, "" + allrecords[i].OccurDate.ToShortDateString()); break;
                                 case "事由": row.Add(field, "" + allrecords[i].Reason); break;
                                 case "時數": row.Add(field, "" + allrecords[i].Hours); break;
                                 case "主辦單位": row.Add(field, "" + allrecords[i].Organizers); break;
+                                case "校內校外": row.Add(field, "" + allrecords[i].InternalOrExternal); break;
                                 case "登錄日期": row.Add(field, "" + allrecords[i].RegisterDate.ToShortDateString()); break;
                                 case "備註": row.Add(field, "" + allrecords[i].Remark); break;
                             }
@@ -109,7 +111,7 @@ namespace K12.Service.Learning.Modules
 
             }
 
-            slr1String += stud01.Name.PadLeft(6, '0'); 
+            slr1String += stud01.Name.PadLeft(6, '0');
 
             #endregion
 
@@ -150,7 +152,7 @@ namespace K12.Service.Learning.Modules
 
             }
 
-            slr2String += stud02.Name.PadLeft(6, '0'); 
+            slr2String += stud02.Name.PadLeft(6, '0');
 
             #endregion
 

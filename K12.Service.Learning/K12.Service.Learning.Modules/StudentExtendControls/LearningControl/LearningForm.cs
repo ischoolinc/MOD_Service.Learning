@@ -86,6 +86,8 @@ namespace K12.Service.Learning.Modules
             dateTimeInput1.Enabled = permission.Editable;
             dateTimeInput2.Enabled = permission.Editable;
             textBoxX3.Enabled = permission.Editable;
+            cbIAndE.Enabled = permission.Editable; //new 2014/9/9
+
             foreach (Control each in Controls)
             {
                 if (each is DevComponents.DotNetBar.Controls.TextBoxX)
@@ -99,9 +101,9 @@ namespace K12.Service.Learning.Modules
 
             BGW.DoWork += new DoWorkEventHandler(BGW_DoWork);
             BGW.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BGW_RunWorkerCompleted);
-            
+
             SetForm = false;
-            
+
             BGW.RunWorkerAsync();
 
             #endregion
@@ -169,6 +171,13 @@ namespace K12.Service.Learning.Modules
                 txtReason.Text = _SLRecord.Reason; //事由
                 textBoxX3.Text = _SLRecord.Hours.ToString(); //時數
                 cbOrganizers.Text = _SLRecord.Organizers; //主辦單位
+
+                if (_SLRecord.InternalOrExternal == "校內")
+                    cbIAndE.SelectedIndex = 1; //校內
+                else if (_SLRecord.InternalOrExternal == "校外")
+                    cbIAndE.SelectedIndex = 2; //校外
+                else
+                    cbIAndE.SelectedIndex = 0; //未分類
 
                 textBoxX2.Text = _SLRecord.Remark; //備註
 
@@ -268,6 +277,7 @@ namespace K12.Service.Learning.Modules
                 sb.AppendLine("時　　數「" + insertList[0].Hours.ToString() + "」");
                 sb.AppendLine("事　　由「" + insertList[0].Reason + "」");
                 sb.AppendLine("主辦單位「" + insertList[0].Organizers + "」");
+                sb.AppendLine("校內校外「" + insertList[0].InternalOrExternal + "」");
                 sb.AppendLine("備　　註「" + insertList[0].Remark + "」");
                 sb.AppendLine("登錄日期「" + insertList[0].RegisterDate.ToShortDateString() + "」");
 
@@ -287,6 +297,7 @@ namespace K12.Service.Learning.Modules
                 _LogSLRecord.Hours = _SLRecord.Hours;
                 _LogSLRecord.Reason = _SLRecord.Reason;
                 _LogSLRecord.Remark = _SLRecord.Remark;
+                _LogSLRecord.InternalOrExternal = _SLRecord.InternalOrExternal;
                 _LogSLRecord.Organizers = _SLRecord.Organizers;
                 _LogSLRecord.OccurDate = _SLRecord.OccurDate;
                 _LogSLRecord.RegisterDate = _SLRecord.RegisterDate;
@@ -322,6 +333,7 @@ namespace K12.Service.Learning.Modules
                 sb.AppendLine("發生日期「" + _LogSLRecord.OccurDate.ToShortDateString() + "」修改為「" + updateList[0].OccurDate.ToShortDateString() + "」");
                 sb.AppendLine("時　　數「" + _LogSLRecord.Hours.ToString() + "」修改為「" + updateList[0].Hours.ToString() + "」");
                 sb.AppendLine("事　　由「" + _LogSLRecord.Reason + "」修改為「" + updateList[0].Reason + "」");
+                sb.AppendLine("校內校外「" + _LogSLRecord.InternalOrExternal + "」修改為「" + updateList[0].InternalOrExternal + "」");
                 sb.AppendLine("主辦單位「" + _LogSLRecord.Organizers + "」修改為「" + updateList[0].Organizers + "」");
                 sb.AppendLine("備　　註「" + _LogSLRecord.Remark + "」修改為「" + updateList[0].Remark + "」");
                 sb.AppendLine("登錄日期「" + _LogSLRecord.RegisterDate.ToShortDateString() + "」修改為「" + updateList[0].RegisterDate.ToShortDateString() + "」");
@@ -376,6 +388,12 @@ namespace K12.Service.Learning.Modules
             editor.OccurDate = dateTimeInput1.Value; //發生日期
             editor.RegisterDate = dateTimeInput2.Value; //登錄日期
 
+            if (cbIAndE.SelectedIndex == 1)
+                editor.InternalOrExternal = "校內"; //登錄日期
+            else if (cbIAndE.SelectedIndex == 2)
+                editor.InternalOrExternal = "校外"; //登錄日期
+            else
+                editor.InternalOrExternal = ""; //登錄日期
         }
 
         private void cboReasonRef_KeyUp(object sender, KeyEventArgs e)

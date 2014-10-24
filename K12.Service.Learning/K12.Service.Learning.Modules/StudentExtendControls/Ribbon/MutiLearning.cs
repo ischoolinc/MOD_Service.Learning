@@ -186,6 +186,8 @@ namespace K12.Service.Learning.Modules
                 mr.Organizers = "" + row.Cells[6].Value;  //主辦單位
                 mr.Remark = "" + row.Cells[7].Value;  //備註
 
+                mr.InternalOrExternal = "" + row.Cells[8].Value;  //校內外
+
                 mr.OccurDate = dateTimeInput1.Value;
                 mr.RegisterDate = dateTimeInput2.Value;
 
@@ -195,7 +197,8 @@ namespace K12.Service.Learning.Modules
                 + "時數「" + row.Cells[4].Value + "」"
                 + "事由「" + row.Cells[5].Value + "」"
                 + "主辦單位「" + row.Cells[6].Value + "」"
-                + "備註「" + row.Cells[7].Value + "」");
+                + "備註「" + row.Cells[7].Value + "」"
+                  + "校內外「" + row.Cells[8].Value + "」");
             }
 
             return SLRList;
@@ -338,6 +341,20 @@ namespace K12.Service.Learning.Modules
                     DataGridViewCell cell = dataGridViewX1.Rows[e.RowIndex].Cells[e.ColumnIndex];
                     cell.Value = GetReason("" + cell.Value);
                 }
+
+                //校內外
+                if (e.ColumnIndex == colIandOut.Index)
+                {
+                    DataGridViewCell cell = dataGridViewX1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    if ("" + cell.Value == "校內" || "" + cell.Value == "校外" || "" + cell.Value == "")
+                    {
+                        cell.ErrorText = "";
+                    }
+                    else
+                    {
+                        cell.ErrorText = "必須為校內或校外";
+                    }
+                }
             }
         }
 
@@ -409,6 +426,29 @@ namespace K12.Service.Learning.Modules
             {
                 row.Cells[6].Value = comboBoxEx2.Text.Trim();
             }
+        }
+
+        private void cbIAndE_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbIAndE.SelectedIndex == 1)
+            {
+                foreach (DataGridViewRow row in dataGridViewX1.Rows)
+                {
+                    row.Cells[8].Value = "校內";
+                }
+            }
+            else if (cbIAndE.SelectedIndex == 2)
+            {
+                foreach (DataGridViewRow row in dataGridViewX1.Rows)
+                {
+                    row.Cells[8].Value = "校外";
+                }
+            }
+            else
+            {
+
+            }
+
         }
     }
 }

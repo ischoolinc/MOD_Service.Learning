@@ -19,6 +19,7 @@ namespace K12.Service.Learning.Modules
         public decimal 時數;
         public string 主辦單位;
         public string 備註;
+        public string 校內校外;
 
         public ChangeAllDataForm()
         {
@@ -37,6 +38,14 @@ namespace K12.Service.Learning.Modules
             textBoxX1.Text = obj.Hours.ToString();
             txtOrganizers.Text = obj.Organizers;
             txtRemark.Text = obj.Remark;
+
+            if (obj.InternalOrExternal == "校內")
+                comboBoxEx1.SelectedIndex = 1;
+            else if (obj.InternalOrExternal == "校外")
+                comboBoxEx1.SelectedIndex = 2;
+            else
+                comboBoxEx1.SelectedIndex = 0;
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -60,6 +69,13 @@ namespace K12.Service.Learning.Modules
 
             主辦單位 = txtOrganizers.Text;
             備註 = txtRemark.Text;
+
+            if (comboBoxEx1.SelectedIndex == 1)
+                校內校外 = "校內";
+            else if (comboBoxEx1.SelectedIndex == 2)
+                校內校外 = "校外";
+            else
+                校內校外 = "";
 
             this.DialogResult = System.Windows.Forms.DialogResult.Yes;
 

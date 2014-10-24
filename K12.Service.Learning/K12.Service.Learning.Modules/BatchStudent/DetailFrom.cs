@@ -71,8 +71,9 @@ namespace K12.Service.Learning.Modules
                 row.Cells[3].Value = each.Reason;
                 row.Cells[4].Value = "" + each.Hours;
                 row.Cells[5].Value = each.Organizers;
-                row.Cells[6].Value = each.Remark;
-                row.Cells[7].Value = each.RegisterDate.ToShortDateString();
+                row.Cells[6].Value = each.InternalOrExternal;
+                row.Cells[7].Value = each.Remark;
+                row.Cells[8].Value = each.RegisterDate.ToShortDateString();
                 row.Tag = each;
                 dataGridViewX1.Rows.Add(row);
             }

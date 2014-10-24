@@ -10,6 +10,14 @@ namespace K12.Service.Learning.Modules
     public class SLRecord : ActiveRecord
     {
         /// <summary>
+        /// 淺層複製SLRecord
+        /// </summary>
+        public SLRecord CopyExtension()
+        {
+            return (SLRecord)this.MemberwiseClone();
+        }
+
+        /// <summary>
         /// 學生參考
         /// </summary>
         [Field(Field = "ref_student_id", Indexed = true)]
@@ -62,5 +70,11 @@ namespace K12.Service.Learning.Modules
         /// </summary>
         [Field(Field = "remark", Indexed = false)]
         public string Remark { get; set; }
+
+        /// <summary>
+        /// 校內校外(狀態分別為:校內,校外,空白)
+        /// </summary>
+        [Field(Field = "Internal_or_external", Indexed = false)]
+        public string InternalOrExternal { get; set; }
     }
 }

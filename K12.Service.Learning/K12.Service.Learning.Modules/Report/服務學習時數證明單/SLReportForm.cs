@@ -43,7 +43,7 @@ namespace K12.Service.Learning.Modules
         DateTime PrintStart { get; set; }
         DateTime PrintEnd { get; set; }
 
-        string ServiceLearningConfig = "K12.Service.Learning.Modules.Config";
+        string ServiceLearningConfig = "K12.Service.Learning.Modules.Config_0910";
 
         AccessHelper _accessHelper = new AccessHelper();
 
@@ -77,7 +77,6 @@ namespace K12.Service.Learning.Modules
                 ConfigurationInCadre.Save();
             }
         }
-
         private void RunFormDn()
         {
             dtStart.Enabled = false;
@@ -285,6 +284,10 @@ namespace K12.Service.Learning.Modules
 
                 //主辦單位
                 Write(cell, "" + slr.Organizers);
+                cell = GetMoveRightCell(cell, 1);
+
+                //校內校外
+                Write(cell, "" + slr.InternalOrExternal);
                 cell = GetMoveRightCell(cell, 1);
 
                 //備註
@@ -620,18 +623,34 @@ namespace K12.Service.Learning.Modules
             }
         }
 
+        private void rbByAllData_CheckedChanged(object sender, EventArgs e)
+        {
+            dtStart.Enabled = false;
+            dtEnd.Enabled = false;
+            rbByStartDate.Enabled = false;
+            tbByInsertDate.Enabled = false;
+            intSchoolYear.Enabled = false;
+            intSemester.Enabled = false;
+        }
+
         private void rbBySchoolYearAndSemester_CheckedChanged(object sender, EventArgs e)
         {
-            intSchoolYear.Enabled = rbBySchoolYearAndSemester.Checked;
-            intSemester.Enabled = rbBySchoolYearAndSemester.Checked;
+            dtStart.Enabled = false;
+            dtEnd.Enabled = false;
+            rbByStartDate.Enabled = false;
+            tbByInsertDate.Enabled = false;
+            intSchoolYear.Enabled = true;
+            intSemester.Enabled = true;
         }
 
         private void rbByDateRange_CheckedChanged(object sender, EventArgs e)
         {
-            dtStart.Enabled = rbByDateRange.Checked;
-            dtEnd.Enabled = rbByDateRange.Checked;
-            rbByStartDate.Enabled = rbByDateRange.Checked;
-            tbByInsertDate.Enabled = rbByDateRange.Checked;
+            dtStart.Enabled = true;
+            dtEnd.Enabled = true;
+            rbByStartDate.Enabled = true;
+            tbByInsertDate.Enabled = true;
+            intSchoolYear.Enabled = false;
+            intSemester.Enabled = false;
         }
     }
 

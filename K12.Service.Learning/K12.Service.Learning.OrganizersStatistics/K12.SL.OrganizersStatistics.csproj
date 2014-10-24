@@ -80,9 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="OrganizersStatisticsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="OrganizersStatisticsForm.cs" />
     <Compile Include="OrganizersStatisticsForm.designer.cs">
       <DependentUpon>OrganizersStatisticsForm.cs</DependentUpon>
     </Compile>
@@ -95,9 +93,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SetupObj.cs" />
-    <Compile Include="tools\CompleteForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="tools\CompleteForm.cs" />
     <Compile Include="tools\CompleteForm.designer.cs">
       <DependentUpon>CompleteForm.cs</DependentUpon>
     </Compile>

@@ -34,7 +34,9 @@
             this.dtStart = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dtEnd = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.tbByInsertDate = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.lbDateHelp = new DevComponents.DotNetBar.LabelX();
+            this.rbByStartDate = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.lbSchoolYear = new DevComponents.DotNetBar.LabelX();
             this.lbSemester = new DevComponents.DotNetBar.LabelX();
             this.lbStartDate = new DevComponents.DotNetBar.LabelX();
@@ -46,8 +48,6 @@
             this.rbByAllData = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.rbBySchoolYearAndSemester = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.rbByDateRange = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.rbByStartDate = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.tbByInsertDate = new DevComponents.DotNetBar.Controls.CheckBoxX();
             ((System.ComponentModel.ISupportInitialize)(this.intSchoolYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intSemester)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStart)).BeginInit();
@@ -273,6 +273,22 @@
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 12;
             // 
+            // tbByInsertDate
+            // 
+            this.tbByInsertDate.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.tbByInsertDate.BackgroundStyle.Class = "";
+            this.tbByInsertDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbByInsertDate.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.tbByInsertDate.Location = new System.Drawing.Point(235, 2);
+            this.tbByInsertDate.Name = "tbByInsertDate";
+            this.tbByInsertDate.Size = new System.Drawing.Size(100, 23);
+            this.tbByInsertDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.tbByInsertDate.TabIndex = 21;
+            this.tbByInsertDate.Text = "依登錄日期";
+            // 
             // lbDateHelp
             // 
             this.lbDateHelp.AutoSize = true;
@@ -286,6 +302,22 @@
             this.lbDateHelp.Size = new System.Drawing.Size(74, 21);
             this.lbDateHelp.TabIndex = 0;
             this.lbDateHelp.Text = "日期條件：";
+            // 
+            // rbByStartDate
+            // 
+            this.rbByStartDate.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.rbByStartDate.BackgroundStyle.Class = "";
+            this.rbByStartDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.rbByStartDate.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.rbByStartDate.Location = new System.Drawing.Point(130, 2);
+            this.rbByStartDate.Name = "rbByStartDate";
+            this.rbByStartDate.Size = new System.Drawing.Size(100, 23);
+            this.rbByStartDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.rbByStartDate.TabIndex = 20;
+            this.rbByStartDate.Text = "依發生日期";
             // 
             // lbSchoolYear
             // 
@@ -417,12 +449,16 @@
             this.rbByAllData.BackgroundStyle.Class = "";
             this.rbByAllData.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.rbByAllData.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.rbByAllData.Checked = true;
+            this.rbByAllData.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rbByAllData.CheckValue = "Y";
             this.rbByAllData.Location = new System.Drawing.Point(24, 46);
             this.rbByAllData.Name = "rbByAllData";
             this.rbByAllData.Size = new System.Drawing.Size(121, 21);
             this.rbByAllData.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.rbByAllData.TabIndex = 17;
             this.rbByAllData.Text = "列印所有資料：";
+            this.rbByAllData.CheckedChanged += new System.EventHandler(this.rbByAllData_CheckedChanged);
             // 
             // rbBySchoolYearAndSemester
             // 
@@ -440,6 +476,7 @@
             this.rbBySchoolYearAndSemester.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.rbBySchoolYearAndSemester.TabIndex = 18;
             this.rbBySchoolYearAndSemester.Text = "依學年度學期：";
+            this.rbBySchoolYearAndSemester.CheckedChanged += new System.EventHandler(this.rbBySchoolYearAndSemester_CheckedChanged);
             // 
             // rbByDateRange
             // 
@@ -457,38 +494,7 @@
             this.rbByDateRange.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.rbByDateRange.TabIndex = 19;
             this.rbByDateRange.Text = "依日期區間：";
-            // 
-            // rbByStartDate
-            // 
-            this.rbByStartDate.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.rbByStartDate.BackgroundStyle.Class = "";
-            this.rbByStartDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.rbByStartDate.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.rbByStartDate.Location = new System.Drawing.Point(130, 2);
-            this.rbByStartDate.Name = "rbByStartDate";
-            this.rbByStartDate.Size = new System.Drawing.Size(100, 23);
-            this.rbByStartDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.rbByStartDate.TabIndex = 20;
-            this.rbByStartDate.Text = "依發生日期";
-            // 
-            // tbByInsertDate
-            // 
-            this.tbByInsertDate.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.tbByInsertDate.BackgroundStyle.Class = "";
-            this.tbByInsertDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbByInsertDate.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.tbByInsertDate.Location = new System.Drawing.Point(235, 2);
-            this.tbByInsertDate.Name = "tbByInsertDate";
-            this.tbByInsertDate.Size = new System.Drawing.Size(100, 23);
-            this.tbByInsertDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.tbByInsertDate.TabIndex = 21;
-            this.tbByInsertDate.Text = "依登錄日期";
+            this.rbByDateRange.CheckedChanged += new System.EventHandler(this.rbByDateRange_CheckedChanged);
             // 
             // SLReportForm
             // 
@@ -512,6 +518,7 @@
             this.Controls.Add(this.lbSchoolYear);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.lbHelp1);
+            this.DoubleBuffered = true;
             this.Name = "SLReportForm";
             this.Text = "服務學習時數證明單";
             this.Load += new System.EventHandler(this.SLReportForm_Load);

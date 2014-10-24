@@ -40,6 +40,9 @@
     <Field Required="True" Name="主辦單位">
       <Validate AutoCorrect="False" Description="「主辦單位」建議必須輸入。" ErrorType="Warning" Validator="不可空白" When=""/>
     </Field>
+    <Field Required="True" Name="校內校外" EmptyAlsoValidate="False">
+      <Validate AutoCorrect="False" Description="「校內校外」需填入「校內」或「校外」或維持空白。" ErrorType="Error" Validator="校內外列舉" When=""/>
+    </Field>
     <Field Required="false" Name="登錄日期" EmptyAlsoValidate="False">
       <Validate AutoCorrect="True" Description="「登錄日期」格式不正確，建議使用西元「年/月/日」例如「2012/12/21」。" ErrorType="Error" Validator="合法日期" When=""/>
     </Field>
@@ -68,6 +71,10 @@
     <FieldValidator Name="學期列舉" Type="Enumeration">
       <Item Value="1"/>
       <Item Value="2"/>
+    </FieldValidator>
+    <FieldValidator Name="校內外列舉" Type="Enumeration">
+      <Item Value="校內"/>
+      <Item Value="校外"/>
     </FieldValidator>
     <FieldValidator Name="多個英數字元" Type="Regex">
       <ValidPattern>

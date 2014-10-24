@@ -44,6 +44,11 @@
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX8 = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
             ((System.ComponentModel.ISupportInitialize)(this.dtOccurDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intSemester)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intSchoolYear)).BeginInit();
@@ -62,7 +67,7 @@
             this.dtOccurDate.ButtonFreeText.Checked = true;
             this.dtOccurDate.FreeTextEntryMode = true;
             this.dtOccurDate.IsPopupCalendarOpen = false;
-            this.dtOccurDate.Location = new System.Drawing.Point(79, 53);
+            this.dtOccurDate.Location = new System.Drawing.Point(82, 53);
             // 
             // 
             // 
@@ -112,7 +117,7 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(14, 55);
+            this.labelX1.Location = new System.Drawing.Point(17, 55);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(60, 21);
             this.labelX1.TabIndex = 14;
@@ -127,11 +132,11 @@
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(278, 13);
+            this.labelX2.Location = new System.Drawing.Point(17, 94);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(34, 21);
+            this.labelX2.Size = new System.Drawing.Size(60, 21);
             this.labelX2.TabIndex = 16;
-            this.labelX2.Text = "時數";
+            this.labelX2.Text = "時　　數";
             // 
             // intSemester
             // 
@@ -142,12 +147,12 @@
             this.intSemester.BackgroundStyle.Class = "DateTimeInputBackground";
             this.intSemester.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.intSemester.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.intSemester.Location = new System.Drawing.Point(202, 11);
+            this.intSemester.Location = new System.Drawing.Point(289, 13);
             this.intSemester.MaxValue = 2;
             this.intSemester.MinValue = 1;
             this.intSemester.Name = "intSemester";
             this.intSemester.ShowUpDown = true;
-            this.intSemester.Size = new System.Drawing.Size(60, 25);
+            this.intSemester.Size = new System.Drawing.Size(130, 25);
             this.intSemester.TabIndex = 21;
             this.intSemester.Value = 1;
             // 
@@ -160,12 +165,12 @@
             this.intSchoolYear.BackgroundStyle.Class = "DateTimeInputBackground";
             this.intSchoolYear.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.intSchoolYear.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.intSchoolYear.Location = new System.Drawing.Point(79, 11);
+            this.intSchoolYear.Location = new System.Drawing.Point(82, 11);
             this.intSchoolYear.MaxValue = 999;
             this.intSchoolYear.MinValue = 90;
             this.intSchoolYear.Name = "intSchoolYear";
             this.intSchoolYear.ShowUpDown = true;
-            this.intSchoolYear.Size = new System.Drawing.Size(57, 25);
+            this.intSchoolYear.Size = new System.Drawing.Size(130, 25);
             this.intSchoolYear.TabIndex = 20;
             this.intSchoolYear.Value = 90;
             // 
@@ -178,11 +183,11 @@
             // 
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(152, 13);
+            this.labelX3.Location = new System.Drawing.Point(224, 15);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(34, 21);
+            this.labelX3.Size = new System.Drawing.Size(60, 21);
             this.labelX3.TabIndex = 19;
-            this.labelX3.Text = "學期";
+            this.labelX3.Text = "學　　期";
             // 
             // labelX4
             // 
@@ -193,7 +198,7 @@
             // 
             this.labelX4.BackgroundStyle.Class = "";
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(14, 13);
+            this.labelX4.Location = new System.Drawing.Point(17, 13);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(60, 21);
             this.labelX4.TabIndex = 18;
@@ -206,7 +211,7 @@
             // 
             this.txtReason.Border.Class = "TextBoxBorder";
             this.txtReason.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtReason.Location = new System.Drawing.Point(258, 53);
+            this.txtReason.Location = new System.Drawing.Point(82, 133);
             this.txtReason.Name = "txtReason";
             this.txtReason.Size = new System.Drawing.Size(130, 25);
             this.txtReason.TabIndex = 23;
@@ -220,11 +225,11 @@
             // 
             this.labelX5.BackgroundStyle.Class = "";
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(219, 55);
+            this.labelX5.Location = new System.Drawing.Point(17, 135);
             this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(34, 21);
+            this.labelX5.Size = new System.Drawing.Size(60, 21);
             this.labelX5.TabIndex = 22;
-            this.labelX5.Text = "事由";
+            this.labelX5.Text = "事　　由";
             // 
             // txtRemark
             // 
@@ -233,7 +238,7 @@
             // 
             this.txtRemark.Border.Class = "TextBoxBorder";
             this.txtRemark.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRemark.Location = new System.Drawing.Point(258, 95);
+            this.txtRemark.Location = new System.Drawing.Point(289, 133);
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(130, 25);
             this.txtRemark.TabIndex = 25;
@@ -247,11 +252,11 @@
             // 
             this.labelX6.BackgroundStyle.Class = "";
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(219, 97);
+            this.labelX6.Location = new System.Drawing.Point(224, 135);
             this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(34, 21);
+            this.labelX6.Size = new System.Drawing.Size(60, 21);
             this.labelX6.TabIndex = 24;
-            this.labelX6.Text = "備註";
+            this.labelX6.Text = "備　　註";
             // 
             // txtOrganizers
             // 
@@ -260,7 +265,7 @@
             // 
             this.txtOrganizers.Border.Class = "TextBoxBorder";
             this.txtOrganizers.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOrganizers.Location = new System.Drawing.Point(79, 95);
+            this.txtOrganizers.Location = new System.Drawing.Point(289, 53);
             this.txtOrganizers.Name = "txtOrganizers";
             this.txtOrganizers.Size = new System.Drawing.Size(130, 25);
             this.txtOrganizers.TabIndex = 27;
@@ -274,7 +279,7 @@
             // 
             this.labelX7.BackgroundStyle.Class = "";
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(14, 97);
+            this.labelX7.Location = new System.Drawing.Point(224, 57);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(60, 21);
             this.labelX7.TabIndex = 26;
@@ -287,7 +292,7 @@
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.btnExit.Location = new System.Drawing.Point(320, 134);
+            this.btnExit.Location = new System.Drawing.Point(344, 175);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 25);
             this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -300,7 +305,7 @@
             this.btnSave.AutoSize = true;
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(238, 134);
+            this.btnSave.Location = new System.Drawing.Point(263, 175);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 25);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -315,16 +320,57 @@
             // 
             this.textBoxX1.Border.Class = "TextBoxBorder";
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(314, 11);
+            this.textBoxX1.Location = new System.Drawing.Point(82, 92);
             this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.Size = new System.Drawing.Size(74, 25);
+            this.textBoxX1.Size = new System.Drawing.Size(130, 25);
             this.textBoxX1.TabIndex = 30;
+            // 
+            // labelX8
+            // 
+            this.labelX8.AutoSize = true;
+            this.labelX8.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX8.BackgroundStyle.Class = "";
+            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX8.Location = new System.Drawing.Point(224, 94);
+            this.labelX8.Name = "labelX8";
+            this.labelX8.Size = new System.Drawing.Size(60, 21);
+            this.labelX8.TabIndex = 31;
+            this.labelX8.Text = "校內校外";
+            // 
+            // comboBoxEx1
+            // 
+            this.comboBoxEx1.DisplayMember = "Text";
+            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx1.FormattingEnabled = true;
+            this.comboBoxEx1.ItemHeight = 19;
+            this.comboBoxEx1.Items.AddRange(new object[] {
+            this.comboItem1,
+            this.comboItem2,
+            this.comboItem3});
+            this.comboBoxEx1.Location = new System.Drawing.Point(289, 92);
+            this.comboBoxEx1.Name = "comboBoxEx1";
+            this.comboBoxEx1.Size = new System.Drawing.Size(130, 25);
+            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx1.TabIndex = 32;
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "校內";
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "校外";
             // 
             // ChangeAllDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 171);
+            this.ClientSize = new System.Drawing.Size(436, 209);
+            this.Controls.Add(this.comboBoxEx1);
+            this.Controls.Add(this.labelX8);
             this.Controls.Add(this.textBoxX1);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSave);
@@ -341,6 +387,7 @@
             this.Controls.Add(this.labelX2);
             this.Controls.Add(this.dtOccurDate);
             this.Controls.Add(this.labelX1);
+            this.DoubleBuffered = true;
             this.Name = "ChangeAllDataForm";
             this.Text = "修改所有資料";
             ((System.ComponentModel.ISupportInitialize)(this.dtOccurDate)).EndInit();
@@ -369,5 +416,10 @@
         private DevComponents.DotNetBar.ButtonX btnExit;
         private DevComponents.DotNetBar.ButtonX btnSave;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
+        private DevComponents.DotNetBar.LabelX labelX8;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
+        private DevComponents.Editors.ComboItem comboItem1;
+        private DevComponents.Editors.ComboItem comboItem2;
+        private DevComponents.Editors.ComboItem comboItem3;
     }
 }

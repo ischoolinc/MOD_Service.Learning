@@ -18,6 +18,8 @@ namespace K12.Service.Learning.Modules
             {
                 case "STUDENTNUMBEREXISTENCE":
                     return new StudentNumberExistenceValidator();
+                case "SLIDINSYSTEM":
+                    return new StudentNumberRepeatValidator_up();
                 case "STUDENTNUMBERREPEAT":
                     return new StudentNumberRepeatValidator();
                 case "ISDECIMAL":

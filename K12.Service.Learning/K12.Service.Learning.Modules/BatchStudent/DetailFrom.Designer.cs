@@ -31,18 +31,19 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.刪除所選ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnExit = new DevComponents.DotNetBar.ButtonX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.刪除所選ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnExit = new DevComponents.DotNetBar.ButtonX();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +62,7 @@
             this.Column4,
             this.Column7,
             this.Column5,
+            this.Column9,
             this.Column6,
             this.Column8});
             this.dataGridViewX1.ContextMenuStrip = this.contextMenuStrip1;
@@ -80,6 +82,50 @@
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(676, 349);
             this.dataGridViewX1.TabIndex = 0;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.刪除所選ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(99, 26);
+            // 
+            // 刪除所選ToolStripMenuItem
+            // 
+            this.刪除所選ToolStripMenuItem.Name = "刪除所選ToolStripMenuItem";
+            this.刪除所選ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.刪除所選ToolStripMenuItem.Text = "刪除";
+            this.刪除所選ToolStripMenuItem.Click += new System.EventHandler(this.刪除所選ToolStripMenuItem_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnExit.AutoSize = true;
+            this.btnExit.BackColor = System.Drawing.Color.Transparent;
+            this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnExit.Location = new System.Drawing.Point(613, 408);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 25);
+            this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnExit.TabIndex = 1;
+            this.btnExit.Text = "離開";
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // labelX1
+            // 
+            this.labelX1.AutoSize = true;
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.Class = "";
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.labelX1.Location = new System.Drawing.Point(12, 12);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(126, 32);
+            this.labelX1.TabIndex = 4;
+            this.labelX1.Text = "班級座號學生";
             // 
             // Column1
             // 
@@ -120,6 +166,12 @@
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "校內校外";
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 90;
+            // 
             // Column6
             // 
             this.Column6.HeaderText = "備註";
@@ -132,50 +184,6 @@
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.刪除所選ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(95, 26);
-            // 
-            // 刪除所選ToolStripMenuItem
-            // 
-            this.刪除所選ToolStripMenuItem.Name = "刪除所選ToolStripMenuItem";
-            this.刪除所選ToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
-            this.刪除所選ToolStripMenuItem.Text = "刪除";
-            this.刪除所選ToolStripMenuItem.Click += new System.EventHandler(this.刪除所選ToolStripMenuItem_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnExit.AutoSize = true;
-            this.btnExit.BackColor = System.Drawing.Color.Transparent;
-            this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExit.Location = new System.Drawing.Point(613, 408);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 25);
-            this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnExit.TabIndex = 1;
-            this.btnExit.Text = "離開";
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // labelX1
-            // 
-            this.labelX1.AutoSize = true;
-            this.labelX1.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.Class = "";
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labelX1.Location = new System.Drawing.Point(12, 12);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(126, 32);
-            this.labelX1.TabIndex = 4;
-            this.labelX1.Text = "班級座號學生";
-            // 
             // DetailFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -184,6 +192,7 @@
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.btnExit);
+            this.DoubleBuffered = true;
             this.Name = "DetailFrom";
             this.Text = "檢視學生所有明細資料";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
@@ -206,6 +215,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
     }

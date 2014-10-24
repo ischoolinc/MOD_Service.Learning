@@ -118,6 +118,7 @@ namespace K12.Service.Learning.Modules
                 itm.SubItems.Add(SLR.Reason);
                 itm.SubItems.Add(SLR.Hours.ToString());
                 itm.SubItems.Add(SLR.Organizers);
+                itm.SubItems.Add(SLR.InternalOrExternal);
                 itm.SubItems.Add(SLR.RegisterDate.ToShortDateString());
                 itm.SubItems.Add(SLR.Remark);
                 itm.Tag = SLR;
@@ -177,7 +178,7 @@ namespace K12.Service.Learning.Modules
             }
             catch (Exception ex)
             {
-                MsgBox.Show("刪除[服務學習記錄]資料失敗" + ex.Message);
+                 MsgBox.Show("刪除「服務學習記錄」資料失敗" + ex.Message);
                 return;
             }
 

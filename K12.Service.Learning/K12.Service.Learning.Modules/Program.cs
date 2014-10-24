@@ -26,7 +26,7 @@ namespace K12.Service.Learning.Modules
 
             #region 處理UDT Table沒有的問題
 
-            ConfigData cd = K12.Data.School.Configuration["服務學習時數模組UDT載入設定"];
+            ConfigData cd = K12.Data.School.Configuration["服務學習時數模組UDT載入_1030911"];
             bool checkClubUDT = false;
             string name = "服務學習UDT是否已載入";
             //如果尚無設定值,預設為
@@ -113,6 +113,14 @@ namespace K12.Service.Learning.Modules
             rbItemImport["匯入服務學習記錄(新增)"].Click += delegate
             {
                 ImportServiceLearning wizard = new ImportServiceLearning();
+                wizard.Execute();
+            };
+
+            rbItemImport = MotherForm.RibbonBarItems["學生", "資料統計"]["匯入"]["學務相關匯入"];
+            rbItemImport["匯入服務學習記錄(更新)"].Enable = Permissions.匯入服務學習記錄權限;
+            rbItemImport["匯入服務學習記錄(更新)"].Click += delegate
+            {
+                ImportServiceLearning_up wizard = new ImportServiceLearning_up();
                 wizard.Execute();
             };
 

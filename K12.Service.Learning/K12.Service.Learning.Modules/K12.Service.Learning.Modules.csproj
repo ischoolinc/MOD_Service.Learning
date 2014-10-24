@@ -154,6 +154,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Batch\ChangeInorOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Batch\ChangeInorOutForm.Designer.cs">
+      <DependentUpon>ChangeInorOutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BatchStudent\DetailFrom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,17 +226,14 @@
       <DependentUpon>ExportStudentV2.cs</DependentUpon>
     </Compile>
     <Compile Include="ImportExport\ImportServiceLearning.cs" />
+    <Compile Include="ImportExport\ImportServiceLearning_up.cs" />
+    <Compile Include="ImportExport\studTB.cs" />
     <Compile Include="ImportExport\Validator\FieldValidatorFactory.cs" />
     <Compile Include="ImportExport\Validator\ISDECIMAL.cs" />
     <Compile Include="ImportExport\Validator\StudentNumberExistenceValidator.cs" />
     <Compile Include="ImportExport\Validator\StudentNumberRepeatValidator.cs" />
+    <Compile Include="ImportExport\Validator\StudentNumberRepeatValidator_up.cs" />
     <Compile Include="LearningEvents.cs" />
-    <Compile Include="modules\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="modules\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -305,6 +308,9 @@
     <None Include="Resources\服務學習記錄_範本.doc" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Batch\ChangeInorOutForm.resx">
+      <DependentUpon>ChangeInorOutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BatchStudent\DetailFrom.resx">
       <DependentUpon>DetailFrom.cs</DependentUpon>
     </EmbeddedResource>
@@ -426,6 +432,7 @@
     <Content Include="Library\SmartSchool.ErrorReporting.dll" />
     <Content Include="Library\SmartSchool.ErrorReporting.pdb" />
     <Content Include="Library\SmartSchool.ErrorReporting.xml" />
+    <None Include="Resources\ImportServiceLearning_up.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
