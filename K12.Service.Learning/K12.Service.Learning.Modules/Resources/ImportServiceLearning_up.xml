@@ -32,7 +32,7 @@
     <Field Required="True" Name="主辦單位">
       <Validate AutoCorrect="False" Description="「主辦單位」建議必須輸入。" ErrorType="Warning" Validator="不可空白" When=""/>
     </Field>
-    <Field Required="True" Name="校內校外" EmptyAlsoValidate="False">
+    <Field Required="false" Name="校內校外" EmptyAlsoValidate="False">
       <Validate AutoCorrect="False" Description="「校內校外」需填入「校內」或「校外」或維持空白。" ErrorType="Error" Validator="校內外列舉" When=""/>
     </Field>
     <Field Required="false" Name="登錄日期" EmptyAlsoValidate="False">
