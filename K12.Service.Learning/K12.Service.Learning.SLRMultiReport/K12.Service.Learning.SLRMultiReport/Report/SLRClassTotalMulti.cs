@@ -282,7 +282,7 @@ namespace K12.Service.Learning.SLRMultiReport
                          }
                     }
                }
- 
+
                #endregion
 
                builder.MoveToMergeField("資料"); // 移到有資料的標籤上
@@ -325,33 +325,27 @@ namespace K12.Service.Learning.SLRMultiReport
                     columnIndex = 1;
 
                     decimal total = 0;
-                    int ColumnMax = 6;
-                    int ColumnCount = 0;
 
                     foreach (string each in SchoolYearSemesterList)
                     {
-                         ColumnCount++; //避免列印至總計欄位
-                         if (ColumnCount <= ColumnMax)
+                         if (student.SLRDic.ContainsKey(each))
                          {
-                              if (student.SLRDic.ContainsKey(each))
-                              {
-                                   total += student.SLRDic[each];
+                              total += student.SLRDic[each];
 
-                                   Write(cell, student.SLRDic[each].ToString());
-                                   SLROutputCount++;
-                              }
-                              else
-                              {
-                                   Write(cell, "0");
-                              }
-
-                              // 不是最後一筆資料的話, 就移到後面一個cell
-                              if (columnIndex < columnCount)
-                              {
-                                   cell = GetMoveRightCell(cell, 1);
-                              }
-                              columnIndex++;
+                              Write(cell, student.SLRDic[each].ToString());
+                              SLROutputCount++;
                          }
+                         else
+                         {
+                              Write(cell, "0");
+                         }
+
+                         // 不是最後一筆資料的話, 就移到後面一個cell
+                         if (columnIndex < columnCount)
+                         {
+                              cell = GetMoveRightCell(cell, 1);
+                         }
+                         columnIndex++;
                     }
 
                     // 假如學生服務學習的總學年度跟學期的數量不等於列印的的數量, 加入警告清單
@@ -380,7 +374,7 @@ namespace K12.Service.Learning.SLRMultiReport
                                    cound = totalcell;
                               }
                          }
-                    } 
+                    }
 
                     #endregion
 
