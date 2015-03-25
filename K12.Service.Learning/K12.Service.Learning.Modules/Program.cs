@@ -13,7 +13,7 @@ namespace K12.Service.Learning.Modules
         [MainMethod()]
         static public void Main()
         {
-            ServerModule.AutoManaged("https://module.ischool.com.tw/module/138/Service_Learning/udm.xml");
+            ServerModule.AutoManaged("http://module.ischool.com.tw/module/138/Service_Learning/udm.xml");
 
             //6bccb45b-ca75-43ee-beaa-c035a77c8263 - 服務學習時數(老師)
             //dfde4dc2-fece-4c29-be99-c8bd11650383 - 服務學習時數(學生)
