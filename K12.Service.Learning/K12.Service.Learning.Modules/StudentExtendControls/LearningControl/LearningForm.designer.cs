@@ -467,6 +467,7 @@
             this.cbOrganizers.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbOrganizers.DisplayMember = "Text";
             this.cbOrganizers.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbOrganizers.DropDownWidth = 400;
             this.cbOrganizers.FormattingEnabled = true;
             this.cbOrganizers.ItemHeight = 19;
             this.cbOrganizers.Location = new System.Drawing.Point(75, 82);
