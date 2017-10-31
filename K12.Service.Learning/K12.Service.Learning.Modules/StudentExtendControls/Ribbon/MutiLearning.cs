@@ -257,6 +257,12 @@ namespace K12.Service.Learning.Modules
                                 returnTrue = true;
                             }
                         }
+                        // 2017/10/31，羿均修改，只要有欄位無法轉型Decimal就return false。
+                        else
+                        {
+                            returnTrue = false;
+                            return returnTrue;
+                        }
                     }
                 }
             }
