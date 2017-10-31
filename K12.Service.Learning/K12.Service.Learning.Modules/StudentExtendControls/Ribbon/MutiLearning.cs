@@ -242,7 +242,8 @@ namespace K12.Service.Learning.Modules
         /// <returns></returns>
         private bool CheckIntError()
         {
-            bool returnTrue = false;
+            // 2017/10/31，羿均根據恩正的建議修改判斷邏輯，只要有欄位無法轉型就false。
+            bool returnTrue = true;
 
             foreach (DataGridViewRow row in dataGridViewX1.Rows)
             {
@@ -250,18 +251,12 @@ namespace K12.Service.Learning.Modules
                 {
                     if (cell.ColumnIndex > 3 && cell.ColumnIndex < 5)
                     {
-                        if (時數轉換器.IsDecimal("" + cell.Value))
+                        if (!時數轉換器.IsDecimal("" + cell.Value))
                         {
-                            if (時數轉換器.SentDecimalByString("" + cell.Value))
+                            if (!時數轉換器.SentDecimalByString("" + cell.Value))
                             {
-                                returnTrue = true;
+                                returnTrue = false;
                             }
-                        }
-                        // 2017/10/31，羿均修改，只要有欄位無法轉型Decimal就return false。
-                        else
-                        {
-                            returnTrue = false;
-                            return returnTrue;
                         }
                     }
                 }
