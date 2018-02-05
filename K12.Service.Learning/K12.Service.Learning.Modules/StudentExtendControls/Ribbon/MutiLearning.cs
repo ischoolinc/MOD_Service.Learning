@@ -36,14 +36,31 @@ namespace K12.Service.Learning.Modules
         {
             InitializeComponent();
         }
-
+        // 2018/02/05 
         //Load
         private void MutiLearning_Load(object sender, EventArgs e)
         {
-            integerInput1.Text = School.DefaultSchoolYear;
-            integerInput2.Text = School.DefaultSemester;
-            dateTimeInput1.Text = DateTime.Today.ToShortDateString();
-            dateTimeInput2.Text = DateTime.Today.ToShortDateString();
+            //integerInput1.Text = School.DefaultSchoolYear;
+            //integerInput2.Text = School.DefaultSemester;
+            //dateTimeInput1.Text = DateTime.Today.ToShortDateString();
+            //dateTimeInput2.Text = DateTime.Today.ToShortDateString();
+
+            // 學年度 column
+            DataGridViewTextBoxColumn dgvCb = new DataGridViewTextBoxColumn();
+            dgvCb.Name = "schoolYear";
+            dgvCb.HeaderText = "學年度";
+            dgvCb.Width = 70;
+
+            dataGridViewX1.Columns.Insert(4,dgvCb);
+            // 學期 column
+            DataGridViewTextBoxColumn dgvCb2 = new DataGridViewTextBoxColumn();
+            dgvCb2.Name = "semester";
+            dgvCb2.HeaderText = "學期";
+            dgvCb2.Width = 60;
+            
+            dataGridViewX1.Columns.Insert(5,dgvCb2);
+
+
 
             BGW.DoWork += new DoWorkEventHandler(BGW_DoWork);
             BGW.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BGW_RunWorkerCompleted);
@@ -67,6 +84,7 @@ namespace K12.Service.Learning.Modules
 
         void BGW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            
             //加入畫面學生
             List<K12.Data.StudentRecord> StudentList = (List<K12.Data.StudentRecord>)e.Result;
             foreach (K12.Data.StudentRecord student in StudentList)
@@ -78,6 +96,8 @@ namespace K12.Service.Learning.Modules
                 row.Cells[1].Value = student.SeatNo.HasValue ? student.SeatNo.Value.ToString() : "";
                 row.Cells[2].Value = student.StudentNumber;
                 row.Cells[3].Value = student.Name;
+                row.Cells[7].Value = DateTime.Today;
+
                 dataGridViewX1.Rows.Add(row);
             }
 
@@ -130,7 +150,6 @@ namespace K12.Service.Learning.Modules
                 }
             }
 
-
             if (CheckReasonError())
             {
                 DialogResult dr = MsgBox.Show("部份學生資料未輸入事由,是否繼續儲存?", MessageBoxButtons.YesNo, MessageBoxDefaultButton.Button1);
@@ -139,6 +158,13 @@ namespace K12.Service.Learning.Modules
                 {
                     return;
                 }
+            }
+
+            if (!CheckData())
+            {
+                MsgBox.Show("資料有誤!");
+
+                return;
             }
 
             List<SLRecord> MeritList = GetSLRList();
@@ -163,10 +189,10 @@ namespace K12.Service.Learning.Modules
         private List<SLRecord> GetSLRList()
         {
             sb.AppendLine("批次「服務學習記錄」快速登錄作業");
-            sb.AppendLine("學年度「" + integerInput1.Value.ToString() + "」");
-            sb.AppendLine("學期「" + integerInput2.Value.ToString() + "」");
-            sb.AppendLine("發生日期：" + dateTimeInput1.Value.ToShortDateString());
-            sb.AppendLine("登錄日期：" + dateTimeInput2.Value.ToShortDateString());
+            //sb.AppendLine("學年度「" + integerInput1.Value.ToString() + "」");
+            //sb.AppendLine("學期「" + integerInput2.Value.ToString() + "」");
+            //sb.AppendLine("發生日期：" + dateTimeInput1.Value.ToShortDateString());
+            //sb.AppendLine("登錄日期：" + dateTimeInput2.Value.ToShortDateString());
             sb.AppendLine("詳細資料：");
 
             List<SLRecord> SLRList = new List<SLRecord>();
@@ -177,28 +203,34 @@ namespace K12.Service.Learning.Modules
                 SLRecord mr = new SLRecord();
 
                 mr.RefStudentID = student.ID; //學生ID
-                mr.SchoolYear = integerInput1.Value; //學年度
-                mr.Semester = integerInput2.Value; //學期
+                mr.SchoolYear = int.Parse("" + row.Cells[4].Value); //學年度
+                mr.Semester = int.Parse("" + row.Cells[5].Value); //學期
+                mr.OccurDate = DateTime.Parse("" + row.Cells[6].Value); // 發生日期
+                mr.RegisterDate = DateTime.Parse("" + row.Cells[7].Value); // 登錄日期
 
-                mr.Hours = decimal.Parse("" + row.Cells[4].Value); //時數
-                mr.Reason = "" + row.Cells[5].Value; //事由
+                mr.Hours = decimal.Parse("" + row.Cells[8].Value); //時數
+                mr.Reason = "" + row.Cells[9].Value; //事由
 
-                mr.Organizers = "" + row.Cells[6].Value;  //主辦單位
-                mr.Remark = "" + row.Cells[7].Value;  //備註
+                mr.Organizers = "" + row.Cells[10].Value;  //主辦單位
+                mr.Remark = "" + row.Cells[11].Value;  //備註
 
-                mr.InternalOrExternal = "" + row.Cells[8].Value;  //校內外
+                mr.InternalOrExternal = "" + row.Cells[12].Value;  //校內外
 
-                mr.OccurDate = dateTimeInput1.Value;
-                mr.RegisterDate = dateTimeInput2.Value;
+                //mr.OccurDate = dateTimeInput1.Value;
+                //mr.RegisterDate = dateTimeInput2.Value;
 
                 SLRList.Add(mr);
 
                 sb.AppendLine("學生「" + student.Name + "」"
-                + "時數「" + row.Cells[4].Value + "」"
-                + "事由「" + row.Cells[5].Value + "」"
-                + "主辦單位「" + row.Cells[6].Value + "」"
-                + "備註「" + row.Cells[7].Value + "」"
-                  + "校內外「" + row.Cells[8].Value + "」");
+                + "學年度「" + row.Cells[4].Value + "」"
+                + "學期 「" + row.Cells[5].Value + "」"
+                + "發生日期「" + row.Cells[6].Value + "」"
+                + "登錄日期「" + row.Cells[7].Value + "」"
+                + "時數「" + row.Cells[8].Value + "」"
+                + "事由「" + row.Cells[9].Value + "」"
+                + "主辦單位「" + row.Cells[10].Value + "」"
+                + "備註「" + row.Cells[11].Value + "」"
+                  + "校內外「" + row.Cells[12].Value + "」");
             }
 
             return SLRList;
@@ -264,6 +296,35 @@ namespace K12.Service.Learning.Modules
             return returnTrue;
         }
 
+        private bool CheckData()
+        {
+            bool returnTrue = true;
+            foreach (DataGridViewRow row in dataGridViewX1.Rows)
+            {
+                if ("" + row.Cells[4].ErrorText != string.Empty)
+                {
+                    returnTrue = false;
+                    break;
+                }
+                if ("" + row.Cells[5].ErrorText != string.Empty)
+                {
+                    returnTrue = false;
+                    break;
+                }
+                if ("" + row.Cells[6].ErrorText != string.Empty)
+                {
+                    returnTrue = false;
+                    break;
+                }
+                if ("" + row.Cells[7].ErrorText != string.Empty)
+                {
+                    returnTrue = false;
+                    break;
+                }
+            }
+            return returnTrue;
+        }
+
         //離開
         private void buttonX3_Click(object sender, EventArgs e)
         {
@@ -278,8 +339,8 @@ namespace K12.Service.Learning.Modules
                 {
                     foreach (DataGridViewRow row in dataGridViewX1.Rows)
                     {
-                        row.Cells[4].Value = textBoxX1.Text.Trim();
-                        row.Cells[4].ErrorText = "";
+                        row.Cells[8].Value = textBoxX1.Text.Trim();
+                        row.Cells[8].ErrorText = "";
                     }
                     errorProvider1.Clear();
                 }
@@ -287,7 +348,7 @@ namespace K12.Service.Learning.Modules
                 {
                     foreach (DataGridViewRow row in dataGridViewX1.Rows)
                     {
-                        row.Cells[4].Value = "";
+                        row.Cells[8].Value = "";
                     }
                     errorProvider1.SetError(textBoxX1, "必須輸入整數或小數後兩位數!!");
                 }
@@ -296,7 +357,7 @@ namespace K12.Service.Learning.Modules
             {
                 foreach (DataGridViewRow row in dataGridViewX1.Rows)
                 {
-                    row.Cells[4].Value = "";
+                    row.Cells[8].Value = "";
                 }
                 errorProvider1.SetError(textBoxX1, "輸入內容非數字!\n(或時數並非整數!)");
             }
@@ -306,7 +367,7 @@ namespace K12.Service.Learning.Modules
         {
             foreach (DataGridViewRow row in dataGridViewX1.Rows)
             {
-                row.Cells[7].Value = textBoxX3.Text.Trim();
+                row.Cells[11].Value = textBoxX3.Text.Trim();
             }
         }
 
@@ -315,6 +376,61 @@ namespace K12.Service.Learning.Modules
             //不是標題列
             if (e.ColumnIndex != -1 && e.RowIndex != -1)
             {
+                // 選擇發生日期-自動換算學年度學期
+                if (e.ColumnIndex == 6)
+                {
+                    DateTime selDate = DateTime.Parse("" + dataGridViewX1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+                    int sy = 0;
+                    int s = 0;
+                    if (selDate.Month >= 8)
+                    {
+                        sy = selDate.Year - 1911;
+                        s = 1;
+                    }
+                    if (selDate.Month < 2)
+                    {
+                        sy = selDate.Year - 1911 - 1;
+                        s = 1;
+                    }
+                    if (selDate.Month >= 2 && selDate.Month < 8)
+                    {
+                        sy = selDate.Year - 1911 - 1;
+                        s = 2;
+                    }
+
+                    dataGridViewX1.Rows[e.RowIndex].Cells[4].Value = sy;
+                    dataGridViewX1.Rows[e.RowIndex].Cells[5].Value = s;
+
+                }
+
+                // 驗證學年度、學期是否為整數
+                if (e.ColumnIndex == 4 || e.ColumnIndex == 5)
+                {
+                    int n = 0;
+                    if (!int.TryParse("" + dataGridViewX1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value, out n))
+                    {
+                        dataGridViewX1.Rows[e.RowIndex].Cells[e.ColumnIndex].ErrorText = "格式錯誤!";
+                    }
+                    else
+                    {
+                        dataGridViewX1.Rows[e.RowIndex].Cells[e.ColumnIndex].ErrorText = string.Empty;
+                    }
+                }
+
+                // 驗證發生日期、登錄日期型別為DateTime
+                if (e.ColumnIndex == 6 || e.ColumnIndex == 7)
+                {
+                    DateTime n = DateTime.Today;
+                    if (!DateTime.TryParse("" + dataGridViewX1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value, out n))
+                    {
+                        dataGridViewX1.Rows[e.RowIndex].Cells[e.ColumnIndex].ErrorText = "格式錯誤!";
+                    }
+                    else
+                    {
+                        dataGridViewX1.Rows[e.RowIndex].Cells[e.ColumnIndex].ErrorText = string.Empty;
+                    }
+                }
+
                 //缺曠數量
                 if (e.ColumnIndex == Column7.Index)
                 {
@@ -356,6 +472,7 @@ namespace K12.Service.Learning.Modules
                         cell.ErrorText = "必須為校內或校外";
                     }
                 }
+
             }
         }
 
@@ -372,7 +489,7 @@ namespace K12.Service.Learning.Modules
 
                 foreach (DataGridViewRow row in dataGridViewX1.Rows)
                 {
-                    row.Cells[Column13.Index].Value = reasonValue;
+                    row.Cells[9].Value = reasonValue;
                 }
             }
         }
@@ -425,7 +542,7 @@ namespace K12.Service.Learning.Modules
         {
             foreach (DataGridViewRow row in dataGridViewX1.Rows)
             {
-                row.Cells[6].Value = comboBoxEx2.Text.Trim();
+                row.Cells[10].Value = comboBoxEx2.Text.Trim();
             }
         }
 
@@ -435,14 +552,14 @@ namespace K12.Service.Learning.Modules
             {
                 foreach (DataGridViewRow row in dataGridViewX1.Rows)
                 {
-                    row.Cells[8].Value = "校內";
+                    row.Cells[12].Value = "校內";
                 }
             }
             else if (cbIAndE.SelectedIndex == 2)
             {
                 foreach (DataGridViewRow row in dataGridViewX1.Rows)
                 {
-                    row.Cells[8].Value = "校外";
+                    row.Cells[12].Value = "校外";
                 }
             }
             else

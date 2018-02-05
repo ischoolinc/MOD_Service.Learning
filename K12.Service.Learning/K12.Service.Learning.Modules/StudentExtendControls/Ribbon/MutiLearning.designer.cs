@@ -41,6 +41,8 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.occurDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
+            this.RecordDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,6 +82,7 @@
             // 
             // labelX1
             // 
+            this.labelX1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelX1.AutoSize = true;
             this.labelX1.BackColor = System.Drawing.Color.Transparent;
             // 
@@ -87,7 +90,7 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(236, 12);
+            this.labelX1.Location = new System.Drawing.Point(236, 575);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(60, 21);
             this.labelX1.TabIndex = 8;
@@ -95,6 +98,7 @@
             // 
             // dateTimeInput1
             // 
+            this.dateTimeInput1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateTimeInput1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
@@ -106,7 +110,7 @@
             this.dateTimeInput1.ButtonFreeText.Checked = true;
             this.dateTimeInput1.FreeTextEntryMode = true;
             this.dateTimeInput1.IsPopupCalendarOpen = false;
-            this.dateTimeInput1.Location = new System.Drawing.Point(297, 10);
+            this.dateTimeInput1.Location = new System.Drawing.Point(297, 573);
             // 
             // 
             // 
@@ -169,6 +173,8 @@
             this.Column2,
             this.Column4,
             this.Column3,
+            this.occurDate,
+            this.RecordDate,
             this.Column7,
             this.Column13,
             this.Column8,
@@ -182,14 +188,15 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewX1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(12, 100);
+            this.dataGridViewX1.Location = new System.Drawing.Point(12, 67);
             this.dataGridViewX1.MultiSelect = false;
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(795, 344);
+            this.dataGridViewX1.Size = new System.Drawing.Size(795, 358);
             this.dataGridViewX1.TabIndex = 0;
             this.dataGridViewX1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellValueChanged);
             // 
@@ -197,6 +204,7 @@
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
             this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Column1.Frozen = true;
             this.Column1.HeaderText = "班級";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -206,6 +214,7 @@
             // 
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightCyan;
             this.Column2.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column2.Frozen = true;
             this.Column2.HeaderText = "座號";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -215,6 +224,7 @@
             // 
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightCyan;
             this.Column4.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column4.Frozen = true;
             this.Column4.HeaderText = "學號";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
@@ -224,10 +234,87 @@
             // 
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightCyan;
             this.Column3.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column3.Frozen = true;
             this.Column3.HeaderText = "姓名";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             this.Column3.Width = 80;
+            // 
+            // occurDate
+            // 
+            // 
+            // 
+            // 
+            this.occurDate.BackgroundStyle.Class = "DataGridViewDateTimeBorder";
+            this.occurDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.occurDate.ButtonDropDown.Visible = true;
+            this.occurDate.HeaderText = "發生日期";
+            this.occurDate.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            // 
+            // 
+            // 
+            this.occurDate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.occurDate.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.occurDate.MonthCalendar.BackgroundStyle.Class = "";
+            this.occurDate.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.occurDate.MonthCalendar.CommandsBackgroundStyle.Class = "";
+            this.occurDate.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.occurDate.MonthCalendar.DisplayMonth = new System.DateTime(2018, 2, 1, 0, 0, 0, 0);
+            this.occurDate.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.occurDate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.occurDate.MonthCalendar.NavigationBackgroundStyle.Class = "";
+            this.occurDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.occurDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.occurDate.Name = "occurDate";
+            this.occurDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.occurDate.Width = 120;
+            // 
+            // RecordDate
+            // 
+            // 
+            // 
+            // 
+            this.RecordDate.BackgroundStyle.Class = "DataGridViewDateTimeBorder";
+            this.RecordDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.RecordDate.ButtonDropDown.Visible = true;
+            this.RecordDate.HeaderText = "登錄日期";
+            this.RecordDate.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            // 
+            // 
+            // 
+            this.RecordDate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.RecordDate.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.RecordDate.MonthCalendar.BackgroundStyle.Class = "";
+            this.RecordDate.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.RecordDate.MonthCalendar.CommandsBackgroundStyle.Class = "";
+            this.RecordDate.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.RecordDate.MonthCalendar.DisplayMonth = new System.DateTime(2018, 2, 1, 0, 0, 0, 0);
+            this.RecordDate.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.RecordDate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.RecordDate.MonthCalendar.NavigationBackgroundStyle.Class = "";
+            this.RecordDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.RecordDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.RecordDate.Name = "RecordDate";
+            this.RecordDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.RecordDate.Width = 120;
             // 
             // Column7
             // 
@@ -265,7 +352,7 @@
             this.buttonX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonX2.BackColor = System.Drawing.Color.Transparent;
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(651, 454);
+            this.buttonX2.Location = new System.Drawing.Point(646, 431);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Size = new System.Drawing.Size(75, 23);
             this.buttonX2.TabIndex = 2;
@@ -278,7 +365,7 @@
             this.buttonX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonX3.BackColor = System.Drawing.Color.Transparent;
             this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX3.Location = new System.Drawing.Point(732, 454);
+            this.buttonX3.Location = new System.Drawing.Point(727, 431);
             this.buttonX3.Name = "buttonX3";
             this.buttonX3.Size = new System.Drawing.Size(75, 23);
             this.buttonX3.TabIndex = 3;
@@ -287,6 +374,7 @@
             // 
             // integerInput1
             // 
+            this.integerInput1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.integerInput1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
@@ -294,7 +382,7 @@
             this.integerInput1.BackgroundStyle.Class = "DateTimeInputBackground";
             this.integerInput1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.integerInput1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.integerInput1.Location = new System.Drawing.Point(60, 10);
+            this.integerInput1.Location = new System.Drawing.Point(60, 573);
             this.integerInput1.MaxValue = 999;
             this.integerInput1.MinValue = 90;
             this.integerInput1.Name = "integerInput1";
@@ -305,6 +393,7 @@
             // 
             // integerInput2
             // 
+            this.integerInput2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.integerInput2.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
@@ -312,7 +401,7 @@
             this.integerInput2.BackgroundStyle.Class = "DateTimeInputBackground";
             this.integerInput2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.integerInput2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.integerInput2.Location = new System.Drawing.Point(161, 10);
+            this.integerInput2.Location = new System.Drawing.Point(161, 573);
             this.integerInput2.MaxValue = 2;
             this.integerInput2.MinValue = 1;
             this.integerInput2.Name = "integerInput2";
@@ -323,6 +412,7 @@
             // 
             // labelX2
             // 
+            this.labelX2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelX2.AutoSize = true;
             this.labelX2.BackColor = System.Drawing.Color.Transparent;
             // 
@@ -330,7 +420,7 @@
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(12, 12);
+            this.labelX2.Location = new System.Drawing.Point(12, 575);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(47, 21);
             this.labelX2.TabIndex = 4;
@@ -338,6 +428,7 @@
             // 
             // labelX3
             // 
+            this.labelX3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelX3.AutoSize = true;
             this.labelX3.BackColor = System.Drawing.Color.Transparent;
             // 
@@ -345,7 +436,7 @@
             // 
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(126, 12);
+            this.labelX3.Location = new System.Drawing.Point(126, 575);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(34, 21);
             this.labelX3.TabIndex = 6;
@@ -353,6 +444,7 @@
             // 
             // dateTimeInput2
             // 
+            this.dateTimeInput2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateTimeInput2.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
@@ -364,7 +456,7 @@
             this.dateTimeInput2.ButtonFreeText.Checked = true;
             this.dateTimeInput2.FreeTextEntryMode = true;
             this.dateTimeInput2.IsPopupCalendarOpen = false;
-            this.dateTimeInput2.Location = new System.Drawing.Point(533, 10);
+            this.dateTimeInput2.Location = new System.Drawing.Point(533, 573);
             // 
             // 
             // 
@@ -414,6 +506,7 @@
             // 
             // labelX4
             // 
+            this.labelX4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelX4.AutoSize = true;
             this.labelX4.BackColor = System.Drawing.Color.Transparent;
             // 
@@ -421,7 +514,7 @@
             // 
             this.labelX4.BackgroundStyle.Class = "";
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(472, 12);
+            this.labelX4.Location = new System.Drawing.Point(472, 575);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(60, 21);
             this.labelX4.TabIndex = 10;
@@ -436,7 +529,7 @@
             // 
             this.labelX5.BackgroundStyle.Class = "";
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(333, 45);
+            this.labelX5.Location = new System.Drawing.Point(333, 12);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(34, 21);
             this.labelX5.TabIndex = 15;
@@ -449,7 +542,7 @@
             // 
             this.textBoxX3.Border.Class = "TextBoxBorder";
             this.textBoxX3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX3.Location = new System.Drawing.Point(654, 69);
+            this.textBoxX3.Location = new System.Drawing.Point(654, 36);
             this.textBoxX3.Name = "textBoxX3";
             this.textBoxX3.Size = new System.Drawing.Size(61, 25);
             this.textBoxX3.TabIndex = 19;
@@ -464,7 +557,7 @@
             // 
             this.labelX8.BackgroundStyle.Class = "";
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(654, 45);
+            this.labelX8.Location = new System.Drawing.Point(654, 12);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(34, 21);
             this.labelX8.TabIndex = 14;
@@ -479,7 +572,7 @@
             // 
             this.labelX9.BackgroundStyle.Class = "";
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(84, 71);
+            this.labelX9.Location = new System.Drawing.Point(84, 38);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(184, 21);
             this.labelX9.TabIndex = 16;
@@ -499,7 +592,7 @@
             // 
             this.labelX10.BackgroundStyle.Class = "";
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Location = new System.Drawing.Point(12, 454);
+            this.labelX10.Location = new System.Drawing.Point(12, 433);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(181, 21);
             this.labelX10.TabIndex = 1;
@@ -512,7 +605,7 @@
             // 
             this.textBoxX1.Border.Class = "TextBoxBorder";
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(274, 69);
+            this.textBoxX1.Location = new System.Drawing.Point(274, 36);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.Size = new System.Drawing.Size(60, 25);
             this.textBoxX1.TabIndex = 17;
@@ -527,7 +620,7 @@
             // 
             this.labelX6.BackgroundStyle.Class = "";
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(274, 45);
+            this.labelX6.Location = new System.Drawing.Point(274, 12);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(34, 21);
             this.labelX6.TabIndex = 12;
@@ -542,7 +635,7 @@
             // 
             this.labelX7.BackgroundStyle.Class = "";
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(543, 45);
+            this.labelX7.Location = new System.Drawing.Point(543, 12);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(60, 21);
             this.labelX7.TabIndex = 13;
@@ -556,7 +649,7 @@
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 19;
-            this.comboBoxEx1.Location = new System.Drawing.Point(333, 69);
+            this.comboBoxEx1.Location = new System.Drawing.Point(333, 36);
             this.comboBoxEx1.Name = "comboBoxEx1";
             this.comboBoxEx1.Size = new System.Drawing.Size(211, 25);
             this.comboBoxEx1.TabIndex = 21;
@@ -573,7 +666,7 @@
             this.comboBoxEx2.DropDownWidth = 400;
             this.comboBoxEx2.FormattingEnabled = true;
             this.comboBoxEx2.ItemHeight = 19;
-            this.comboBoxEx2.Location = new System.Drawing.Point(544, 69);
+            this.comboBoxEx2.Location = new System.Drawing.Point(544, 36);
             this.comboBoxEx2.Name = "comboBoxEx2";
             this.comboBoxEx2.Size = new System.Drawing.Size(111, 25);
             this.comboBoxEx2.TabIndex = 22;
@@ -588,7 +681,7 @@
             // 
             this.labelX11.BackgroundStyle.Class = "";
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(714, 45);
+            this.labelX11.Location = new System.Drawing.Point(714, 12);
             this.labelX11.Name = "labelX11";
             this.labelX11.Size = new System.Drawing.Size(47, 21);
             this.labelX11.TabIndex = 23;
@@ -605,7 +698,7 @@
             this.comboItem1,
             this.comboItem2,
             this.comboItem3});
-            this.cbIAndE.Location = new System.Drawing.Point(714, 69);
+            this.cbIAndE.Location = new System.Drawing.Point(714, 36);
             this.cbIAndE.Name = "cbIAndE";
             this.cbIAndE.Size = new System.Drawing.Size(93, 25);
             this.cbIAndE.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -624,7 +717,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 484);
+            this.ClientSize = new System.Drawing.Size(814, 466);
             this.Controls.Add(this.cbIAndE);
             this.Controls.Add(this.labelX11);
             this.Controls.Add(this.textBoxX3);
@@ -688,19 +781,21 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIandOut;
         private DevComponents.DotNetBar.LabelX labelX11;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbIAndE;
         private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.Editors.ComboItem comboItem2;
         private DevComponents.Editors.ComboItem comboItem3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn occurDate;
+        private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn RecordDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIandOut;
     }
 }
