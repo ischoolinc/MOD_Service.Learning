@@ -58,24 +58,45 @@ namespace K12.Service.Learning.Modules
                 K12.Presentation.NLDPanels.Student.AddDetailBulider(new FISCA.Presentation.DetailBulider<LearningItem>());
 
             RibbonBarItem insert = MotherForm.RibbonBarItems["學生", "學務"];
-            insert["服務學習快速登錄"].Image = Properties.Resources.flip_vertical_clock_64;
-            insert["服務學習快速登錄"].Size = RibbonBarButton.MenuButtonSize.Medium;
-            insert["服務學習快速登錄"].Enable = false;
-            insert["服務學習快速登錄"].Click += delegate
+            insert["服務學習"].Image = Properties.Resources.flip_vertical_clock_64;
+            insert["服務學習"].Size = RibbonBarButton.MenuButtonSize.Medium;
+            insert["服務學習"].Enable = false;
+            insert["服務學習"].Click += delegate
             {
-                MutiLearning acf = new MutiLearning();
-                acf.ShowDialog();
+                // 單選學生
+                if (K12.Presentation.NLDPanels.Student.SelectedSource.Count == 1)
+                {
+                    _MutiLearning acf = new _MutiLearning();
+                    acf.ShowDialog();
+                }
+                // 多選學生
+                if (K12.Presentation.NLDPanels.Student.SelectedSource.Count > 1)
+                {
+                    MutiLearning acf = new MutiLearning();
+                    acf.ShowDialog();
+                }
+                
             };
 
             if (Permissions.服務學習快速登錄權限)
             {
                 //必須要有權限,才會出現在滑鼠右鍵
-                K12.Presentation.NLDPanels.Student.ListPaneContexMenu["服務學習快速登錄"].Image = Properties.Resources.flip_vertical_clock_64;
-                K12.Presentation.NLDPanels.Student.ListPaneContexMenu["服務學習快速登錄"].Enable = false;
-                K12.Presentation.NLDPanels.Student.ListPaneContexMenu["服務學習快速登錄"].Click += delegate
+                K12.Presentation.NLDPanels.Student.ListPaneContexMenu["服務學習"].Image = Properties.Resources.flip_vertical_clock_64;
+                K12.Presentation.NLDPanels.Student.ListPaneContexMenu["服務學習"].Enable = false;
+                K12.Presentation.NLDPanels.Student.ListPaneContexMenu["服務學習"].Click += delegate
                 {
-                    MutiLearning acf = new MutiLearning();
-                    acf.ShowDialog();
+                    // 單選學生
+                    if (K12.Presentation.NLDPanels.Student.SelectedSource.Count == 1)
+                    {
+                        _MutiLearning acf = new _MutiLearning();
+                        acf.ShowDialog();
+                    }
+                    // 多選學生
+                    if (K12.Presentation.NLDPanels.Student.SelectedSource.Count > 1)
+                    {
+                        MutiLearning acf = new MutiLearning();
+                        acf.ShowDialog();
+                    }
                 };
             }
 
@@ -85,8 +106,8 @@ namespace K12.Service.Learning.Modules
                 {
                     bool a = K12.Presentation.NLDPanels.Student.SelectedSource.Count > 0;
 
-                    K12.Presentation.NLDPanels.Student.ListPaneContexMenu["服務學習快速登錄"].Enable = a;
-                    insert["服務學習快速登錄"].Enable = a;
+                    K12.Presentation.NLDPanels.Student.ListPaneContexMenu["服務學習"].Enable = a;
+                    insert["服務學習"].Enable = a;
                 }
             };
 
