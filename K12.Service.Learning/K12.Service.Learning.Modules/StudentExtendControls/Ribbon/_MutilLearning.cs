@@ -37,7 +37,7 @@ namespace K12.Service.Learning.Modules
         {
             InitializeComponent();
         }
-
+        private string _student;
         //Load
         private void MutiLearning_Load(object sender, EventArgs e)
         {
@@ -47,12 +47,14 @@ namespace K12.Service.Learning.Modules
             //取得學生
             StudentRecord student = K12.Data.Student.SelectByID(K12.Presentation.NLDPanels.Student.SelectedSource[0]);
 
-            classLb.Text = student.Class.Name;
-            seatNoLb.Text = "" + student.SeatNo;
-            studentNoLb.Text = student.StudentNumber;
-            studentNameLb.Text = student.Name;
-            studentNameLb.Tag = student.ID;
-
+            //classLb.Text = student.Class.Name;
+            //seatNoLb.Text = "" + student.SeatNo;
+            //studentNoLb.Text = student.StudentNumber;
+            //studentNameLb.Text = student.Name;
+            //studentNameLb.Tag = student.ID;
+            labelX1.Text = string.Format("班級 :  {0}    座號 :  {1}    學號 :  {2}    姓名 :  {3} ",student.Class.Name,student.SeatNo,student.StudentNumber,student.Name);
+            labelX1.Tag = student.ID;
+            _student = student.Name;
             // 事由
             detail.Width = 210;
             AccessHelper access = new AccessHelper();
@@ -128,7 +130,6 @@ namespace K12.Service.Learning.Modules
 
             }
 
-            
         }
 
         //取得獎勵資料
@@ -149,7 +150,7 @@ namespace K12.Service.Learning.Modules
                 {
                     SLRecord mr = new SLRecord();
 
-                    mr.RefStudentID = "" + studentNameLb.Tag; //學生ID
+                    mr.RefStudentID = "" + labelX1.Tag; //學生ID
 
                     mr.Hours = decimal.Parse("" + row.Cells["count"].Value); //時數
                     mr.Reason = "" + row.Cells["detail"].Value; //事由
@@ -169,7 +170,7 @@ namespace K12.Service.Learning.Modules
 
                     SLRList.Add(mr);
 
-                    sb.AppendLine("學生「" + studentNameLb.Text + "」"
+                    sb.AppendLine("學生「" + _student + "」"
                     + "時數「" + row.Cells["count"].Value + "」"
                     + "事由「" + row.Cells["detail"].Value + "」"
                     + "主辦單位「" + row.Cells["organizers"].Value + "」"
@@ -234,7 +235,7 @@ namespace K12.Service.Learning.Modules
                 {
                     foreach (DataGridViewCell cell in row.Cells)
                     {
-                        if (cell.ColumnIndex == 0)
+                        if (cell.ColumnIndex == 1)
                         {
                             if (!時數轉換器.IsDecimal("" + cell.Value))
                             {
@@ -361,6 +362,19 @@ namespace K12.Service.Learning.Modules
             {
                 
             }
+        }
+
+        private void labelX2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(@"學年度、學期 :  
+
+                會依照登打的發生日期自動換算，
+                自動換算以2月、8月為分界點，也可自行輸入。
+                EX:
+                2018 / 2 / 1 以前為 106學年 、 第1學期
+                2018 / 2 / 1 ~ 2018 / 8 / 1 日期區間為 106學年 、 第2學期
+                2018 / 8 / 1 以後為 107學年 第1學期"
+                );
         }
     }
 }

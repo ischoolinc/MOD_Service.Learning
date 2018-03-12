@@ -651,7 +651,7 @@
             this.DoubleBuffered = true;
             this.MaximizeBox = true;
             this.Name = "MutiLearning";
-            this.Text = "服務學習快速登錄";
+            this.Text = "多人服務學習快速登錄";
             this.Load += new System.EventHandler(this.MutiLearning_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();

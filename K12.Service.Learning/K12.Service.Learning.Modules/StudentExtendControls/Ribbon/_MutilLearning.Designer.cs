@@ -29,29 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.classLb = new DevComponents.DotNetBar.LabelX();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.seatNoLb = new DevComponents.DotNetBar.LabelX();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.studentNoLb = new DevComponents.DotNetBar.LabelX();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
-            this.studentNameLb = new DevComponents.DotNetBar.LabelX();
+            this.occurDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detail = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
             this.organizers = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.occurDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.collandOut = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
             this.schoolYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.semester = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -66,22 +59,22 @@
             this.dataGridViewX1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.occurDate,
             this.count,
             this.detail,
             this.organizers,
-            this.occurDate,
             this.Column9,
             this.collandOut,
             this.schoolYear,
             this.semester});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewX1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(12, 41);
@@ -124,22 +117,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // labelX10
-            // 
-            this.labelX10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelX10.AutoSize = true;
-            this.labelX10.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX10.BackgroundStyle.Class = "";
-            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Location = new System.Drawing.Point(12, 454);
-            this.labelX10.Name = "labelX10";
-            this.labelX10.Size = new System.Drawing.Size(181, 21);
-            this.labelX10.TabIndex = 1;
-            this.labelX10.Text = "說明：本功能僅提供快速新增";
-            // 
             // labelX1
             // 
             this.labelX1.BackColor = System.Drawing.Color.Transparent;
@@ -150,141 +127,8 @@
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Location = new System.Drawing.Point(12, 12);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(38, 23);
+            this.labelX1.Size = new System.Drawing.Size(413, 23);
             this.labelX1.TabIndex = 4;
-            this.labelX1.Text = "班級:";
-            // 
-            // classLb
-            // 
-            this.classLb.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.classLb.BackgroundStyle.Class = "";
-            this.classLb.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.classLb.ForeColor = System.Drawing.Color.Blue;
-            this.classLb.Location = new System.Drawing.Point(56, 12);
-            this.classLb.Name = "classLb";
-            this.classLb.Size = new System.Drawing.Size(75, 23);
-            this.classLb.TabIndex = 5;
-            // 
-            // labelX3
-            // 
-            this.labelX3.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.Class = "";
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(137, 12);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(38, 23);
-            this.labelX3.TabIndex = 6;
-            this.labelX3.Text = "座號:";
-            // 
-            // seatNoLb
-            // 
-            this.seatNoLb.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.seatNoLb.BackgroundStyle.Class = "";
-            this.seatNoLb.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.seatNoLb.ForeColor = System.Drawing.Color.Blue;
-            this.seatNoLb.Location = new System.Drawing.Point(181, 12);
-            this.seatNoLb.Name = "seatNoLb";
-            this.seatNoLb.Size = new System.Drawing.Size(75, 23);
-            this.seatNoLb.TabIndex = 7;
-            // 
-            // labelX5
-            // 
-            this.labelX5.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX5.BackgroundStyle.Class = "";
-            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(262, 12);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(38, 23);
-            this.labelX5.TabIndex = 8;
-            this.labelX5.Text = "學號:";
-            // 
-            // studentNoLb
-            // 
-            this.studentNoLb.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.studentNoLb.BackgroundStyle.Class = "";
-            this.studentNoLb.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.studentNoLb.ForeColor = System.Drawing.Color.Blue;
-            this.studentNoLb.Location = new System.Drawing.Point(306, 12);
-            this.studentNoLb.Name = "studentNoLb";
-            this.studentNoLb.Size = new System.Drawing.Size(75, 23);
-            this.studentNoLb.TabIndex = 9;
-            // 
-            // labelX7
-            // 
-            this.labelX7.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX7.BackgroundStyle.Class = "";
-            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(387, 12);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(38, 23);
-            this.labelX7.TabIndex = 10;
-            this.labelX7.Text = "姓名:";
-            // 
-            // studentNameLb
-            // 
-            this.studentNameLb.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.studentNameLb.BackgroundStyle.Class = "";
-            this.studentNameLb.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.studentNameLb.ForeColor = System.Drawing.Color.Blue;
-            this.studentNameLb.Location = new System.Drawing.Point(431, 12);
-            this.studentNameLb.Name = "studentNameLb";
-            this.studentNameLb.Size = new System.Drawing.Size(75, 23);
-            this.studentNameLb.TabIndex = 11;
-            // 
-            // count
-            // 
-            this.count.HeaderText = "時數";
-            this.count.Name = "count";
-            this.count.Width = 60;
-            // 
-            // detail
-            // 
-            this.detail.DisplayMember = "Text";
-            this.detail.DropDownHeight = 106;
-            this.detail.DropDownWidth = 121;
-            this.detail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.detail.HeaderText = "事由";
-            this.detail.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.detail.IntegralHeight = false;
-            this.detail.ItemHeight = 17;
-            this.detail.Name = "detail";
-            this.detail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.detail.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            // 
-            // organizers
-            // 
-            this.organizers.DisplayMember = "Text";
-            this.organizers.DropDownHeight = 106;
-            this.organizers.DropDownWidth = 121;
-            this.organizers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.organizers.HeaderText = "主辦單位";
-            this.organizers.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.organizers.IntegralHeight = false;
-            this.organizers.ItemHeight = 17;
-            this.organizers.Name = "organizers";
-            this.organizers.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.organizers.RightToLeft = System.Windows.Forms.RightToLeft.No;
             // 
             // occurDate
             // 
@@ -326,6 +170,40 @@
             this.occurDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.occurDate.Width = 110;
             // 
+            // count
+            // 
+            this.count.HeaderText = "時數";
+            this.count.Name = "count";
+            this.count.Width = 60;
+            // 
+            // detail
+            // 
+            this.detail.DisplayMember = "Text";
+            this.detail.DropDownHeight = 106;
+            this.detail.DropDownWidth = 121;
+            this.detail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.detail.HeaderText = "事由";
+            this.detail.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.detail.IntegralHeight = false;
+            this.detail.ItemHeight = 17;
+            this.detail.Name = "detail";
+            this.detail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.detail.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            // 
+            // organizers
+            // 
+            this.organizers.DisplayMember = "Text";
+            this.organizers.DropDownHeight = 106;
+            this.organizers.DropDownWidth = 121;
+            this.organizers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.organizers.HeaderText = "主辦單位";
+            this.organizers.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.organizers.IntegralHeight = false;
+            this.organizers.ItemHeight = 17;
+            this.organizers.Name = "organizers";
+            this.organizers.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.organizers.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            // 
             // Column9
             // 
             this.Column9.HeaderText = "備註";
@@ -336,8 +214,8 @@
             // 
             this.collandOut.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.collandOut.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.collandOut.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            this.collandOut.DefaultCellStyle = dataGridViewCellStyle9;
             this.collandOut.DisplayMember = "Text";
             this.collandOut.DropDownHeight = 106;
             this.collandOut.DropDownWidth = 121;
@@ -363,32 +241,42 @@
             this.semester.Name = "semester";
             this.semester.Width = 60;
             // 
+            // labelX2
+            // 
+            this.labelX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.Class = "";
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.labelX2.ForeColor = System.Drawing.Color.Blue;
+            this.labelX2.Location = new System.Drawing.Point(12, 454);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(197, 23);
+            this.labelX2.TabIndex = 5;
+            this.labelX2.Text = "說明：本功能僅提供快速新增";
+            this.labelX2.Click += new System.EventHandler(this.labelX2_Click);
+            // 
             // _MutiLearning
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 484);
-            this.Controls.Add(this.studentNameLb);
-            this.Controls.Add(this.labelX7);
-            this.Controls.Add(this.studentNoLb);
-            this.Controls.Add(this.labelX5);
-            this.Controls.Add(this.seatNoLb);
-            this.Controls.Add(this.labelX3);
-            this.Controls.Add(this.classLb);
+            this.Controls.Add(this.labelX2);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.dataGridViewX1);
-            this.Controls.Add(this.labelX10);
             this.Controls.Add(this.buttonX3);
             this.Controls.Add(this.buttonX2);
             this.DoubleBuffered = true;
             this.MaximizeBox = true;
             this.Name = "_MutiLearning";
-            this.Text = "服務學習快速登錄";
+            this.Text = "單人服務學習快速登錄";
             this.Load += new System.EventHandler(this.MutiLearning_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -397,22 +285,15 @@
         private DevComponents.DotNetBar.ButtonX buttonX2;
         private DevComponents.DotNetBar.ButtonX buttonX3;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private DevComponents.DotNetBar.LabelX labelX10;
-        private DevComponents.DotNetBar.LabelX studentNameLb;
-        private DevComponents.DotNetBar.LabelX labelX7;
-        private DevComponents.DotNetBar.LabelX studentNoLb;
-        private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.DotNetBar.LabelX seatNoLb;
-        private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.DotNetBar.LabelX classLb;
         private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn occurDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn count;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn detail;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn organizers;
-        private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn occurDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn collandOut;
         private System.Windows.Forms.DataGridViewTextBoxColumn schoolYear;
         private System.Windows.Forms.DataGridViewTextBoxColumn semester;
+        private DevComponents.DotNetBar.LabelX labelX2;
     }
 }
