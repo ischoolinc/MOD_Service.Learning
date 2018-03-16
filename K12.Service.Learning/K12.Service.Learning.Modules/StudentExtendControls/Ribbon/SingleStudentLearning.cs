@@ -15,7 +15,7 @@ using FISCA.Data;
 
 namespace K12.Service.Learning.Modules
 {
-    public partial class _MutiLearning : BaseForm
+    public partial class SingleStudentLearning : BaseForm
     {
         Dictionary<string, string> ReasonDic = new Dictionary<string, string>();
 
@@ -33,7 +33,7 @@ namespace K12.Service.Learning.Modules
         /// 傳入獎勵或懲戒字串,以決定模式
         /// </summary>
         /// <param name="DemeritOrMerit"></param>
-        public _MutiLearning()
+        public SingleStudentLearning()
         {
             InitializeComponent();
         }
@@ -79,6 +79,7 @@ namespace K12.Service.Learning.Modules
         //儲存
         private void buttonX2_Click(object sender, EventArgs e)
         {
+            var pass = true;
             foreach (DataGridViewRow datarow in dataGridViewX1.Rows)
             {
                 if (datarow.Cells["count"].Value == null && datarow.Cells["detail"].Value == null && datarow.Cells["organizers"].Value == null)
@@ -88,29 +89,32 @@ namespace K12.Service.Learning.Modules
                 if (!CheckIntError())
                 {
                     MsgBox.Show("輸入[時數]型態錯誤,請重新修正後再儲存!!");
-                    return;
+                    pass = false;
+                    break;
                 }
 
                 if (CheckOrganizers())
                 {
                     DialogResult dr = MsgBox.Show("部份學生資料未輸入主辦單位,是否繼續儲存?", MessageBoxButtons.YesNo, MessageBoxDefaultButton.Button1);
-
                     if (dr == System.Windows.Forms.DialogResult.No)
                     {
-                        return;
+                        pass = false;
+                        break;
                     }
                 }
 
                 if (CheckReasonError())
                 {
                     DialogResult dr = MsgBox.Show("部份學生資料未輸入事由,是否繼續儲存?", MessageBoxButtons.YesNo, MessageBoxDefaultButton.Button1);
-
                     if (dr == System.Windows.Forms.DialogResult.No)
                     {
-                        return;
+                        pass = false;
+                        break;
                     }
                 }
-
+            }
+            if (pass)
+            {
                 List<SLRecord> MeritList = GetSLRList();
                 try
                 {
@@ -127,9 +131,7 @@ namespace K12.Service.Learning.Modules
                 LearningEvents.RaiseAssnChanged();
 
                 this.Close();
-
             }
-
         }
 
         //取得獎勵資料

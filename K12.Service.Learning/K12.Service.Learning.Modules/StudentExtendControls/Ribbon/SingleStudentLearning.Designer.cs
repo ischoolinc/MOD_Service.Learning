@@ -1,6 +1,6 @@
 ﻿namespace K12.Service.Learning.Modules
 {
-    partial class _MutiLearning
+    partial class SingleStudentLearning
     {
         /// <summary>
         /// Required designer variable.

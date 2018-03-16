@@ -66,7 +66,7 @@ namespace K12.Service.Learning.Modules
                 // 單選學生
                 if (K12.Presentation.NLDPanels.Student.SelectedSource.Count == 1)
                 {
-                    _MutiLearning acf = new _MutiLearning();
+                    SingleStudentLearning acf = new SingleStudentLearning();
                     acf.ShowDialog();
                 }
                 // 多選學生
@@ -88,7 +88,7 @@ namespace K12.Service.Learning.Modules
                     // 單選學生
                     if (K12.Presentation.NLDPanels.Student.SelectedSource.Count == 1)
                     {
-                        _MutiLearning acf = new _MutiLearning();
+                        SingleStudentLearning acf = new SingleStudentLearning();
                         acf.ShowDialog();
                     }
                     // 多選學生

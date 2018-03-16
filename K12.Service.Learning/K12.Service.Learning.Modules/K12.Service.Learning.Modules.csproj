@@ -263,11 +263,11 @@
     <Compile Include="StudentExtendControls\Ribbon\MutiLearning.designer.cs">
       <DependentUpon>MutiLearning.cs</DependentUpon>
     </Compile>
-    <Compile Include="StudentExtendControls\Ribbon\_MutilLearning.cs">
+    <Compile Include="StudentExtendControls\Ribbon\SingleStudentLearning.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StudentExtendControls\Ribbon\_MutilLearning.Designer.cs">
-      <DependentUpon>_MutilLearning.cs</DependentUpon>
+    <Compile Include="StudentExtendControls\Ribbon\SingleStudentLearning.Designer.cs">
+      <DependentUpon>SingleStudentLearning.cs</DependentUpon>
     </Compile>
     <Compile Include="tools\CompleteForm.cs">
       <SubType>Form</SubType>
@@ -369,8 +369,8 @@
     <EmbeddedResource Include="StudentExtendControls\Ribbon\MutiLearning.resx">
       <DependentUpon>MutiLearning.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StudentExtendControls\Ribbon\_MutilLearning.resx">
-      <DependentUpon>_MutilLearning.cs</DependentUpon>
+    <EmbeddedResource Include="StudentExtendControls\Ribbon\SingleStudentLearning.resx">
+      <DependentUpon>SingleStudentLearning.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="tools\CompleteForm.resx">
       <DependentUpon>CompleteForm.cs</DependentUpon>
