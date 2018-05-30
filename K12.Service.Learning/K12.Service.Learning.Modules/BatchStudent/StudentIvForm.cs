@@ -27,9 +27,15 @@ namespace K12.Service.Learning.Modules
             //當勾選使用學期條件時
             //必須打開功能項目
 
+            conditionCbx.SelectedIndex = 0;
+            
+            
             //預設學年度學期
             integerInput1.Value = int.Parse(School.DefaultSchoolYear);
             integerInput2.Value = int.Parse(School.DefaultSemester);
+            starTime.Text = DateTime.Now.AddDays(-7).ToString("yyyy/MM/dd");
+            endTime.Text = DateTime.Now.ToString("yyyy/MM/dd");
+
             labelX4.Text = "待 處 理 學 生 ：" + K12.Presentation.NLDPanels.Student.TempSource.Count + " 人";
 
             BGW.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BGW_RunWorkerCompleted);
@@ -67,7 +73,9 @@ namespace K12.Service.Learning.Modules
                 {
                     c = new Congig();
                     c.時數 = decimal.Parse(textBoxX1.Text);
-                    c.是否使用學年期 = checkBoxX4.Checked;
+                    //c.是否使用學年期 = checkBoxX4.Checked;
+                    c.是否使用學年期 = conditionCbx.Items[conditionCbx.SelectedIndex].ToString() == "學年度/學期" ? true : false;
+                    c.是否使用日期區間 = conditionCbx.Items[conditionCbx.SelectedIndex].ToString() == "日期區間" ? true : false;
                     c.學年度 = integerInput1.Value;
                     c.學期 = integerInput2.Value;
 
@@ -105,7 +113,7 @@ namespace K12.Service.Learning.Modules
 
         void BGW_DoWork(object sender, DoWorkEventArgs e)
         {
-            DataTable dt;
+            DataTable dt = null;
             List<IvObj> DataList = new List<IvObj>();
             List<string> StudentIDList = new List<string>();
             List<IvObj> IvObjList = new List<IvObj>();
@@ -121,15 +129,35 @@ namespace K12.Service.Learning.Modules
 
                 dt = tool._Q.Select(sb.ToString());
             }
+            if (c.是否使用日期區間)
+            {
+                string sql = string.Format(@"
+SELECT
+    ref_student_id
+    , SUM(hours) as SUM_hours
+    , school_year
+    , semester 
+FROM
+    $k12.service.learning.record
+WHERE
+    occur_date >= '{0}'::TIMESTAMP
+    AND occur_date <= '{1}'::TIMESTAMP
+GROUP BY 
+    ref_student_id
+    ,school_year
+    ,semester
+                    ", starTime.Text,endTime.Text);
+                dt = tool._Q.Select(sql);
+            }
             else
             {
                 //False就是統計學生所有資料
-                StringBuilder sb = new StringBuilder();
-                sb.Append("select ref_student_id, SUM(hours) as SUM_hours from ");
-                sb.Append(tool.TableName.ToLower() + " ");
-                sb.Append("GROUP BY ref_student_id");
+                //StringBuilder sb = new StringBuilder();
+                //sb.Append("select ref_student_id, SUM(hours) as SUM_hours from ");
+                //sb.Append(tool.TableName.ToLower() + " ");
+                //sb.Append("GROUP BY ref_student_id");
 
-                dt = tool._Q.Select(sb.ToString());
+                //dt = tool._Q.Select(sb.ToString());
             }
 
             //無資料的搜尋
@@ -387,12 +415,12 @@ namespace K12.Service.Learning.Modules
 
         private void checkBoxX4_CheckedChanged(object sender, EventArgs e)
         {
-            labelX2.Enabled = checkBoxX4.Checked;
-            integerInput1.Enabled = checkBoxX4.Checked;
-            labelX3.Enabled = checkBoxX4.Checked;
-            integerInput2.Enabled = checkBoxX4.Checked;
-            colSchoolYear.Visible = checkBoxX4.Checked;
-            colSemester.Visible = checkBoxX4.Checked;
+            //labelX2.Enabled = checkBoxX4.Checked;
+            //integerInput1.Enabled = checkBoxX4.Checked;
+            //labelX3.Enabled = checkBoxX4.Checked;
+            //integerInput2.Enabled = checkBoxX4.Checked;
+            //colSchoolYear.Visible = checkBoxX4.Checked;
+            //colSemester.Visible = checkBoxX4.Checked;
         }
 
         private void textBoxX1_TextChanged(object sender, EventArgs e)
@@ -512,6 +540,30 @@ namespace K12.Service.Learning.Modules
             textBoxX1.Visible = !checkBoxX3.Checked;
 
         }
+
+        private void conditionCbx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string condition = conditionCbx.Items[conditionCbx.SelectedIndex].ToString();
+
+            if (condition == "學年度/學期")
+            {
+                integerInput1.Visible = true;
+                integerInput2.Visible = true;
+                starTime.Visible = false;
+                endTime.Visible = false;
+                labelX2.Text = "學年度";
+                labelX3.Text = "學期";
+            }
+            else
+            {
+                integerInput1.Visible = false;
+                integerInput2.Visible = false;
+                starTime.Visible = true;
+                endTime.Visible = true;
+                labelX2.Text = "開始時間";
+                labelX3.Text = "結束時間";
+            }
+        }
     }
 
     public enum 比數 { 大於等於, 小於, 無資料 }
@@ -523,5 +575,6 @@ namespace K12.Service.Learning.Modules
         public int 學期 { get; set; }
         public decimal 時數 { get; set; }
         public bool 是否使用學年期 { get; set; }
+        public bool 是否使用日期區間 { get; set; }
     }
 }
