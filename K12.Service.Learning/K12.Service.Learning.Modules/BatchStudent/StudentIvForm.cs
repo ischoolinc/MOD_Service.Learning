@@ -135,8 +135,8 @@ namespace K12.Service.Learning.Modules
 SELECT
     ref_student_id
     , SUM(hours) as SUM_hours
-    , school_year
-    , semester 
+    --, school_year
+    --, semester 
 FROM
     $k12.service.learning.record
 WHERE
@@ -144,8 +144,8 @@ WHERE
     AND occur_date <= '{1}'::TIMESTAMP
 GROUP BY 
     ref_student_id
-    ,school_year
-    ,semester
+    --,school_year
+    --,semester
                     ", starTime.Text,endTime.Text);
                 dt = tool._Q.Select(sql);
             }
