@@ -44,6 +44,7 @@ namespace K12.Service.Learning.Modules
             #region Init DataGridView
             collandOut.Items.Add("校內");
             collandOut.Items.Add("校外");
+            collandOut.Width = 90;
             //取得學生
             StudentRecord student = K12.Data.Student.SelectByID(K12.Presentation.NLDPanels.Student.SelectedSource[0]);
 
@@ -54,9 +55,10 @@ namespace K12.Service.Learning.Modules
             //studentNameLb.Tag = student.ID;
             labelX1.Text = string.Format("班級 :  {0}    座號 :  {1}    學號 :  {2}    姓名 :  {3} ",student.Class.Name,student.SeatNo,student.StudentNumber,student.Name);
             labelX1.Tag = student.ID;
+            labelX1.Width = 450;
             _student = student.Name;
             // 事由
-            detail.Width = 210;
+            detail.Width = 150;
             AccessHelper access = new AccessHelper();
             List<DigitalCodeRecord> dcrList = access.Select<DigitalCodeRecord>();
             foreach (DigitalCodeRecord dcr in dcrList)
@@ -67,7 +69,7 @@ namespace K12.Service.Learning.Modules
             QueryHelper qh = new QueryHelper();
             string sql = "SELECT DISTINCT organizers FROM $k12.service.learning.record ORDER BY organizers";
             DataTable dt = qh.Select(sql);
-            organizers.Width = 110;
+            organizers.Width = 160;
             foreach (DataRow dr in dt.Rows)
             {
                 organizers.Items.Add("" + dr["organizers"]);
