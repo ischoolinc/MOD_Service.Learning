@@ -29,6 +29,8 @@ namespace K12.Service.Learning.Modules
 
         List<string> OrganizersList { get; set; }
 
+
+
         /// <summary>
         /// 傳入獎勵或懲戒字串,以決定模式
         /// </summary>
@@ -53,7 +55,7 @@ namespace K12.Service.Learning.Modules
             //studentNoLb.Text = student.StudentNumber;
             //studentNameLb.Text = student.Name;
             //studentNameLb.Tag = student.ID;
-            labelX1.Text = string.Format("班級 :  {0}    座號 :  {1}    學號 :  {2}    姓名 :  {3} ",student.Class.Name,student.SeatNo,student.StudentNumber,student.Name);
+            labelX1.Text = string.Format("班級 :  {0}    座號 :  {1}    學號 :  {2}    姓名 :  {3} ", student.Class.Name, student.SeatNo, student.StudentNumber, student.Name);
             labelX1.Tag = student.ID;
             labelX1.Width = 450;
             _student = student.Name;
@@ -81,42 +83,106 @@ namespace K12.Service.Learning.Modules
         //儲存
         private void buttonX2_Click(object sender, EventArgs e)
         {
+            string errorText = "";
             var pass = true;
+            int count = 0;
+            int totalCount = dataGridViewX1.Rows.Count;
+            bool atLeastOneData = false;
             foreach (DataGridViewRow datarow in dataGridViewX1.Rows)
             {
-                if (datarow.Cells["count"].Value == null && datarow.Cells["detail"].Value == null && datarow.Cells["organizers"].Value == null)
+                count++;
+                //如果該行資料行必填欄位皆空白>>繼續
+                if (datarow.Cells["OccurDate"].Value == null && datarow.Cells["count"].Value == null && datarow.Cells["detail"].Value == null && datarow.Cells["organizers"].Value == null&& count!=1)
                 {
                     continue;
                 }
-                if (!CheckIntError())
+                //【發生日期】【時數】【事由】【主辦單位】 為必填欄位 如果皆填寫好 >>驗證時數格式是否為數字
+                if (datarow.Cells["OccurDate"].Value != null && datarow.Cells["count"].Value != null && datarow.Cells["detail"].Value != null && datarow.Cells["organizers"].Value != null)
                 {
-                    MsgBox.Show("輸入[時數]型態錯誤,請重新修正後再儲存!!");
-                    pass = false;
-                    break;
-                }
-
-                if (CheckOrganizers())
-                {
-                    DialogResult dr = MsgBox.Show("部份學生資料未輸入主辦單位,是否繼續儲存?", MessageBoxButtons.YesNo, MessageBoxDefaultButton.Button1);
-                    if (dr == System.Windows.Forms.DialogResult.No)
-                    {
+                    //確認時數是否為數字>>若不是>>跳出視窗
+                    if (!CheckIntError())
+                    {   
+                        MsgBox.Show("輸入[時數]型態錯誤,請重新修正後再儲存!!");
                         pass = false;
                         break;
                     }
-                }
-
-                if (CheckReasonError())
-                {
-                    DialogResult dr = MsgBox.Show("部份學生資料未輸入事由,是否繼續儲存?", MessageBoxButtons.YesNo, MessageBoxDefaultButton.Button1);
-                    if (dr == System.Windows.Forms.DialogResult.No)
+                    //若是數字(該筆資料完整)>>確認下一行
+                    else
                     {
-                        pass = false;
-                        break;
+                        atLeastOneData = true;
+                        continue;
                     }
                 }
+                //如果有必填欄未填
+                else
+                {
+                    //日期 沒填
+                    if (datarow.Cells["OccurDate"].Value == null)
+                    {
+                        errorText += " [發生日期]";
+                        pass = false;
+                    }
+                    //時數 沒填
+                    if (datarow.Cells["count"].Value == null)
+                    {
+                        if (!errorText.Contains("[時數]"))
+                        { errorText += " [時數]"; }
+                        pass = false;
+                    }
+                    //事由 沒填
+                    if (datarow.Cells["detail"].Value == null)
+                    {
+                        if (!errorText.Contains("[事由]"))
+                        { errorText += " [事由]"; }
+                        pass = false;
+                    }
+                    //主辦單位 未填
+                    if (datarow.Cells["organizers"].Value == null)
+                    {
+                        if (!errorText.Contains("[主辦單位]"))
+                        { errorText += " [主辦單位]"; }
+                        pass = false;
+                    }
+                
+
+                    //if (CheckOrganizers())
+                    //{
+                    //    DialogResult dr = MsgBox.Show("部份學生資料未輸入主辦單位,是否繼續儲存?", MessageBoxButtons.YesNo, MessageBoxDefaultButton.Button1);
+                    //    if (dr == System.Windows.Forms.DialogResult.No)
+                    //    {
+                    //        pass = false;
+                    //        break;
+                    //    }
+                    //}
+
+                }
+
+                //if (!CheckIntError())
+                //{
+                //    MsgBox.Show("輸入[時數]型態錯誤,請重新修正後再儲存!!");
+                //    pass = false;
+                //    break;
+                //}
+
+                //if (CheckReasonError())
+                //{
+                //    DialogResult dr = MsgBox.Show("部份學生資料未輸入事由,是否繼續儲存?", MessageBoxButtons.YesNo, MessageBoxDefaultButton.Button1);
+                //    if (dr == System.Windows.Forms.DialogResult.No)
+                //    {
+                //        pass = false;
+                //        break;
+                //    }
+                //}
             }
-            if (pass)
+
+            if (errorText != "")
             {
+                MsgBox.Show($"部份資料未輸入：{errorText}，請輸入完整再送出");
+            }
+            //如果資料驗證沒有錯誤
+            if (pass && atLeastOneData)
+            {   
+                //讀取dataGridView資料
                 List<SLRecord> MeritList = GetSLRList();
                 try
                 {
@@ -134,9 +200,10 @@ namespace K12.Service.Learning.Modules
 
                 this.Close();
             }
+
         }
 
-        //取得獎勵資料
+        //取得服務學習資料
         private List<SLRecord> GetSLRList()
         {
             sb.AppendLine("批次「服務學習記錄」快速登錄作業");
@@ -164,6 +231,7 @@ namespace K12.Service.Learning.Modules
 
                     mr.InternalOrExternal = "" + row.Cells["collandOut"].Value;  //校內外
 
+
                     mr.OccurDate = DateTime.Parse("" + row.Cells["occurDate"].Value);  // 發生日期
 
                     mr.RegisterDate = DateTime.Today; // 紀錄日期
@@ -171,6 +239,7 @@ namespace K12.Service.Learning.Modules
                     mr.SchoolYear = int.Parse("" + row.Cells["schoolYear"].Value); // 學年度
 
                     mr.Semester = int.Parse("" + row.Cells["semester"].Value); // 學期
+
 
                     SLRList.Add(mr);
 
@@ -181,7 +250,7 @@ namespace K12.Service.Learning.Modules
                     + "備註「" + row.Cells[4].Value + "」"
                       + "校內外「" + row.Cells["collandOut"].Value + "」");
                 }
-                
+
             }
             return SLRList;
         }
@@ -192,9 +261,9 @@ namespace K12.Service.Learning.Modules
 
             foreach (DataGridViewRow row in dataGridViewX1.Rows)
             {
-                if (row.Cells["count"].Value != null && row.Cells["detail"].Value != null )
+                if (row.Cells["count"].Value != null && row.Cells["detail"].Value != null)
                 {
-                    if (("" + row.Cells[2].Value).Trim() == "")
+                    if (row.Cells["organizers"].Value == null || ("" + row.Cells["organizers"].Value).Trim() == "")
                     {
                         returnTrue = true;
                     }
@@ -266,7 +335,7 @@ namespace K12.Service.Learning.Modules
             //不是標題列
             if (e.ColumnIndex != -1 && e.RowIndex != -1)
             {
-                //缺曠數量
+                //時數數量
                 if (e.ColumnIndex == count.Index)
                 {
                     DataGridViewCell cell = dataGridViewX1.Rows[e.RowIndex].Cells[e.ColumnIndex];
@@ -313,7 +382,7 @@ namespace K12.Service.Learning.Modules
                 {
                     int sy = 0;
                     int s = 0;
-                    int year = DateTime.Parse( dataGridViewX1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value + "").Year;
+                    int year = DateTime.Parse(dataGridViewX1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value + "").Year;
                     int month = DateTime.Parse(dataGridViewX1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value + "").Month;
 
                     if (month >= 8)
@@ -364,7 +433,7 @@ namespace K12.Service.Learning.Modules
         {
             if (e.ColumnIndex == 8 && e.RowIndex >= 0)
             {
-                
+
             }
         }
 
@@ -380,6 +449,10 @@ namespace K12.Service.Learning.Modules
                 2018 / 8 / 1 以後為 107學年 第1學期"
                 );
         }
+
+
+
+
     }
 }
 

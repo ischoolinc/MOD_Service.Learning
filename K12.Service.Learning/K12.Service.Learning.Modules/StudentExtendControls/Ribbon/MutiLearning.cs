@@ -159,7 +159,7 @@ namespace K12.Service.Learning.Modules
             this.Close();
         }
 
-        //取得獎勵資料
+        //取得服務學習資料
         private List<SLRecord> GetSLRList()
         {
             sb.AppendLine("批次「服務學習記錄」快速登錄作業");
@@ -170,7 +170,7 @@ namespace K12.Service.Learning.Modules
             sb.AppendLine("詳細資料：");
 
             List<SLRecord> SLRList = new List<SLRecord>();
-            //每一位學生的獎懲資料
+            //每一位學生的服務學習資料
             foreach (DataGridViewRow row in dataGridViewX1.Rows)
             {
                 K12.Data.StudentRecord student = (K12.Data.StudentRecord)row.Tag;
