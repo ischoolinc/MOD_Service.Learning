@@ -224,7 +224,10 @@ namespace K12.Service.Learning.Modules
                     mr.RefStudentID = "" + labelX1.Tag; //學生ID
 
                     mr.Hours = decimal.Parse("" + row.Cells["count"].Value); //時數
-                    mr.Reason = "" + row.Cells["detail"].Value; //事由
+
+                    string strDetail = row.Cells["detail"].Value.ToString();//處理事由代號
+
+                    mr.Reason=strDetail.Remove(0, strDetail.IndexOf('-') + 1);//事由
 
                     mr.Organizers = "" + row.Cells["organizers"].Value;  //主辦單位
                     mr.Remark = "" + row.Cells[4].Value;  //備註
