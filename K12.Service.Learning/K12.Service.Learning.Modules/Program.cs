@@ -57,155 +57,197 @@ namespace K12.Service.Learning.Modules
             if (UserPermission.Editable)
                 K12.Presentation.NLDPanels.Student.AddDetailBulider(new FISCA.Presentation.DetailBulider<LearningItem>());
 
-            RibbonBarItem insert = MotherForm.RibbonBarItems["學生", "學務"];
-            insert["服務學習"].Image = Properties.Resources.flip_vertical_clock_64;
-            insert["服務學習"].Size = RibbonBarButton.MenuButtonSize.Medium;
-            insert["服務學習"].Enable = false;
-            insert["服務學習"].Click += delegate
-            {
-                // 單選學生
-                if (K12.Presentation.NLDPanels.Student.SelectedSource.Count == 1)
-                {
-                    SingleStudentLearning acf = new SingleStudentLearning();
-                    acf.ShowDialog();
-                }
-                // 多選學生
-                if (K12.Presentation.NLDPanels.Student.SelectedSource.Count > 1)
-                {
-                    MutiLearning acf = new MutiLearning();
-                    acf.ShowDialog();
-                }
-                
-            };
-
-            if (Permissions.服務學習快速登錄權限)
-            {
-                //必須要有權限,才會出現在滑鼠右鍵
-                K12.Presentation.NLDPanels.Student.ListPaneContexMenu["服務學習"].Image = Properties.Resources.flip_vertical_clock_64;
-                K12.Presentation.NLDPanels.Student.ListPaneContexMenu["服務學習"].Enable = false;
-                K12.Presentation.NLDPanels.Student.ListPaneContexMenu["服務學習"].Click += delegate
-                {
-                    // 單選學生
-                    if (K12.Presentation.NLDPanels.Student.SelectedSource.Count == 1)
-                    {
-                        SingleStudentLearning acf = new SingleStudentLearning();
-                        acf.ShowDialog();
-                    }
-                    // 多選學生
-                    if (K12.Presentation.NLDPanels.Student.SelectedSource.Count > 1)
-                    {
-                        MutiLearning acf = new MutiLearning();
-                        acf.ShowDialog();
-                    }
-                };
-            }
-
-            K12.Presentation.NLDPanels.Student.SelectedSourceChanged += delegate
+            #region 必須要有權限,才會出現在滑鼠右鍵
             {
                 if (Permissions.服務學習快速登錄權限)
                 {
-                    bool a = K12.Presentation.NLDPanels.Student.SelectedSource.Count > 0;
-
-                    K12.Presentation.NLDPanels.Student.ListPaneContexMenu["服務學習"].Enable = a;
-                    insert["服務學習"].Enable = a;
+                    K12.Presentation.NLDPanels.Student.ListPaneContexMenu["服務學習"].Image = Properties.Resources.flip_vertical_clock_64;
+                    K12.Presentation.NLDPanels.Student.ListPaneContexMenu["服務學習"].Enable = false;
+                    K12.Presentation.NLDPanels.Student.ListPaneContexMenu["服務學習"].Click += delegate
+                    {
+                        // 單選學生
+                        if (K12.Presentation.NLDPanels.Student.SelectedSource.Count == 1)
+                        {
+                            SingleStudentLearning acf = new SingleStudentLearning();
+                            acf.ShowDialog();
+                        }
+                        // 多選學生
+                        if (K12.Presentation.NLDPanels.Student.SelectedSource.Count > 1)
+                        {
+                            MutiLearning acf = new MutiLearning();
+                            acf.ShowDialog();
+                        }
+                    };
                 }
-            };
+            }
+            #endregion
 
-            RibbonBarItem reportBar = MotherForm.RibbonBarItems["學生", "資料統計"];
-            reportBar["報表"]["學務相關報表"]["服務學習時數證明單"].Enable = Permissions.服務學習_證明單權限;
-            reportBar["報表"]["學務相關報表"]["服務學習時數證明單"].Click += delegate
+            #region 服務學習功能按鈕是否開放點選
             {
-                SLReportForm acf = new SLReportForm();
-                acf.ShowDialog();
-            };
+                K12.Presentation.NLDPanels.Student.SelectedSourceChanged += delegate
+                {
+                    if (Permissions.服務學習快速登錄權限)
+                    {
+                        bool useable = K12.Presentation.NLDPanels.Student.SelectedSource.Count > 0;
 
-            MenuButton rbItemExport = MotherForm.RibbonBarItems["學生", "資料統計"]["匯出"]["學務相關匯出"];
-            rbItemExport["匯出服務學習記錄"].Enable = Permissions.匯出服務學習記錄權限;
-            rbItemExport["匯出服務學習記錄"].Click += delegate
+                        K12.Presentation.NLDPanels.Student.ListPaneContexMenu["服務學習"].Enable = useable;
+                        MotherForm.RibbonBarItems["學生", "學務"]["服務學習"].Enable = useable;
+                    }
+                };
+            }
+            #endregion
+
+
+            MotherForm.RibbonBarItems["學生", "學務"]["服務學習"].Image = Properties.Resources.flip_vertical_clock_64;
+            MotherForm.RibbonBarItems["學生", "學務"]["服務學習"].Size = RibbonBarButton.MenuButtonSize.Medium;
+            MotherForm.RibbonBarItems["學務作業", "批次作業/查詢"]["服務學習時數"].Image = Properties.Resources.lamp_clock_64;
+            MotherForm.RibbonBarItems["學務作業", "批次作業/查詢"]["服務學習時數"].Size = RibbonBarButton.MenuButtonSize.Medium;
+
+            #region 學生
             {
-                SmartSchool.API.PlugIn.Export.Exporter exporter = new ExportSLRecord();
-                ExportStudentV2 wizard = new ExportStudentV2(exporter.Text, exporter.Image);
-                exporter.InitializeExport(wizard);
-                wizard.ShowDialog();
-            };
+                #region 服務學習
+                {
+                    MotherForm.RibbonBarItems["學生", "學務"]["服務學習"].Enable = false;
+                    MotherForm.RibbonBarItems["學生", "學務"]["服務學習"].Click += delegate
+                    {
+                        // 單選學生
+                        if (K12.Presentation.NLDPanels.Student.SelectedSource.Count == 1)
+                        {
+                            SingleStudentLearning acf = new SingleStudentLearning();
+                            acf.ShowDialog();
+                        }
+                        // 多選學生
+                        if (K12.Presentation.NLDPanels.Student.SelectedSource.Count > 1)
+                        {
+                            MutiLearning acf = new MutiLearning();
+                            acf.ShowDialog();
+                        }
 
-            MenuButton rbItemImport = MotherForm.RibbonBarItems["學生", "資料統計"]["匯入"]["學務相關匯入"];
-            rbItemImport["匯入服務學習記錄(新增)"].Enable = Permissions.匯入服務學習記錄權限;
-            rbItemImport["匯入服務學習記錄(新增)"].Click += delegate
-            {
-                ImportServiceLearning wizard = new ImportServiceLearning();
-                wizard.Execute();
-            };
-
-            rbItemImport = MotherForm.RibbonBarItems["學生", "資料統計"]["匯入"]["學務相關匯入"];
-            rbItemImport["匯入服務學習記錄(更新)"].Enable = Permissions.匯入服務學習記錄權限;
-            rbItemImport["匯入服務學習記錄(更新)"].Click += delegate
-            {
-                ImportServiceLearning_up wizard = new ImportServiceLearning_up();
-                wizard.Execute();
-            };
-
-            RibbonBarItem toolSpeed = MotherForm.RibbonBarItems["學務作業", "批次作業/查詢"];
-            toolSpeed["服務學習時數"].Image = Properties.Resources.lamp_clock_64;
-
-            toolSpeed["服務學習時數"]["服務學習批次修改"].Enable = Permissions.服務學習批次修改權限;
-            //toolSpeed["服務學習時數"]["服務學習批次修改"].Image = Properties.Resources.lamp_clock_64;
-            toolSpeed["服務學習時數"]["服務學習批次修改"].Click += delegate
-            {
-
-                ServiceLearningBatch batch = new ServiceLearningBatch();
-                batch.ShowDialog();
-
-                #region shift 才能開啟功能
-                //if (Control.ModifierKeys != Keys.Shift)
-                //{
-                //}
-                //else
-                //{
-                //    if (Permissions.服務時數查詢權限)
-                //    {
-                //        StudentIvForm batch = new StudentIvForm();
-                //        batch.ShowDialog();
-                //    }
-                //    else
-                //    {
-                //        FISCA.Presentation.Controls.MsgBox.Show("您沒有權限打開進階功能!!");
-                //    }
-                //} 
+                    };
+                }
                 #endregion
-            };
 
-            RibbonBarItem toolselect = MotherForm.RibbonBarItems["學務作業", "批次作業/查詢"];
-            toolselect["服務學習時數"]["學生服務時數查詢"].Enable = Permissions.學生服務時數查詢權限;
-            //toolselect["服務學習時數"]["學生服務時數查詢"].Image = Properties.Resources.offer_b_search_64;
-            toolselect["服務學習時數"]["學生服務時數查詢"].Click += delegate
+                #region 服務學習時數證明單
+                {
+                    MotherForm.RibbonBarItems["學生", "資料統計"]["報表"]["學務相關報表"]["服務學習時數證明單"].Enable = Permissions.服務學習_證明單權限;
+                    MotherForm.RibbonBarItems["學生", "資料統計"]["報表"]["學務相關報表"]["服務學習時數證明單"].Click += delegate
+                    {
+                        SLReportForm acf = new SLReportForm();
+                        acf.ShowDialog();
+                    };
+                }
+                #endregion
+
+                #region 匯出服務學習記錄
+                {
+                    MotherForm.RibbonBarItems["學生", "資料統計"]["匯出"]["學務相關匯出"]["匯出服務學習記錄"].Enable = Permissions.匯出服務學習記錄權限;
+                    MotherForm.RibbonBarItems["學生", "資料統計"]["匯出"]["學務相關匯出"]["匯出服務學習記錄"].Click += delegate
+                    {
+                        SmartSchool.API.PlugIn.Export.Exporter exporter = new ExportSLRecord();
+                        ExportStudentV2 wizard = new ExportStudentV2(exporter.Text, exporter.Image);
+                        exporter.InitializeExport(wizard);
+                        wizard.ShowDialog();
+                    };
+                }
+                #endregion
+
+                #region 匯入服務學習記錄(新增)
+                {
+                    MotherForm.RibbonBarItems["學生", "資料統計"]["匯入"]["學務相關匯入"]["匯入服務學習記錄(新增)"].Enable = Permissions.匯入服務學習記錄權限;
+                    MotherForm.RibbonBarItems["學生", "資料統計"]["匯入"]["學務相關匯入"]["匯入服務學習記錄(新增)"].Click += delegate
+                    {
+                        ImportServiceLearning wizard = new ImportServiceLearning();
+                        wizard.Execute();
+                    };
+                }
+                #endregion
+
+                #region 匯入服務學習記錄(更新)
+                {
+                    MotherForm.RibbonBarItems["學生", "資料統計"]["匯入"]["學務相關匯入"]["匯入服務學習記錄(更新)"].Enable = Permissions.匯入服務學習記錄權限;
+                    MotherForm.RibbonBarItems["學生", "資料統計"]["匯入"]["學務相關匯入"]["匯入服務學習記錄(更新)"].Click += delegate
+                    {
+                        ImportServiceLearning_up wizard = new ImportServiceLearning_up();
+                        wizard.Execute();
+                    };
+                }
+                #endregion
+            }
+            #endregion
+
+            #region 學務作業
             {
-                StudentIvForm batch = new StudentIvForm();
-                batch.ShowDialog();
-            };
+                #region 服務學習批次修改
+                {
+                    MotherForm.RibbonBarItems["學務作業", "批次作業/查詢"]["服務學習時數"]["服務學習批次修改"].Enable = Permissions.服務學習批次修改權限;
+                    MotherForm.RibbonBarItems["學務作業", "批次作業/查詢"]["服務學習時數"]["服務學習批次修改"].Click += delegate
+                    {
 
-            RibbonBarItem toolCode = MotherForm.RibbonBarItems["學務作業", "基本設定"];
-            toolCode["對照/代碼"]["服務學習事由代碼表"].Enable = Permissions.服務學習事由代碼表權限;
-            toolCode["對照/代碼"]["服務學習事由代碼表"].Click += delegate
+                        ServiceLearningBatch batch = new ServiceLearningBatch();
+                        batch.ShowDialog();
+
+                        #region shift 才能開啟功能
+                        //if (Control.ModifierKeys != Keys.Shift)
+                        //{
+                        //}
+                        //else
+                        //{
+                        //    if (Permissions.服務時數查詢權限)
+                        //    {
+                        //        StudentIvForm batch = new StudentIvForm();
+                        //        batch.ShowDialog();
+                        //    }
+                        //    else
+                        //    {
+                        //        FISCA.Presentation.Controls.MsgBox.Show("您沒有權限打開進階功能!!");
+                        //    }
+                        //} 
+                        #endregion
+                    };
+                }
+                #endregion
+
+                #region 學生服務時數查詢
+                {
+                    MotherForm.RibbonBarItems["學務作業", "批次作業/查詢"]["服務學習時數"]["學生服務時數查詢"].Enable = Permissions.學生服務時數查詢權限;
+                    MotherForm.RibbonBarItems["學務作業", "批次作業/查詢"]["服務學習時數"]["學生服務時數查詢"].Click += delegate
+                    {
+                        StudentIvForm batch = new StudentIvForm();
+                        batch.ShowDialog();
+                    };
+                }
+                #endregion
+
+                #region 服務學習事由代碼表
+                {
+                    MotherForm.RibbonBarItems["學務作業", "基本設定"]["對照/代碼"]["服務學習事由代碼表"].Enable = Permissions.服務學習事由代碼表權限;
+                    MotherForm.RibbonBarItems["學務作業", "基本設定"]["對照/代碼"]["服務學習事由代碼表"].Click += delegate
+                    {
+                        DigitalCodeForm batch = new DigitalCodeForm();
+                        batch.ShowDialog();
+                    };
+                }
+                #endregion
+            }
+            #endregion
+            
+            #region 功能權限
             {
-                DigitalCodeForm batch = new DigitalCodeForm();
-                batch.ShowDialog();
-            };
+                Catalog ribbon = RoleAclSource.Instance["學生"]["資料項目"];
+                ribbon.Add(new FISCA.Permission.DetailItemFeature(Permissions.服務學習記錄, "服務學習記錄"));
 
+                ribbon = RoleAclSource.Instance["學生"]["功能按鈕"];
+                ribbon.Add(new RibbonFeature(Permissions.服務學習快速登錄, "服務學習快速登錄"));
+                ribbon.Add(new RibbonFeature(Permissions.服務學習_證明單, "服務學習時數證明單"));
+                ribbon.Add(new RibbonFeature(Permissions.匯出服務學習記錄, "匯出服務學習記錄"));
+                ribbon.Add(new RibbonFeature(Permissions.匯入服務學習記錄, "匯入服務學習記錄"));
 
-            Catalog ribbon = RoleAclSource.Instance["學生"]["資料項目"];
-            ribbon.Add(new FISCA.Permission.DetailItemFeature(Permissions.服務學習記錄, "服務學習記錄"));
-
-            ribbon = RoleAclSource.Instance["學生"]["功能按鈕"];
-            ribbon.Add(new RibbonFeature(Permissions.服務學習快速登錄, "服務學習快速登錄"));
-            ribbon.Add(new RibbonFeature(Permissions.服務學習_證明單, "服務學習時數證明單"));
-            ribbon.Add(new RibbonFeature(Permissions.匯出服務學習記錄, "匯出服務學習記錄"));
-            ribbon.Add(new RibbonFeature(Permissions.匯入服務學習記錄, "匯入服務學習記錄"));
-
-            ribbon = RoleAclSource.Instance["學務作業"]["功能按鈕"];
-            ribbon.Add(new RibbonFeature(Permissions.服務學習批次修改, "服務學習批次修改"));
-            ribbon.Add(new RibbonFeature(Permissions.學生服務時數查詢, "學生服務時數查詢"));
-            ribbon.Add(new RibbonFeature(Permissions.服務學習事由代碼表, "服務學習事由代碼表"));
+                ribbon = RoleAclSource.Instance["學務作業"]["功能按鈕"];
+                ribbon.Add(new RibbonFeature(Permissions.服務學習批次修改, "服務學習批次修改"));
+                ribbon.Add(new RibbonFeature(Permissions.學生服務時數查詢, "學生服務時數查詢"));
+                ribbon.Add(new RibbonFeature(Permissions.服務學習事由代碼表, "服務學習事由代碼表"));
+            }
+            #endregion
         }
 
     }
