@@ -25,7 +25,7 @@ namespace K12.Service.Learning.Modules
 
         Dictionary<string, StudentRecord> StudentDic = new Dictionary<string, StudentRecord>();
 
-        List<string> SchoolYearNameList = new List<string>() { "學年度/學期1", "學年度/學期2", "學年度/學期3", "學年度/學期4", "學年度/學期5", "學年度/學期6", "學年度/學期7", "學年度/學期8", "學年度/學期9", "學年度/學期10" };
+        List<string> SchoolYearNameList = new List<string>() { "學年度/學期1", "學年度/學期2", "學年度/學期3", "學年度/學期4", "學年度/學期5", "學年度/學期6", "學年度/學期7", "學年度/學期8", "學年度/學期9", "學年度/學期10", "學年度/學期11", "學年度/學期12" };
 
         /// <summary>
         /// 預設列印模式(1)所有資料(2)依學年度(3)依
@@ -334,7 +334,7 @@ namespace K12.Service.Learning.Modules
 
             for (int x = 0; x < SchoolYearTotal.Count; x++)
             {
-                if (x > 10)
+                if (x > 11)
                     break;
 
                 name.Add(SchoolYearNameList[x]);
