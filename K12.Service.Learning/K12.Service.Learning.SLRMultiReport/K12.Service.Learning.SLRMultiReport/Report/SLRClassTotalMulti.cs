@@ -10,6 +10,7 @@ using FISCA.Presentation.Controls;
 using K12.Presentation;
 using System.Diagnostics;
 using Aspose.Words;
+using Aspose.Words.Tables;
 
 namespace K12.Service.Learning.SLRMultiReport
 {
@@ -45,11 +46,11 @@ namespace K12.Service.Learning.SLRMultiReport
                _BGW.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BGW_RunWorkerCompleted);
 
                // 取得設定檔
-               Campus.Report.ReportConfiguration reportConfig = new Campus.Report.ReportConfiguration(_SLRClassTotalMulti_ReportCofig);
+               Campus.Report2014.ReportConfiguration reportConfig = new Campus.Report2014.ReportConfiguration(_SLRClassTotalMulti_ReportCofig);
                // 如果沒有設定過樣板
                if (reportConfig.Template == null)
                {
-                    reportConfig.Template = new Campus.Report.ReportTemplate(Properties.Resources.班級服務學習統計表_多學期_範本, Campus.Report.TemplateType.Word);
+                    reportConfig.Template = new Campus.Report2014.ReportTemplate(Properties.Resources.班級服務學習統計表_多學期_範本, Campus.Report2014.TemplateType.docx);
                     reportConfig.Save();
                }
 
@@ -57,9 +58,9 @@ namespace K12.Service.Learning.SLRMultiReport
           private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
           {
                //取得設定檔
-               Campus.Report.ReportConfiguration reportConfig = new Campus.Report.ReportConfiguration(_SLRClassTotalMulti_ReportCofig);
+               Campus.Report2014.ReportConfiguration reportConfig = new Campus.Report2014.ReportConfiguration(_SLRClassTotalMulti_ReportCofig);
                //畫面內容(範本內容,預設樣式
-               Campus.Report.TemplateSettingForm TemplateForm = new Campus.Report.TemplateSettingForm(reportConfig.Template, new Campus.Report.ReportTemplate(Properties.Resources.班級服務學習統計表_多學期_範本, Campus.Report.TemplateType.Word));
+               Campus.Report2014.TemplateSettingForm TemplateForm = new Campus.Report2014.TemplateSettingForm(reportConfig.Template, new Campus.Report2014.ReportTemplate(Properties.Resources.班級服務學習統計表_多學期_範本, Campus.Report2014.TemplateType.docx));
                //預設名稱
                TemplateForm.DefaultFileName = "班級服務學習統計表_多學期(範本)";
                //如果回傳為OK
@@ -102,7 +103,7 @@ namespace K12.Service.Learning.SLRMultiReport
                List<ClassTotalObj> classList = GetClassOBJ(classIDList);
 
                //取得設定檔
-               Campus.Report.ReportConfiguration ConfigurationInCadre = new Campus.Report.ReportConfiguration(_SLRClassTotalMulti_ReportCofig);
+               Campus.Report2014.ReportConfiguration ConfigurationInCadre = new Campus.Report2014.ReportConfiguration(_SLRClassTotalMulti_ReportCofig);
                _template = ConfigurationInCadre.Template.ToDocument();
                _doc.Sections.Clear();
 
@@ -176,7 +177,7 @@ namespace K12.Service.Learning.SLRMultiReport
                     {
                          SaveFileDialog SaveFileDialog1 = new SaveFileDialog();
 
-                         SaveFileDialog1.Filter = "Word (*.doc)|*.doc|所有檔案 (*.*)|*.*";
+                         SaveFileDialog1.Filter = "Word (*.docx)|*.docx|所有檔案 (*.*)|*.*";
                          SaveFileDialog1.FileName = "班級服務學習統計表(多學期)";
 
                          if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -190,10 +191,10 @@ namespace K12.Service.Learning.SLRMultiReport
                               return;
                          }
                     }
-                    catch
+                    catch(Exception ex)
                     {
 
-                         FISCA.Presentation.Controls.MsgBox.Show("檔案儲存錯誤,請檢查檔案是否開啟中!!");
+                         FISCA.Presentation.Controls.MsgBox.Show("檔案儲存錯誤：\n" + ex.Message);
                          return;
                     }
 
@@ -201,7 +202,7 @@ namespace K12.Service.Learning.SLRMultiReport
                }
                else
                {
-                    MsgBox.Show("列印發生錯誤:\n" + e.Error.Message);
+                    MsgBox.Show("列印發生錯誤：\n" + e.Error.Message);
                     return;
                }
           }

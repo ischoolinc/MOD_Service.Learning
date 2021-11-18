@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="班級服務學習統計表_多學期_2021範本_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\班級服務學習統計表_多學期(2021範本).docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="班級服務學習統計表_多學期_範本" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\班級服務學習統計表_多學期(範本).doc;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

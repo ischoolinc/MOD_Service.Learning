@@ -31,21 +31,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Words">
-      <HintPath>..\..\..\..\..\..\..\ischool desktop\modules\Campus\Aspose.Words.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Aspose.Words_201402">
+      <HintPath>Library\Aspose.Words_201402.dll</HintPath>
     </Reference>
     <Reference Include="Campus.Configuration">
       <HintPath>..\..\..\..\..\..\..\ischool desktop\modules\Campus\Campus.Configuration.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Campus.Report">
-      <HintPath>..\..\..\..\..\..\..\ischool desktop\modules\Campus\Campus.Report.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Campus.Report2014">
+      <HintPath>Library\Campus.Report2014.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\ischool desktop\components\DevComponents.DotNetBar2.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="FISCA">
       <HintPath>..\..\..\..\..\..\..\ischool desktop\kernel\FISCA.dll</HintPath>
@@ -142,6 +141,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\班級服務學習統計表_多學期%282021範本%29.docx" />
     <None Include="Resources\班級服務學習統計表_多學期%28範本%29.doc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
