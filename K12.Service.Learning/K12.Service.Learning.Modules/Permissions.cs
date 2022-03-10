@@ -12,7 +12,7 @@ namespace K12.Service.Learning.Modules
         {
             get
             {
-                return FISCA.Permission.UserAcl.Current[服務學習記錄].Executable;
+                      return FISCA.Permission.UserAcl.Current[服務學習記錄].Executable;
             }
         }
 

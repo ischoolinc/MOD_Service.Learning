@@ -59,12 +59,12 @@
             this.修改時數ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.修改學年度學期ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.修改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.批次修改備註ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.刪除選擇資料ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -272,7 +272,7 @@
             this.toolStripSeparator3,
             this.刪除選擇資料ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 314);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 292);
             // 
             // 加入待處理ToolStripMenuItem
             // 
@@ -340,6 +340,13 @@
             this.修改ToolStripMenuItem.Text = "批次修改主辦單位";
             this.修改ToolStripMenuItem.Click += new System.EventHandler(this.批次修改主辦單位ToolStripMenuItem_Click);
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(214, 22);
+            this.toolStripMenuItem3.Text = "批次修改校內校外";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
             // 批次修改備註ToolStripMenuItem
             // 
             this.批次修改備註ToolStripMenuItem.Name = "批次修改備註ToolStripMenuItem";
@@ -370,13 +377,6 @@
             this.刪除選擇資料ToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.刪除選擇資料ToolStripMenuItem.Text = "立即刪除選擇資料";
             this.刪除選擇資料ToolStripMenuItem.Click += new System.EventHandler(this.刪除選擇資料ToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(214, 22);
-            this.toolStripMenuItem3.Text = "批次修改校內校外";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // btnExit
             // 
@@ -849,7 +849,7 @@
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(198, 487);
+            this.labelX2.Location = new System.Drawing.Point(192, 487);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(122, 21);
             this.labelX2.TabIndex = 10;
@@ -865,7 +865,7 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(357, 487);
+            this.labelX1.Location = new System.Drawing.Point(327, 487);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(100, 21);
             this.labelX1.TabIndex = 11;

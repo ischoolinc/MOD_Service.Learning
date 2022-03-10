@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.colClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,12 +61,13 @@
             this.starTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.conditionCbx = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
-            this.comboItem1 = new DevComponents.Editors.ComboItem();
-            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.btnSendMessage = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.groupPanel1.SuspendLayout();
@@ -85,11 +86,11 @@
             this.btnExit.AutoSize = true;
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExit.Location = new System.Drawing.Point(601, 498);
+            this.btnExit.Location = new System.Drawing.Point(608, 591);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 25);
             this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnExit.TabIndex = 0;
+            this.btnExit.TabIndex = 9;
             this.btnExit.Text = "離開";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -112,23 +113,24 @@
             this.colSemester,
             this.colNumber});
             this.dataGridViewX1.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(10, 126);
+            this.dataGridViewX1.Location = new System.Drawing.Point(10, 133);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(664, 366);
-            this.dataGridViewX1.TabIndex = 2;
+            this.dataGridViewX1.Size = new System.Drawing.Size(673, 441);
+            this.dataGridViewX1.TabIndex = 5;
             this.dataGridViewX1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewX1_CellMouseDoubleClick);
+            this.dataGridViewX1.SelectionChanged += new System.EventHandler(this.dataGridViewX1_SelectionChanged_1);
             // 
             // colClass
             // 
@@ -152,7 +154,6 @@
             this.colStudentName.HeaderText = "姓名";
             this.colStudentName.Name = "colStudentName";
             this.colStudentName.ReadOnly = true;
-            this.colStudentName.Width = 80;
             // 
             // colStudentNumber
             // 
@@ -180,6 +181,7 @@
             // 
             // colNumber
             // 
+            this.colNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colNumber.DataPropertyName = "Hours";
             this.colNumber.HeaderText = "總時數";
             this.colNumber.Name = "colNumber";
@@ -264,7 +266,7 @@
             // 
             this.groupPanel1.StyleMouseOver.Class = "";
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel1.TabIndex = 3;
+            this.groupPanel1.TabIndex = 1;
             // 
             // textBoxX1
             // 
@@ -276,7 +278,7 @@
             this.textBoxX1.Location = new System.Drawing.Point(214, 10);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.Size = new System.Drawing.Size(49, 25);
-            this.textBoxX1.TabIndex = 4;
+            this.textBoxX1.TabIndex = 2;
             this.textBoxX1.Text = "6";
             this.textBoxX1.TextChanged += new System.EventHandler(this.textBoxX1_TextChanged);
             // 
@@ -289,11 +291,14 @@
             this.checkBoxX2.BackgroundStyle.Class = "";
             this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.checkBoxX2.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.checkBoxX2.Location = new System.Drawing.Point(117, 42);
+            this.checkBoxX2.Checked = true;
+            this.checkBoxX2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxX2.CheckValue = "Y";
+            this.checkBoxX2.Location = new System.Drawing.Point(117, 13);
             this.checkBoxX2.Name = "checkBoxX2";
             this.checkBoxX2.Size = new System.Drawing.Size(54, 21);
             this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX2.TabIndex = 7;
+            this.checkBoxX2.TabIndex = 3;
             this.checkBoxX2.Text = "小於";
             this.checkBoxX2.CheckedChanged += new System.EventHandler(this.checkBoxX2_CheckedChanged);
             // 
@@ -308,7 +313,7 @@
             this.labelX1.Location = new System.Drawing.Point(10, 12);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(101, 21);
-            this.labelX1.TabIndex = 9;
+            this.labelX1.TabIndex = 0;
             this.labelX1.Text = "服務學習時數：";
             // 
             // checkBoxX3
@@ -320,11 +325,11 @@
             this.checkBoxX3.BackgroundStyle.Class = "";
             this.checkBoxX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.checkBoxX3.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.checkBoxX3.Location = new System.Drawing.Point(117, 72);
+            this.checkBoxX3.Location = new System.Drawing.Point(117, 74);
             this.checkBoxX3.Name = "checkBoxX3";
             this.checkBoxX3.Size = new System.Drawing.Size(67, 21);
             this.checkBoxX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX3.TabIndex = 8;
+            this.checkBoxX3.TabIndex = 4;
             this.checkBoxX3.Text = "無資料";
             this.checkBoxX3.CheckedChanged += new System.EventHandler(this.checkBoxX3_CheckedChanged);
             // 
@@ -337,14 +342,12 @@
             this.checkBoxX1.BackgroundStyle.Class = "";
             this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.checkBoxX1.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.checkBoxX1.Checked = true;
-            this.checkBoxX1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxX1.CheckValue = "Y";
-            this.checkBoxX1.Location = new System.Drawing.Point(117, 12);
+            this.checkBoxX1.Location = new System.Drawing.Point(117, 44);
             this.checkBoxX1.Name = "checkBoxX1";
             this.checkBoxX1.Size = new System.Drawing.Size(86, 21);
             this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX1.TabIndex = 6;
+            this.checkBoxX1.TabIndex = 1;
+            this.checkBoxX1.TabStop = false;
             this.checkBoxX1.Text = "大於/等於";
             this.checkBoxX1.CheckedChanged += new System.EventHandler(this.checkBoxX1_CheckedChanged);
             // 
@@ -365,7 +368,7 @@
             this.integerInput2.Name = "integerInput2";
             this.integerInput2.ShowUpDown = true;
             this.integerInput2.Size = new System.Drawing.Size(67, 25);
-            this.integerInput2.TabIndex = 13;
+            this.integerInput2.TabIndex = 7;
             this.integerInput2.Value = 1;
             this.integerInput2.Visible = false;
             // 
@@ -386,7 +389,7 @@
             this.integerInput1.Name = "integerInput1";
             this.integerInput1.ShowUpDown = true;
             this.integerInput1.Size = new System.Drawing.Size(67, 25);
-            this.integerInput1.TabIndex = 12;
+            this.integerInput1.TabIndex = 6;
             this.integerInput1.Value = 90;
             this.integerInput1.Visible = false;
             // 
@@ -402,7 +405,7 @@
             this.labelX3.Location = new System.Drawing.Point(8, 74);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(47, 21);
-            this.labelX3.TabIndex = 11;
+            this.labelX3.TabIndex = 2;
             this.labelX3.Text = "學    期";
             // 
             // labelX2
@@ -417,7 +420,7 @@
             this.labelX2.Location = new System.Drawing.Point(8, 42);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(47, 21);
-            this.labelX2.TabIndex = 10;
+            this.labelX2.TabIndex = 1;
             this.labelX2.Text = "學年度";
             // 
             // btnSelecta
@@ -429,7 +432,7 @@
             this.btnSelecta.Name = "btnSelecta";
             this.btnSelecta.Size = new System.Drawing.Size(142, 23);
             this.btnSelecta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSelecta.TabIndex = 5;
+            this.btnSelecta.TabIndex = 4;
             this.btnSelecta.Text = "查詢";
             this.btnSelecta.Click += new System.EventHandler(this.btnSelecta_Click);
             // 
@@ -440,11 +443,11 @@
             this.btnReport.AutoSize = true;
             this.btnReport.BackColor = System.Drawing.Color.Transparent;
             this.btnReport.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnReport.Location = new System.Drawing.Point(10, 498);
+            this.btnReport.Location = new System.Drawing.Point(10, 591);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(75, 25);
             this.btnReport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnReport.TabIndex = 4;
+            this.btnReport.TabIndex = 6;
             this.btnReport.Text = "匯出";
             this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
@@ -495,7 +498,7 @@
             // 
             this.groupPanel2.StyleMouseOver.Class = "";
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel2.TabIndex = 15;
+            this.groupPanel2.TabIndex = 0;
             // 
             // endTime
             // 
@@ -546,7 +549,7 @@
             this.endTime.Name = "endTime";
             this.endTime.Size = new System.Drawing.Size(109, 25);
             this.endTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.endTime.TabIndex = 17;
+            this.endTime.TabIndex = 5;
             this.endTime.Visible = false;
             // 
             // starTime
@@ -598,7 +601,7 @@
             this.starTime.Name = "starTime";
             this.starTime.Size = new System.Drawing.Size(109, 25);
             this.starTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.starTime.TabIndex = 16;
+            this.starTime.TabIndex = 4;
             this.starTime.Visible = false;
             // 
             // labelX7
@@ -611,7 +614,7 @@
             this.labelX7.Location = new System.Drawing.Point(8, 9);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(67, 23);
-            this.labelX7.TabIndex = 15;
+            this.labelX7.TabIndex = 0;
             this.labelX7.Text = "篩選條件";
             // 
             // conditionCbx
@@ -628,8 +631,16 @@
             this.conditionCbx.Name = "conditionCbx";
             this.conditionCbx.Size = new System.Drawing.Size(109, 25);
             this.conditionCbx.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.conditionCbx.TabIndex = 14;
+            this.conditionCbx.TabIndex = 3;
             this.conditionCbx.SelectedIndexChanged += new System.EventHandler(this.conditionCbx_SelectedIndexChanged);
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "學年度/學期";
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "日期區間";
             // 
             // errorProvider1
             // 
@@ -647,7 +658,7 @@
             this.labelX4.Location = new System.Drawing.Point(531, 43);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(104, 21);
-            this.labelX4.TabIndex = 17;
+            this.labelX4.TabIndex = 2;
             this.labelX4.Text = "待 處 理 學 生 ：";
             // 
             // labelX5
@@ -662,7 +673,7 @@
             this.labelX5.Location = new System.Drawing.Point(531, 70);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(101, 21);
-            this.labelX5.TabIndex = 18;
+            this.labelX5.TabIndex = 3;
             this.labelX5.Text = "查詢資料筆數：";
             // 
             // labelX6
@@ -675,26 +686,34 @@
             // 
             this.labelX6.BackgroundStyle.Class = "";
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(91, 499);
+            this.labelX6.Location = new System.Drawing.Point(91, 593);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(167, 21);
-            this.labelX6.TabIndex = 19;
+            this.labelX6.TabIndex = 7;
             this.labelX6.Text = "說明：本畫面僅查詢一般生";
             // 
-            // comboItem1
+            // btnSendMessage
             // 
-            this.comboItem1.Text = "學年度/學期";
-            // 
-            // comboItem2
-            // 
-            this.comboItem2.Text = "日期區間";
+            this.btnSendMessage.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSendMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSendMessage.BackColor = System.Drawing.Color.Transparent;
+            this.btnSendMessage.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSendMessage.ForeColor = System.Drawing.Color.Red;
+            this.btnSendMessage.Location = new System.Drawing.Point(485, 591);
+            this.btnSendMessage.Name = "btnSendMessage";
+            this.btnSendMessage.Size = new System.Drawing.Size(117, 25);
+            this.btnSendMessage.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSendMessage.TabIndex = 8;
+            this.btnSendMessage.Text = "發送推播(0)";
+            this.btnSendMessage.Click += new System.EventHandler(this.btnSendMessage_Click);
             // 
             // StudentIvForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(677, 530);
+            this.ClientSize = new System.Drawing.Size(686, 630);
+            this.Controls.Add(this.btnSendMessage);
             this.Controls.Add(this.labelX6);
             this.Controls.Add(this.labelX5);
             this.Controls.Add(this.groupPanel2);
@@ -706,7 +725,7 @@
             this.Controls.Add(this.btnExit);
             this.DoubleBuffered = true;
             this.Name = "StudentIvForm";
-            this.Text = "學生服務時數查詢";
+            this.Text = "服務時數查詢(推播)";
             this.Load += new System.EventHandler(this.StudentIvForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
@@ -746,13 +765,6 @@
         private System.Windows.Forms.ToolStripMenuItem 加入待處理ToolStripMenuItem;
         private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.LabelX labelX5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colClass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSeatNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStudentName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStudentNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSchoolYear;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSemester;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNumber;
         private System.Windows.Forms.ToolStripMenuItem 清空待處理ToolStripMenuItem;
         private DevComponents.DotNetBar.LabelX labelX6;
         private System.Windows.Forms.ToolStripMenuItem 查看明細資料ToolStripMenuItem;
@@ -763,5 +775,13 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx conditionCbx;
         private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.Editors.ComboItem comboItem2;
+        private DevComponents.DotNetBar.ButtonX btnSendMessage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colClass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSeatNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStudentName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStudentNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSchoolYear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSemester;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNumber;
     }
 }

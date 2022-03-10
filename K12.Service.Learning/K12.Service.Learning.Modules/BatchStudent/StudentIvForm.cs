@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Campus.Message;
 using FISCA.Presentation.Controls;
 using K12.Data;
 
@@ -28,8 +29,8 @@ namespace K12.Service.Learning.Modules
             //必須打開功能項目
 
             conditionCbx.SelectedIndex = 0;
-            
-            
+
+
             //預設學年度學期
             integerInput1.Value = int.Parse(School.DefaultSchoolYear);
             integerInput2.Value = int.Parse(School.DefaultSemester);
@@ -146,7 +147,7 @@ GROUP BY
     ref_student_id
     --,school_year
     --,semester
-                    ", starTime.Text,endTime.Text);
+                    ", starTime.Text, endTime.Text);
                 dt = tool._Q.Select(sql);
             }
             else
@@ -563,6 +564,41 @@ GROUP BY
                 labelX2.Text = "開始時間";
                 labelX3.Text = "結束時間";
             }
+        }
+
+        private void btnSendMessage_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewX1.SelectedRows.Count > 0)
+            {
+                List<string> StudentIDList = new List<string>();
+                foreach (DataGridViewRow row in dataGridViewX1.SelectedRows)
+                {
+                    IvObj obj = (IvObj)row.DataBoundItem;
+                    if (!StudentIDList.Contains(obj.ref_student_id))
+                    {
+                        StudentIDList.Add(obj.ref_student_id);
+                    }
+
+                }
+                //傳送的id,傳送的對象,與內文代碼
+                SendMessage send = new SendMessage(StudentIDList, SendMessage.UserType.StudentAndParent, "K12.Service.Learning.Modules.ServiceLearningBatch");
+                if (send.SendNow)
+                {
+                    send.Run();
+                }
+                else
+                {
+                    //不予發送
+                }
+
+            }
+        }
+
+        private void dataGridViewX1_SelectionChanged_1(object sender, EventArgs e)
+        {
+            btnSendMessage.Enabled = dataGridViewX1.SelectedRows.Count > 0;
+
+            btnSendMessage.Text = string.Format("發送推播(已選:{0})", dataGridViewX1.SelectedRows.Count);
         }
     }
 
