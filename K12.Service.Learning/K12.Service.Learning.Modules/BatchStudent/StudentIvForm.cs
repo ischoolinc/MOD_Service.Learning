@@ -510,8 +510,8 @@ GROUP BY
         {
             if (checkBoxX1.Checked)
             {
-                Point p1 = new Point(10, 12);
-                Point p2 = new Point(214, 10);
+                Point p1 = new Point(10, 42);
+                Point p2 = new Point(214, 40);
                 labelX1.Location = p1;
                 textBoxX1.Location = p2;
             }
@@ -521,8 +521,8 @@ GROUP BY
         {
             if (checkBoxX2.Checked)
             {
-                Point p1 = new Point(10, 42);
-                Point p2 = new Point(214, 40);
+                Point p1 = new Point(10, 12);
+                Point p2 = new Point(214, 10);
                 labelX1.Location = p1;
                 textBoxX1.Location = p2;
             }
