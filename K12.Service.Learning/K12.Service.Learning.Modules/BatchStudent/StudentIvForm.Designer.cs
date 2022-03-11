@@ -86,7 +86,7 @@
             this.btnExit.AutoSize = true;
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExit.Location = new System.Drawing.Point(608, 591);
+            this.btnExit.Location = new System.Drawing.Point(629, 539);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 25);
             this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -127,7 +127,7 @@
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(673, 441);
+            this.dataGridViewX1.Size = new System.Drawing.Size(694, 389);
             this.dataGridViewX1.TabIndex = 5;
             this.dataGridViewX1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewX1_CellMouseDoubleClick);
             this.dataGridViewX1.SelectionChanged += new System.EventHandler(this.dataGridViewX1_SelectionChanged_1);
@@ -443,7 +443,7 @@
             this.btnReport.AutoSize = true;
             this.btnReport.BackColor = System.Drawing.Color.Transparent;
             this.btnReport.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnReport.Location = new System.Drawing.Point(10, 591);
+            this.btnReport.Location = new System.Drawing.Point(10, 539);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(75, 25);
             this.btnReport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -686,7 +686,7 @@
             // 
             this.labelX6.BackgroundStyle.Class = "";
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(91, 593);
+            this.labelX6.Location = new System.Drawing.Point(91, 541);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(167, 21);
             this.labelX6.TabIndex = 7;
@@ -699,7 +699,7 @@
             this.btnSendMessage.BackColor = System.Drawing.Color.Transparent;
             this.btnSendMessage.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnSendMessage.ForeColor = System.Drawing.Color.Red;
-            this.btnSendMessage.Location = new System.Drawing.Point(485, 591);
+            this.btnSendMessage.Location = new System.Drawing.Point(506, 539);
             this.btnSendMessage.Name = "btnSendMessage";
             this.btnSendMessage.Size = new System.Drawing.Size(117, 25);
             this.btnSendMessage.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -712,7 +712,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(686, 630);
+            this.ClientSize = new System.Drawing.Size(707, 578);
             this.Controls.Add(this.btnSendMessage);
             this.Controls.Add(this.labelX6);
             this.Controls.Add(this.labelX5);
