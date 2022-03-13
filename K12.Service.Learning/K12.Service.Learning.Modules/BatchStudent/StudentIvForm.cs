@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Campus.Message;
+using FISCA.Authentication;
 using FISCA.Presentation.Controls;
 using K12.Data;
 
@@ -568,29 +569,38 @@ GROUP BY
 
         private void btnSendMessage_Click(object sender, EventArgs e)
         {
-            if (dataGridViewX1.SelectedRows.Count > 0)
+
+            //必須要使用greening帳號登入才能用
+            if (DSAServices.AccountType == AccountType.Greening)
             {
-                List<string> StudentIDList = new List<string>();
-                foreach (DataGridViewRow row in dataGridViewX1.SelectedRows)
+                if (dataGridViewX1.SelectedRows.Count > 0)
                 {
-                    IvObj obj = (IvObj)row.DataBoundItem;
-                    if (!StudentIDList.Contains(obj.ref_student_id))
+                    List<string> StudentIDList = new List<string>();
+                    foreach (DataGridViewRow row in dataGridViewX1.SelectedRows)
                     {
-                        StudentIDList.Add(obj.ref_student_id);
+                        IvObj obj = (IvObj)row.DataBoundItem;
+                        if (!StudentIDList.Contains(obj.ref_student_id))
+                        {
+                            StudentIDList.Add(obj.ref_student_id);
+                        }
+
+                    }
+                    //傳送的id,傳送的對象,與內文代碼
+                    SendMessage send = new SendMessage(StudentIDList, SendMessage.UserType.StudentAndParent, "K12.Service.Learning.Modules.ServiceLearningBatch");
+                    if (send.SendNow)
+                    {
+                        send.Run();
+                    }
+                    else
+                    {
+                        //不予發送
                     }
 
                 }
-                //傳送的id,傳送的對象,與內文代碼
-                SendMessage send = new SendMessage(StudentIDList, SendMessage.UserType.StudentAndParent, "K12.Service.Learning.Modules.ServiceLearningBatch");
-                if (send.SendNow)
-                {
-                    send.Run();
-                }
-                else
-                {
-                    //不予發送
-                }
-
+            }
+            else
+            {
+                FISCA.Presentation.Controls.MsgBox.Show("必須是Greening帳號(如abc@gmail.com)");
             }
         }
 
