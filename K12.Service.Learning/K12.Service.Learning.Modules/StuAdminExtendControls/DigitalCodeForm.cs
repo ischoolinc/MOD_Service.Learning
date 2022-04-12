@@ -25,6 +25,8 @@ namespace K12.Service.Learning.Modules
         public DigitalCodeForm()
         {
             InitializeComponent();
+            List<int> cols = new List<int>() { 0 };
+            Campus.Windows.DataGridViewImeDecorator dec = new Campus.Windows.DataGridViewImeDecorator(this.dataGridViewX1, cols);
         }
 
         private void DigitalCodeForm_Load(object sender, EventArgs e)
