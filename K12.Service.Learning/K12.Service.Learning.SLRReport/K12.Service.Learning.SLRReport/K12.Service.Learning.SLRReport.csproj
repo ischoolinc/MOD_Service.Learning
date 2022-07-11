@@ -35,18 +35,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Words, Version=4.4.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56">
+    <Reference Include="Aspose.Words_201402, Version=14.1.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\TFS2010-Git\Library\Aspose.Words.dll</HintPath>
+      <HintPath>Library\Aspose.Words_201402.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Campus.Report">
-      <HintPath>..\..\..\..\..\..\TFS2010-Git\Library\Campus.Report.dll</HintPath>
+    <Reference Include="Campus.Report2014, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Campus.Report2014.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\TFS2010-Git\Library\DevComponents.DotNetBar2.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="FISCA">
       <HintPath>..\..\..\..\..\..\TFS2010-Git\Library\FISCA.dll</HintPath>
@@ -96,7 +98,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Report\ClassTotalObj.cs" />
-    <Compile Include="Report\SLRClassTotal.cs" />
+    <Compile Include="Report\SLRClassTotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Report\SLRClassTotal.designer.cs">
       <DependentUpon>SLRClassTotal.cs</DependentUpon>
     </Compile>
@@ -116,6 +120,15 @@
     <None Include="Resources\服務學習時數學期統計表_範本.doc" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Library\Aspose.Words_201402.dll" />
+    <Content Include="Library\Campus.Report2014.dll" />
+    <Content Include="Library\FISCA.Data.dll" />
+    <Content Include="Library\FISCA.dll" />
+    <Content Include="Library\FISCA.Permission.dll" />
+    <Content Include="Library\FISCA.Presentation.dll" />
+    <Content Include="Library\FISCA.UDT.dll" />
+    <Content Include="Library\K12.Data.dll" />
+    <Content Include="Library\K12.Presentation.dll" />
     <Content Include="班級服務學習統計表.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

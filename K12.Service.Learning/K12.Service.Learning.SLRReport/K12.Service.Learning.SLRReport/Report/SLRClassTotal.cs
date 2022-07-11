@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using FISCA.Presentation.Controls;
 using System.Diagnostics;
 using Aspose.Words;
+using Aspose.Words.Tables;
+using Campus.Report2014;
 
 namespace K12.Service.Learning.SLRReport
 {
@@ -44,12 +46,12 @@ namespace K12.Service.Learning.SLRReport
             integerInput2.Text = K12.Data.School.DefaultSemester;
 
             //取得設定檔
-            Campus.Report.ReportConfiguration ConfigurationInCadre = new Campus.Report.ReportConfiguration(服務學習班級統計表設定檔);
+            ReportConfiguration ConfigurationInCadre = new ReportConfiguration(服務學習班級統計表設定檔);
             //如果沒有設定過樣板
             if (ConfigurationInCadre.Template == null)
             {
                 //預設樣板 & 格式
-                ConfigurationInCadre.Template = new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數學期統計表_範本, Campus.Report.TemplateType.Word);
+                ConfigurationInCadre.Template = new ReportTemplate(Properties.Resources.服務學習時數學期統計表_範本, TemplateType.docx);
                 ConfigurationInCadre.Save();
             }
         }
@@ -84,7 +86,7 @@ namespace K12.Service.Learning.SLRReport
             List<ClassTotalObj> classList = GetClassOBJ(_ClassIDList);
 
             //取得設定檔
-            Campus.Report.ReportConfiguration ConfigurationInCadre = new Campus.Report.ReportConfiguration(服務學習班級統計表設定檔);
+            ReportConfiguration ConfigurationInCadre = new ReportConfiguration(服務學習班級統計表設定檔);
             _template = ConfigurationInCadre.Template.ToDocument();
             _doc.Sections.Clear();
 
@@ -380,9 +382,9 @@ namespace K12.Service.Learning.SLRReport
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //取得設定檔
-            Campus.Report.ReportConfiguration ConfigurationInCadre = new Campus.Report.ReportConfiguration(服務學習班級統計表設定檔);
+            ReportConfiguration ConfigurationInCadre = new ReportConfiguration(服務學習班級統計表設定檔);
             //畫面內容(範本內容,預設樣式
-            Campus.Report.TemplateSettingForm TemplateForm = new Campus.Report.TemplateSettingForm(ConfigurationInCadre.Template, new Campus.Report.ReportTemplate(Properties.Resources.服務學習時數學期統計表_範本, Campus.Report.TemplateType.Word));
+            TemplateSettingForm TemplateForm = new TemplateSettingForm(ConfigurationInCadre.Template, new ReportTemplate(Properties.Resources.服務學習時數學期統計表_範本, TemplateType.docx));
             //預設名稱
             TemplateForm.DefaultFileName = "班級服務學習統計表(範本)";
             //如果回傳為OK
