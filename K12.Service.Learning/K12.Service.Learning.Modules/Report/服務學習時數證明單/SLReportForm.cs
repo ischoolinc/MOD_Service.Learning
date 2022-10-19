@@ -253,6 +253,10 @@ namespace K12.Service.Learning.Modules
 
             Dictionary<string, decimal> SchoolYearTotal = new Dictionary<string, decimal>();
 
+            decimal totalHours = 0;
+            decimal inSchoolHours = 0;
+            decimal outSchoolHours = 0;
+
             foreach (SLRecord slr in list)
             {
                 string schoolYearValue = slr.SchoolYear.ToString().PadLeft(3, ' ') + "學年度 第" + slr.Semester + "學期";
@@ -261,6 +265,12 @@ namespace K12.Service.Learning.Modules
                     SchoolYearTotal.Add(schoolYearValue, 0);
                 }
                 SchoolYearTotal[schoolYearValue] += slr.Hours;
+
+                if (slr.InternalOrExternal == "校內")
+                    inSchoolHours += slr.Hours;
+                if (slr.InternalOrExternal == "校外")
+                    outSchoolHours += slr.Hours;
+                totalHours += slr.Hours;
 
                 //學年度
                 Write(cell, "" + slr.SchoolYear);
@@ -330,7 +340,17 @@ namespace K12.Service.Learning.Modules
             name.Add("性別");
             value.Add(sr.Gender);
 
+            name.Add("校內總時數");
+            value.Add(inSchoolHours.ToString());
+
+            name.Add("校外總時數");
+            value.Add(outSchoolHours.ToString());
+
+            name.Add("服務學習總時數");
+            value.Add(totalHours.ToString());
+
             List<string> listkey = SchoolYearTotal.Keys.ToList();
+            //decimal totalValue = 0;
 
             for (int x = 0; x < SchoolYearTotal.Count; x++)
             {
@@ -338,9 +358,9 @@ namespace K12.Service.Learning.Modules
                     break;
 
                 name.Add(SchoolYearNameList[x]);
-
                 value.Add(listkey[x] + " 總時數：" + SchoolYearTotal[listkey[x]].ToString());
 
+                //totalValue += SchoolYearTotal[listkey[x]];
             }
 
             foreach (string each in SchoolYearNameList)
@@ -410,6 +430,15 @@ namespace K12.Service.Learning.Modules
 
             name.Add("性別");
             value.Add(sr.Gender);
+
+            name.Add("校內總時數");
+            value.Add("0");
+
+            name.Add("校外總時數");
+            value.Add("0");
+
+            name.Add("服務學習總時數");
+            value.Add("0");
 
             foreach (string each in SchoolYearNameList)
             {
