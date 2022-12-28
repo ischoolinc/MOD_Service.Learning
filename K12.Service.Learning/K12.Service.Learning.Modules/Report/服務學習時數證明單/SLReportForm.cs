@@ -12,6 +12,8 @@ using FISCA.UDT;
 using Aspose.Words;
 using System.Diagnostics;
 using System.IO;
+using Aspose.Words.Tables;
+using Campus.Report2014;
 
 namespace K12.Service.Learning.Modules
 {
@@ -68,12 +70,12 @@ namespace K12.Service.Learning.Modules
             RunFormDn();
 
             //取得設定檔
-            Campus.Report.ReportConfiguration ConfigurationInCadre = new Campus.Report.ReportConfiguration(ServiceLearningConfig);
+            ReportConfiguration ConfigurationInCadre = new ReportConfiguration(ServiceLearningConfig);
             //如果沒有設定過樣板
             if (ConfigurationInCadre.Template == null)
             {
                 //預設樣板 & 格式
-                ConfigurationInCadre.Template = new Campus.Report.ReportTemplate(Properties.Resources.服務學習記錄_範本, Campus.Report.TemplateType.Word);
+                ConfigurationInCadre.Template = new ReportTemplate(Properties.Resources.服務學習記錄_範本, TemplateType.docx);
                 ConfigurationInCadre.Save();
             }
         }
@@ -156,7 +158,7 @@ namespace K12.Service.Learning.Modules
             SLRecordDic = SortSpeed(SLRecordDic);
 
             //取得設定檔
-            Campus.Report.ReportConfiguration ConfigurationInCadre = new Campus.Report.ReportConfiguration(ServiceLearningConfig);
+            ReportConfiguration ConfigurationInCadre = new ReportConfiguration(ServiceLearningConfig);
             _template = ConfigurationInCadre.Template.ToDocument();
             _doc.Sections.Clear();
 
@@ -637,9 +639,9 @@ namespace K12.Service.Learning.Modules
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //取得設定檔
-            Campus.Report.ReportConfiguration ConfigurationInCadre = new Campus.Report.ReportConfiguration(ServiceLearningConfig);
+            ReportConfiguration ConfigurationInCadre = new ReportConfiguration(ServiceLearningConfig);
             //畫面內容(範本內容,預設樣式
-            Campus.Report.TemplateSettingForm TemplateForm = new Campus.Report.TemplateSettingForm(ConfigurationInCadre.Template, new Campus.Report.ReportTemplate(Properties.Resources.服務學習記錄_範本, Campus.Report.TemplateType.Word));
+            TemplateSettingForm TemplateForm = new TemplateSettingForm(ConfigurationInCadre.Template, new ReportTemplate(Properties.Resources.服務學習記錄_範本, TemplateType.docx));
             //預設名稱
             TemplateForm.DefaultFileName = "服務學習時數證明單(範本)";
             //如果回傳為OK

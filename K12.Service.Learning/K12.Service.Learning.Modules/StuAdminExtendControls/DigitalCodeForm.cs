@@ -182,7 +182,7 @@ namespace K12.Service.Learning.Modules
 
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "選擇要匯入的服務學習代碼表";
-            ofd.Filter = "Excel檔案 (*.xls)|*.xls";
+            ofd.Filter = "Excel檔案 (*.xlsx)|*.xlsx";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 try

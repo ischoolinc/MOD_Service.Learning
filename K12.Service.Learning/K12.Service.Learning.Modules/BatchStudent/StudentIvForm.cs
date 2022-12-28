@@ -473,7 +473,7 @@ GROUP BY
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.FileName = "匯出學生服務時數查詢";
-            saveFileDialog1.Filter = "Excel (*.xls)|*.xls";
+            saveFileDialog1.Filter = "Excel (*.xlsx)|*.xlsx";
             if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
 
             DataGridViewExport export = new DataGridViewExport(dataGridViewX1);

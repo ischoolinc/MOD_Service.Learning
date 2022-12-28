@@ -45,7 +45,7 @@ namespace K12.Service.Learning.Modules
         {
             try
             {
-                _workbook.Save(path, FileFormatType.Excel2003);
+                _workbook.Save(path, FileFormatType.Xlsx);
 
             }
             catch (Exception ex)

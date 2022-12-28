@@ -567,7 +567,7 @@ namespace K12.Service.Learning.Modules
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.FileName = "匯出服務學習時數記錄";
-            saveFileDialog1.Filter = "Excel (*.xls)|*.xls";
+            saveFileDialog1.Filter = "Excel (*.xlsx)|*.xlsx";
             if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
 
             DataGridViewExport export = new DataGridViewExport(dataGridViewX1);

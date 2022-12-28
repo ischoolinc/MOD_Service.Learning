@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Campus.Import;
 using System.Xml;
 using K12.Data;
 using FISCA.DSAUtil;
@@ -12,6 +11,7 @@ using FISCA.Presentation.Controls;
 using FISCA.LogAgent;
 using FISCA.UDT;
 using System.Data;
+using Campus.Import2014;
 
 namespace K12.Service.Learning.Modules
 {
