@@ -549,7 +549,7 @@ namespace K12.Service.Learning.Modules
                 {
                     SaveFileDialog SaveFileDialog1 = new SaveFileDialog();
 
-                    SaveFileDialog1.Filter = "Word (*.doc)|*.doc|所有檔案 (*.*)|*.*";
+                    SaveFileDialog1.Filter = "Word (*.docx)|*.docx|所有檔案 (*.*)|*.*";
                     SaveFileDialog1.FileName = "服務學習時數證明單";
 
                     if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
