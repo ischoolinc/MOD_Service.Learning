@@ -25,8 +25,6 @@ namespace K12.Service.Learning.Modules
         public DigitalCodeForm()
         {
             InitializeComponent();
-            List<int> cols = new List<int>() { 0 };
-            Campus.Windows.DataGridViewImeDecorator dec = new Campus.Windows.DataGridViewImeDecorator(this.dataGridViewX1, cols);
         }
 
         private void DigitalCodeForm_Load(object sender, EventArgs e)
@@ -42,6 +40,9 @@ namespace K12.Service.Learning.Modules
             DataListener = new Campus.Windows.ChangeListener();
             DataListener.Add(new Campus.Windows.DataGridViewSource(dataGridViewX1));
             DataListener.StatusChanged += new EventHandler<Campus.Windows.ChangeEventArgs>(DataListener_StatusChanged);
+
+            List<string> cols = new List<string>() { "代碼" };
+            Campus.Windows.DataGridViewImeDecorator dec = new Campus.Windows.DataGridViewImeDecorator(this.dataGridViewX1, cols);
         }
 
         bool SetFrom
