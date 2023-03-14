@@ -245,6 +245,17 @@ namespace K12.Service.Learning.Modules
             // 2017/10/31，羿均根據恩正的建議修改判斷邏輯，只要有欄位無法轉型就false。
             bool returnTrue = true;
 
+            // 2023/3/14 - 增加驗證使用者是否未輸入時間
+            if (dateTimeInput1.Text == "0001/01/01 00:00:00" || dateTimeInput1.Text == "")
+            {
+                errorProvider1.SetError(dateTimeInput1, "請輸入時間日期");
+                returnTrue = false;
+            }
+            else
+            {
+                errorProvider1.SetError(dateTimeInput1, "");
+            }
+
             foreach (DataGridViewRow row in dataGridViewX1.Rows)
             {
                 foreach (DataGridViewCell cell in row.Cells)

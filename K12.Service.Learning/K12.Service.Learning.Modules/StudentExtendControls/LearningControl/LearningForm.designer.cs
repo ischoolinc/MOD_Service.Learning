@@ -266,6 +266,7 @@
             this.dateTimeInput1.Name = "dateTimeInput1";
             this.dateTimeInput1.Size = new System.Drawing.Size(138, 25);
             this.dateTimeInput1.TabIndex = 9;
+            this.dateTimeInput1.Click += new System.EventHandler(this.dateTimeInput1_Click);
             // 
             // dateTimeInput2
             // 
