@@ -111,9 +111,41 @@ namespace K12.Service.Learning.Modules
             comboBoxEx1.SelectedIndex = 0;
         }
 
-        //儲存
-        private void buttonX2_Click(object sender, EventArgs e)
+        private bool CheckDateTimeInput()
         {
+            // 2023/3/14 - 增加驗證使用者是否未輸入時間
+            if (dateTimeInput1.Text == "0001/01/01 00:00:00" || dateTimeInput1.Text == "")
+            {
+                errorProvider1.SetError(dateTimeInput1, "請輸入時間日期");
+                return false;
+            }
+            else
+            {
+                errorProvider1.SetError(dateTimeInput1, "");
+            }
+
+            if (dateTimeInput2.Text == "0001/01/01 00:00:00" || dateTimeInput2.Text == "")
+            {
+                errorProvider1.SetError(dateTimeInput2, "請輸入時間日期");
+                return false;
+            }
+            else
+            {
+                errorProvider1.SetError(dateTimeInput2, "");
+            }
+            return true;
+        }
+
+        //儲存
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            // 2023/3/14 - 增加驗證使用者是否未輸入時間
+            if (!CheckDateTimeInput())
+            {
+                MsgBox.Show("請修正時間欄位,再儲存!!");
+                return;
+            }
+
             if (!CheckIntError())
             {
                 MsgBox.Show("輸入[時數]型態錯誤,請重新修正後再儲存!!");
@@ -244,17 +276,6 @@ namespace K12.Service.Learning.Modules
         {
             // 2017/10/31，羿均根據恩正的建議修改判斷邏輯，只要有欄位無法轉型就false。
             bool returnTrue = true;
-
-            // 2023/3/14 - 增加驗證使用者是否未輸入時間
-            if (dateTimeInput1.Text == "0001/01/01 00:00:00" || dateTimeInput1.Text == "")
-            {
-                errorProvider1.SetError(dateTimeInput1, "請輸入時間日期");
-                returnTrue = false;
-            }
-            else
-            {
-                errorProvider1.SetError(dateTimeInput1, "");
-            }
 
             foreach (DataGridViewRow row in dataGridViewX1.Rows)
             {

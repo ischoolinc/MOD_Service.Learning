@@ -46,7 +46,7 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIandOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
+            this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
             this.integerInput1 = new DevComponents.Editors.IntegerInput();
             this.integerInput2 = new DevComponents.Editors.IntegerInput();
@@ -260,18 +260,18 @@
             this.colIandOut.Name = "colIandOut";
             this.colIandOut.Width = 80;
             // 
-            // buttonX2
+            // btnSave
             // 
-            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonX2.BackColor = System.Drawing.Color.Transparent;
-            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(651, 454);
-            this.buttonX2.Name = "buttonX2";
-            this.buttonX2.Size = new System.Drawing.Size(75, 23);
-            this.buttonX2.TabIndex = 2;
-            this.buttonX2.Text = "登錄";
-            this.buttonX2.Click += new System.EventHandler(this.buttonX2_Click);
+            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BackColor = System.Drawing.Color.Transparent;
+            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSave.Location = new System.Drawing.Point(651, 454);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "登錄";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // buttonX3
             // 
@@ -647,7 +647,7 @@
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.labelX2);
             this.Controls.Add(this.buttonX3);
-            this.Controls.Add(this.buttonX2);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.comboBoxEx2);
             this.DoubleBuffered = true;
@@ -671,7 +671,7 @@
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dateTimeInput1;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
-        private DevComponents.DotNetBar.ButtonX buttonX2;
+        private DevComponents.DotNetBar.ButtonX btnSave;
         private DevComponents.DotNetBar.ButtonX buttonX3;
         private DevComponents.Editors.IntegerInput integerInput1;
         private DevComponents.Editors.IntegerInput integerInput2;
