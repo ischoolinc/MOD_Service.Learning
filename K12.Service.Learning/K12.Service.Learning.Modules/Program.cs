@@ -209,9 +209,9 @@ namespace K12.Service.Learning.Modules
 
                 #region 學生服務時數查詢
                 {
-                    MotherForm.RibbonBarItems["學務作業", "預警系統"]["服務時數查詢(推播)"].Image = Properties.Resources.fix_clock_64;
-                    MotherForm.RibbonBarItems["學務作業", "預警系統"]["服務時數查詢(推播)"].Enable = Permissions.學生服務時數查詢權限;
-                    MotherForm.RibbonBarItems["學務作業", "預警系統"]["服務時數查詢(推播)"].Click += delegate
+                    MotherForm.RibbonBarItems["學務作業", "批次作業/查詢"]["服務學習時數"]["服務時數查詢(推播)"].Image = Properties.Resources.fix_clock_64;
+                    MotherForm.RibbonBarItems["學務作業", "批次作業/查詢"]["服務學習時數"]["服務時數查詢(推播)"].Enable = Permissions.學生服務時數查詢權限;
+                    MotherForm.RibbonBarItems["學務作業", "批次作業/查詢"]["服務學習時數"]["服務時數查詢(推播)"].Click += delegate
                     {
                         StudentIvForm batch = new StudentIvForm();
                         batch.ShowDialog();
