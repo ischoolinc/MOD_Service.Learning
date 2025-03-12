@@ -28,16 +28,7 @@ namespace K12.Service.Learning.Modules
                 decimal DEC = decimal.Parse(name);
                 if (DEC > 0)
                 {
-                    decimal decRound = Math.Round(DEC, 2);
-
-                    if (DEC == decRound)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    return true;
                 }
                 else //小於等於0
                 {

@@ -35,7 +35,7 @@
       <Validate AutoCorrect="False" Description="「事由」建議必須輸入。" ErrorType="Warning" Validator="不可空白" When=""/>
     </Field>
     <Field Required="True" Name="時數">
-      <Validate AutoCorrect="False" Description="「時數」必須大於零，必須為數字，或僅限小數後兩位數。" ErrorType="Error" Validator="數字僅限小數後兩位數" When="" />
+      <Validate AutoCorrect="False" Description="「時數」必須大於零，必須為數字。" ErrorType="Error" Validator="必須大於零必須為數字" When="" />
     </Field>
     <Field Required="True" Name="主辦單位">
       <Validate AutoCorrect="False" Description="「主辦單位」建議必須輸入。" ErrorType="Warning" Validator="不可空白" When=""/>
@@ -52,7 +52,7 @@
   <ValidatorList>
     <FieldValidator Name="學號是否存在系統" Type="STUDENTNUMBEREXISTENCE"/>
     <FieldValidator Name="學號是否重覆" Type="STUDENTNUMBERREPEAT"/>
-    <FieldValidator Name="數字僅限小數後兩位數" Type="ISDECIMAL"/>
+    <FieldValidator Name="必須大於零必須為數字" Type="ISDECIMAL"/> 
     <FieldValidator Name="文字12" Type="STRINGLENGTH">
       <MinLength>0</MinLength>
       <MaxLength>12</MaxLength>
